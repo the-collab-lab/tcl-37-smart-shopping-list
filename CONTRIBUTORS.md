@@ -7,7 +7,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Cohort Participants
 
 - [Dana Pughakoff](https://github.com/danainjax) 💻
-- [Devarat Patel] (https://github.com/devaratpatel) 🚀
+- [Devarat Patel](https://github.com/devaratpatel) 🚀
 
 ## Mentors
 
