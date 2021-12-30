@@ -6,6 +6,8 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 ## Cohort Participants
 
+- [Dana Pughakoff](https://github.com/danainjax) 💻
+
 ## Mentors
 
 ## Code of Conduct Contacts
