@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView } from './components/AddItemView';
 import { ListView } from './components/ListView';
+import './App.css';
 
 function App() {
   return (
