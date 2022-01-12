@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Db from './Db';
+import List from './List';
 
 function App() {
   return (
     <div className="App">
-      <Db />
+      <List />
     </div>
   );
 }
