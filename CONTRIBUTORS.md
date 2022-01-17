@@ -15,5 +15,6 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 - [Yenly Ma](https://github.com/yenly) 🍄
 - [Rob Yoder](https://github.com/robyoder) 🏔
+- [Tanner Gill](https://github.com/tannaurus) 🚀
 
 ## Code of Conduct Contacts

@@ -20,3 +20,20 @@
 .App-link {
   color: #09d3ac;
 }
+
+.bold {
+  font-weight: bold;
+  margin-left: 30px;
+}
+
+.footer {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: 0;
+  padding: 2rem;
+}
+
+.footer > a {
+  padding: 1rem;
+}
