@@ -4,7 +4,6 @@ import { AddItemView } from './components/AddItemView';
 import { ListView } from './components/ListView';
 import { RouteLink } from './components/RouteLink';
 import './App.css';
-import List from './List';
 
 function App() {
   return (
