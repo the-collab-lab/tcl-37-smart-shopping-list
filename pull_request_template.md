@@ -38,5 +38,3 @@ _For an example of how to fill this template out, [see this Pull Request](https:
 ## Testing Steps / QA Criteria
 
 <!-- Provide steps the other cohort members and mentors need to follow to properly test your additions. -->
-
-<!-- Test comment, creating draft PR -->
