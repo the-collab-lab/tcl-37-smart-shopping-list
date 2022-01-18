@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import {
   getToken,
@@ -27,6 +28,8 @@ const Home = () => {
   return (
     <div>
       <h1>Homepage</h1>
+
+      {token ? <Link to="/list">List View</Link> : null}
       {!token ? (
         <button onClick={() => generateToken()}>Generate Token</button>
       ) : null}

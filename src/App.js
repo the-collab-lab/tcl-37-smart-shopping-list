@@ -16,7 +16,7 @@ function App() {
           <Route path="/add" element={<AddItemView />} />
         </Routes>
         <nav className="footer">
-          <RouteLink to="/">List</RouteLink>
+          <RouteLink to="/list">List</RouteLink>
           <RouteLink to="/add">Add Item</RouteLink>
         </nav>
       </Router>
