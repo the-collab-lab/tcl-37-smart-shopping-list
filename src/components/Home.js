@@ -17,13 +17,21 @@ const Home = () => {
     console.log(token);
     localStorage.token = token;
     setToken(token);
+    if (token) navigate('/list');
   };
 
   useEffect(() => {
-    if (token) navigate('/list');
-  }, [token, navigate]);
+    if (localStorage.token) setToken(localStorage.token);
+  }, []);
 
-  return <button onClick={() => generateToken()}>Generate Token</button>;
+  return (
+    <div>
+      <h1>Homepage</h1>
+      {!token ? (
+        <button onClick={() => generateToken()}>Generate Token</button>
+      ) : null}
+    </div>
+  );
 };
 
 export default Home;
