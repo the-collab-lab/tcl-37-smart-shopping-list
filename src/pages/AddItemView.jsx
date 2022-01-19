@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import db from '../lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 export const AddItemView = () => {
   const [inputs, setInputs] = useState({});
@@ -12,10 +14,23 @@ export const AddItemView = () => {
     setInputs((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const docRef = await addDoc(collection(db, 'addlist'), {
+        item: inputs.item,
+        days: inputs.days,
+      });
+      console.log('Document written with ID: ', docRef.id);
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  };
+
   return (
     <div>
       <h1>Smart Shopping List</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Item name</label>
           <input
@@ -54,7 +69,7 @@ export const AddItemView = () => {
             name="days"
             onChange={handleChange}
           />
-          <label htmlFor="not-soon">Soon</label>
+          <label htmlFor="not-soon">Not Soon</label>
 
           <button type="submit">Add Item</button>
         </div>
