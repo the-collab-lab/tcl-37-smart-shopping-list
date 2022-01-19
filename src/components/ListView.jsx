@@ -35,46 +35,20 @@ export const ListView = () => {
   };
 
   return (
-    // <div>
-    //   Send data:
-    //   <button onClick={sendData}>Send data to database</button>
-    //   <ul>
-    //     {docs.map((doc) => {
-    //       return (
-    //         <li key={doc.id}>
-    //           {doc.item} : {doc.quantity}
-    //         </li>
-    //       );
-    //     })}
-    //   </ul>
-    //   {value && (
-    //       <span>
-    //         Collection:{' '}
-    //         {value.docs.map((doc) => (
-    //           <React.Fragment key={doc.id}>
-    //             {JSON.stringify(doc.data())},{' '}
-    //           </React.Fragment>
-    //         ))}
-    //       </span>
-    //     )}
-    // </div>
-
     <div>
       <button onClick={sendData}>Send data to database</button>
-      <p>
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
-        {loading && <span>Collection: Loading...</span>}
-        {value && (
-          <span>
-            Collection:{' '}
-            {value.docs.map((doc) => (
-              <React.Fragment key={doc.id}>
-                {JSON.stringify(doc.data())},{' '}
-              </React.Fragment>
-            ))}
-          </span>
-        )}
-      </p>
+      {error && <strong>Error: {JSON.stringify(error)}</strong>}
+      {loading && <span>Collection: Loading...</span>}
+      Collection
+      {value && (
+        <ul>
+          {value.docs.map((doc) => (
+            <li key={doc.id}>
+              {doc.data().item} : {doc.data().quantity}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
