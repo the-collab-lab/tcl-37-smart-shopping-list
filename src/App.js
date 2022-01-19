@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AddItemView } from './components/AddItemView';
-import { ListView } from './components/ListView';
+import { AddItemView } from './pages/AddItemView';
+import { ListView } from './pages/ListView';
 import { RouteLink } from './components/RouteLink';
 import './App.css';
 
