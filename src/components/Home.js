@@ -1,35 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { getToken } from '@the-collab-lab/shopping-list-utils';
 
-import {
-  getToken,
-  words,
-  calculateEstimate,
-} from '@the-collab-lab/shopping-list-utils';
-
-const Home = () => {
+const Home = (props) => {
   let navigate = useNavigate();
-
-  const [token, setToken] = useState('');
+  const { token, setToken } = props;
 
   const generateToken = () => {
     const token = getToken();
-    console.log(token);
     localStorage.token = token;
     setToken(token);
     if (token) navigate('/list');
   };
 
-  useEffect(() => {
-    if (localStorage.token) setToken(localStorage.token);
-  }, []);
-
   return (
     <div>
       <h1>Welcome to your Smart Shopping List!</h1>
-
-      {token ? <Link to="/list">List View</Link> : null}
+      {token ? <Link to="/list">View your shopping list</Link> : null}
       {!token ? (
         <button onClick={() => generateToken()}>Create a new list</button>
       ) : null}

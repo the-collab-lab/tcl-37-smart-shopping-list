@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView } from './components/AddItemView';
 import { ListView } from './components/ListView';
@@ -7,11 +7,21 @@ import { RouteLink } from './components/RouteLink';
 import './App.css';
 
 function App() {
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    if (localStorage.token) setToken(localStorage.token);
+  }, []);
+
   return (
     <div className="App">
       <Router>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route
+            exact
+            path="/"
+            element={<Home token={token} setToken={setToken} />}
+          />
           <Route exact path="/list" element={<ListView />} />
           <Route path="/add" element={<AddItemView />} />
         </Routes>
