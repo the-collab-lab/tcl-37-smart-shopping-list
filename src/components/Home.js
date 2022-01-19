@@ -31,7 +31,7 @@ const Home = () => {
 
       {token ? <Link to="/list">List View</Link> : null}
       {!token ? (
-        <button onClick={() => generateToken()}>Generate Token</button>
+        <button onClick={() => generateToken()}>Create a new list</button>
       ) : null}
     </div>
   );
