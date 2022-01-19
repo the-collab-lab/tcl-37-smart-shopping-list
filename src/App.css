@@ -27,13 +27,13 @@
   margin-left: 30px;
 }
 
-/* .footer {
+.footer {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
   bottom: 0;
   padding: 2rem;
-} */
+}
 
 .footer > a {
   padding: 1rem;

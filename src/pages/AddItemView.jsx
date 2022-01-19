@@ -3,7 +3,7 @@ import db from '../lib/firebase';
 import { collection, addDoc } from 'firebase/firestore';
 
 export const AddItemView = () => {
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({ 'last purchase date': null });
 
   console.log(inputs);
 
@@ -20,6 +20,7 @@ export const AddItemView = () => {
       const docRef = await addDoc(collection(db, 'addlist'), {
         item: inputs.item,
         days: inputs.days,
+        purchased_date: inputs['last purchase date'],
       });
       console.log('Document written with ID: ', docRef.id);
     } catch (e) {
