@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div>
-      <h1>Homepage</h1>
+      <h1>Welcome to your Smart Shopping List!</h1>
 
       {token ? <Link to="/list">List View</Link> : null}
       {!token ? (
