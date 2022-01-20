@@ -3,8 +3,8 @@ import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
-export const ListView = () => {
-  const [value, loading, error] = useCollection(collection(db, 'addlist'), {
+export const ListView = ({ token }) => {
+  const [value, loading, error] = useCollection(collection(db, token), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 

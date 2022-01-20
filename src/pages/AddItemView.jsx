@@ -19,7 +19,7 @@ export const AddItemView = ({ token }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const docRef = await addDoc(collection(db, 'addlist'), {
+      const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
         days: inputs.days,
         purchased_date: inputs['last purchase date'],
