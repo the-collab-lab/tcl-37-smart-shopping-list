@@ -28,7 +28,7 @@ export const AddItemView = ({ token }) => {
         days: inputs.days,
         purchased_date: inputs['last purchase date'],
       });
-      setInputs({ item: '' });
+      setInputs((prevState) => ({ ...prevState, item: '' }));
       console.log('Document written with ID: ', docRef.id);
       notify();
     } catch (e) {
