@@ -5,7 +5,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Item name</label>
+          <h3 htmlFor="options">Item Name:</h3>
           <input
             type="text"
             required
@@ -17,33 +17,38 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
         </div>
         <h3 htmlFor="options">How soon will you buy this again?</h3>
         <div>
-          <input
-            defaultChecked
-            type="radio"
-            value="7"
-            id="soon"
-            name="days"
-            onChange={handleChange}
-          />
-          <label htmlFor="soon">Soon</label>
+          <label htmlFor="soon">
+            <input
+              defaultChecked
+              type="radio"
+              value="7"
+              id="soon"
+              name="days"
+              onChange={handleChange}
+            />
+            Soon
+          </label>
+          <label htmlFor="kind-soon">
+            <input
+              type="radio"
+              value="14"
+              id="kind-soon"
+              name="days"
+              onChange={handleChange}
+            />
+            Kind of Soon
+          </label>
 
-          <input
-            type="radio"
-            value="14"
-            id="kind-soon"
-            name="days"
-            onChange={handleChange}
-          />
-          <label htmlFor="kind-soon">Kind of Soon</label>
-
-          <input
-            type="radio"
-            value="30"
-            id="not-soon"
-            name="days"
-            onChange={handleChange}
-          />
-          <label htmlFor="not-soon">Not Soon</label>
+          <label htmlFor="not-soon">
+            <input
+              type="radio"
+              value="30"
+              id="not-soon"
+              name="days"
+              onChange={handleChange}
+            />
+            Not Soon
+          </label>
         </div>
         <button type="submit">Add Item</button>
       </form>
