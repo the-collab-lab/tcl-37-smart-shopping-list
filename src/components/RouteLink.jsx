@@ -5,7 +5,7 @@ export const RouteLink = ({ children, to }) => {
   let resolved = useResolvedPath(to);
 
   let match = useMatch({ path: resolved.pathname, end: true });
-  console.log('children-->', children);
+
   return (
     <Fragment>
       <Link style={{ fontWeight: match ? 'bold' : 'normal' }} to={to}>

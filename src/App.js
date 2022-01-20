@@ -13,6 +13,8 @@ function App() {
     if (localStorage.token) setToken(localStorage.token);
   }, []);
 
+  console.log(token);
+
   return (
     <div className="App">
       <Router>
@@ -22,8 +24,8 @@ function App() {
             path="/"
             element={<Home token={token} setToken={setToken} />}
           />
-          <Route exact path="/list" element={<ListView />} />
-          <Route path="/add" element={<AddItemView />} />
+          <Route exact path="/list" element={<ListView />} token={token} />
+          <Route path="/add" element={<AddItemView />} token={token} />
         </Routes>
         <nav className="footer">
           <RouteLink to="/list">List</RouteLink>
