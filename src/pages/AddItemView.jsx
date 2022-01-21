@@ -6,7 +6,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const AddItemView = ({ token }) => {
-  const [inputs, setInputs] = useState({ 'last purchase date': null });
+  const [inputs, setInputs] = useState({
+    days: '7',
+    'last purchase date': null,
+  });
 
   console.log(inputs);
   console.log(token);
