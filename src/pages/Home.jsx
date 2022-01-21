@@ -15,10 +15,11 @@ const Home = (props) => {
   return (
     <div>
       <h1>Welcome to your Smart Shopping List!</h1>
-      {token ? <Link to="/list">View your shopping list</Link> : null}
       {!token ? (
         <button onClick={() => generateToken()}>Create a new list</button>
-      ) : null}
+      ) : (
+        <Link to="/list">View your shopping list</Link>
+      )}
     </div>
   );
 };
