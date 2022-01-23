@@ -8,9 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 export const AddItemView = ({ token }) => {
   const [inputs, setInputs] = useState({ 'last purchase date': null });
 
-  console.log(inputs);
-  console.log(token);
-
   const notify = () => toast('Item added!');
 
   const handleChange = (e) => {

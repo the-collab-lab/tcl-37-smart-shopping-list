@@ -1,7 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 
-const Home = (props) => {
+export const Home = (props) => {
   let navigate = useNavigate();
   const { token, setToken } = props;
 
@@ -15,13 +15,11 @@ const Home = (props) => {
   return (
     <div>
       <h1>Welcome to your Smart Shopping List!</h1>
-      {!token ? (
-        <button onClick={() => generateToken()}>Create a new list</button>
-      ) : (
+      {token ? (
         <Link to="/list">View your shopping list</Link>
+      ) : (
+        <button onClick={() => generateToken()}>Create a new list</button>
       )}
     </div>
   );
 };
-
-export default Home;
