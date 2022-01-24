@@ -5,7 +5,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <h3 htmlFor="options">Item Name:</h3>
+          <h3>Item Name:</h3>
           <input
             type="text"
             required
@@ -15,13 +15,13 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             onChange={handleChange}
           />
         </div>
-        <h3 htmlFor="options">How soon will you buy this again?</h3>
+        <h3>How soon will you buy this again?</h3>
         <div>
           <label htmlFor="soon">
             <input
               defaultChecked
               type="radio"
-              value="7"
+              value={7}
               id="soon"
               name="days"
               onChange={handleChange}
@@ -31,7 +31,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
           <label htmlFor="kind-soon">
             <input
               type="radio"
-              value="14"
+              value={14}
               id="kind-soon"
               name="days"
               onChange={handleChange}
@@ -42,7 +42,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
           <label htmlFor="not-soon">
             <input
               type="radio"
-              value="30"
+              value={30}
               id="not-soon"
               name="days"
               onChange={handleChange}

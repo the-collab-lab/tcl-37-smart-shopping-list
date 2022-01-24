@@ -5,8 +5,13 @@ import AddItemForm from '../components/AddItemForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+// const last_purchased_date = "last purchase date";
+
 export const AddItemView = ({ token }) => {
-  const [inputs, setInputs] = useState({ 'last purchase date': null });
+  const [inputs, setInputs] = useState({
+    days: 7,
+    last_purchased_date: null,
+  });
 
   const notify = () => toast('Item added!');
 
@@ -22,8 +27,8 @@ export const AddItemView = ({ token }) => {
       e.preventDefault();
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
-        days: inputs.days,
-        purchased_date: inputs['last purchase date'],
+        days: parseInt(inputs.days),
+        purchased_date: inputs.last_purchased_date,
       });
       setInputs((prevState) => ({ ...prevState, item: '' }));
       console.log('Document written with ID: ', docRef.id);
