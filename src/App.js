@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView } from './pages/AddItemView';
 import { ListView } from './pages/ListView';
-import Home from './components/Home';
+import { Home } from './components/Home';
 import { RouteLink } from './components/RouteLink';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState(' ');
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     if (localStorage.token) setToken(localStorage.token);

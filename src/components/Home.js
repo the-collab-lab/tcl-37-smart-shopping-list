@@ -1,7 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 
-const Home = (props) => {
+export const Home = (props) => {
   let navigate = useNavigate();
   const { token, setToken } = props;
 
@@ -22,5 +22,3 @@ const Home = (props) => {
     </div>
   );
 };
-
-export default Home;

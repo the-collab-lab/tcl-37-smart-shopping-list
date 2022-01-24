@@ -1,25 +1,11 @@
 import React from 'react';
-import db from '../lib/firebase';
-import { collection } from 'firebase/firestore';
-import { useCollection } from 'react-firebase-hooks/firestore';
+import { List } from '../components/List';
+import { Home } from '../components/Home';
+// import { useNavigate } from 'react-router-dom';
 
 export const ListView = ({ token }) => {
-  const [value, loading, error] = useCollection(collection(db, token), {
-    snapshotListenOptions: { includeMetadataChanges: true },
-  });
+  console.log('token: ', token.token);
+  // let navigate = useNavigate();
 
-  return (
-    <div>
-      {error && <strong>Error: {JSON.stringify(error)}</strong>}
-      {loading && <span>Collection: Loading...</span>}
-      Collection
-      {value && (
-        <ul>
-          {value.docs.map((doc) => (
-            <li key={doc.id}>{doc.data().item}</li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+  return <div>{token ? <List token={token} /> : <Home />}</div>;
 };
