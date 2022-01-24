@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  margin-left: 50px;
 }
 
 .App-logo {
@@ -36,4 +37,9 @@
 
 .footer > a {
   padding: 1rem;
+}
+
+label {
+  display: block;
+  margin: 15px;
 }
