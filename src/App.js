@@ -7,7 +7,7 @@ import { RouteLink } from './components/RouteLink';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState(' ');
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     if (localStorage.token) setToken(localStorage.token);
