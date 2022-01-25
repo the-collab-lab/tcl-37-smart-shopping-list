@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast, error } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // const last_purchased_date = "last purchase date";
@@ -12,9 +12,9 @@ export const AddItemView = ({ token }) => {
     days: 7,
     last_purchased_date: null,
   });
-  const [currentItems, setCurrentItems] = useState([]);
 
   const notify = () => toast('Item added!');
+  const duplicate = () => toast.error('Item already exists!');
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -28,9 +28,17 @@ export const AddItemView = ({ token }) => {
       e.preventDefault();
 
       const querySnapshot = await getDocs(collection(db, token));
-      console.log(querySnapshot.docs);
       const items = querySnapshot.docs.map((doc) => doc.data().item);
-      console.log('Items', items);
+      const newItems = items.map((item) => {
+        return item.toLowerCase().replace(/[^\w\s]/gi, '');
+      });
+
+      const mutatedItem = inputs.item.toLowerCase().replace(/[^\w\s]/gi, '');
+
+      if (newItems.includes(mutatedItem)) {
+        duplicate();
+        return;
+      }
 
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
