@@ -12,6 +12,7 @@ export const AddItemView = ({ token }) => {
     days: 7,
     last_purchased_date: null,
   });
+  const [currentItems, setCurrentItems] = useState([]);
 
   const notify = () => toast('Item added!');
 
@@ -26,9 +27,10 @@ export const AddItemView = ({ token }) => {
     try {
       e.preventDefault();
 
-      const q = query(collection(db, token), where('item', '==', inputs.item));
-      const querySnapshot = await getDocs(q);
-      if (querySnapshot) console.log('item already exists');
+      const querySnapshot = await getDocs(collection(db, token));
+      console.log(querySnapshot.docs);
+      const items = querySnapshot.docs.map((doc) => doc.data().item);
+      console.log('Items', items);
 
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import db from './lib/firebase';
+import { collection } from 'firebase/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView } from './pages/AddItemView';
 import { ListView } from './pages/ListView';
@@ -7,7 +10,7 @@ import { RouteLink } from './components/RouteLink';
 import './App.css';
 
 function App() {
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(' ');
 
   useEffect(() => {
     if (localStorage.token) setToken(localStorage.token);
