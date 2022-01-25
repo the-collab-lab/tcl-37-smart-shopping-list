@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
-import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
-import { ToastContainer, toast, error } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-// const last_purchased_date = "last purchase date";
 
 export const AddItemView = ({ token }) => {
   const [inputs, setInputs] = useState({
@@ -29,13 +27,15 @@ export const AddItemView = ({ token }) => {
 
       const querySnapshot = await getDocs(collection(db, token));
       const items = querySnapshot.docs.map((doc) => doc.data().item);
-      const newItems = items.map((item) => {
+      const currentItems = items.map((item) => {
         return item.toLowerCase().replace(/[^\w\s]/gi, '');
       });
 
-      const mutatedItem = inputs.item.toLowerCase().replace(/[^\w\s]/gi, '');
+      const escapedItemName = inputs.item
+        .toLowerCase()
+        .replace(/[^\w\s]/gi, '');
 
-      if (newItems.includes(mutatedItem)) {
+      if (currentItems.includes(escapedItemName)) {
         duplicate();
         return;
       }
