@@ -6,4 +6,5 @@ input,
 button {
   width: 200px;
   border-radius: 2px;
+  text-align: center;
 }

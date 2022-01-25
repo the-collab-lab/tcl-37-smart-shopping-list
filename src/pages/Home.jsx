@@ -24,7 +24,7 @@ export const Home = (props) => {
       ) : (
         <button onClick={() => generateToken()}>Create a new list</button>
       )}
-      <JoinList />
+      <JoinList token={token} />
     </div>
   );
 };
