@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, query, where, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,6 +25,11 @@ export const AddItemView = ({ token }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+
+      const q = query(collection(db, token), where('item', '==', inputs.item));
+      const querySnapshot = await getDocs(q);
+      if (querySnapshot) console.log('item already exists');
+
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
         days: parseInt(inputs.days),
