@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const JoinList = () => {
   const [token, setToken] = useState('');
-  const joinList = (e) => {
+
+  let navigate = useNavigate();
+
+  const onClick = (e) => {
     localStorage.setItem('token', token);
+    navigate('/list');
+
     //  use it to view the appropriate list
   };
 
@@ -19,7 +25,7 @@ export const JoinList = () => {
       <input type="text" value={token} onChange={handleChange} />
       <br />
       <br />
-      <button type="submit" onClick={joinList} token={token}>
+      <button type="submit" onClick={onClick} token={token}>
         Join an existing list
       </button>
     </>
