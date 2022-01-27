@@ -27,6 +27,7 @@ export const JoinList = ({ setToken }) => {
             type="text"
             name="tokenInput"
             value={tokenInput}
+            id="tokenInput"
             onChange={handleChange}
           />
           <br />
