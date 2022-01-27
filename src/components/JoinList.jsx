@@ -1,15 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import db from '../lib/firebase';
+import { collection } from 'firebase/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
 export const JoinList = ({ setToken }) => {
-  const [tokenInput, setTokenInput] = useState('');
+  const [tokenInput, setTokenInput] = useState(' ');
 
   let navigate = useNavigate();
+  const [value] = useCollection(collection(db, tokenInput), {
+    snapshotListenOptions: { includeMetadataChanges: true },
+  });
 
   const onSubmit = (e) => {
-    localStorage.setItem('token', tokenInput);
-    setToken(tokenInput);
-    if (tokenInput) navigate('/list');
+    e.preventDefault();
+    if (value.docs.length < 1) {
+      alert('Token not valid!');
+    } else {
+      localStorage.setItem('token', tokenInput);
+      setToken(tokenInput);
+      if (tokenInput) navigate('/list');
+    }
   };
 
   const handleChange = (e) => {
