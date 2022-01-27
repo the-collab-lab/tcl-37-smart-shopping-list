@@ -22,13 +22,13 @@ export const JoinList = ({ setToken }) => {
       <p> Join an existing shopping list by entering a three word token</p>
       <div>
         <form onSubmit={onSubmit}>
-          <label htmlFor="tokenInput"> Share token </label>
+          <label htmlFor="share-token"> Share token </label>
           <input
             type="text"
-            name="tokenInput"
+            name="share-token"
             value={tokenInput}
             placeholder="three word token"
-            id="tokenInput"
+            id="share-token"
             onChange={handleChange}
           />
           <br />
