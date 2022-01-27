@@ -1,18 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const JoinList = (props) => {
-  console.log(props);
+export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState('');
 
   let navigate = useNavigate();
 
-  const onClick = (e) => {
+  const onSubmit = (e) => {
     localStorage.setItem('token', tokenInput);
-    props.setToken(tokenInput);
+    setToken(tokenInput);
     if (tokenInput) navigate('/list');
-
-    //  use it to view the appropriate list
   };
 
   const handleChange = (e) => {
@@ -23,13 +20,20 @@ export const JoinList = (props) => {
     <>
       <p> -or- </p>
       <p> Join an existing shopping list by entering a three word token</p>
-      <p> Share token </p>
-      <input type="text" value={tokenInput} onChange={handleChange} />
-      <br />
-      <br />
-      <button type="submit" onClick={onClick}>
-        Join an existing list
-      </button>
+      <div>
+        <form onSubmit={onSubmit}>
+          <label htmlFor="tokenInput"> Share token </label>
+          <input
+            type="text"
+            name="tokenInput"
+            value={tokenInput}
+            onChange={handleChange}
+          />
+          <br />
+          <br />
+          <button type="submit">Join an existing list</button>
+        </form>
+      </div>
     </>
   );
 };
