@@ -42,3 +42,7 @@ label {
   display: block;
   margin: 15px;
 }
+
+.foo {
+  color: red;
+}

@@ -3,11 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
 
-  let navigate = useNavigate();
+  const notify = () => toast('Token not valid');
+  const navigate = useNavigate();
+
   const [value] = useCollection(collection(db, tokenInput), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
@@ -15,7 +18,7 @@ export const JoinList = ({ setToken }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (value.docs.length < 1) {
-      alert('Token not valid!');
+      notify();
     } else {
       localStorage.setItem('token', tokenInput);
       setToken(tokenInput);
@@ -50,6 +53,7 @@ export const JoinList = ({ setToken }) => {
           <br />
           <button type="submit">Join an existing list</button>
         </form>
+        <ToastContainer />
       </div>
     </>
   );
