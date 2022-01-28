@@ -24,7 +24,7 @@ export const JoinList = ({ setToken }) => {
   };
 
   const handleChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value.trim();
     setTokenInput(value);
   };
   return (
