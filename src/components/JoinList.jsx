@@ -12,7 +12,7 @@ export const JoinList = ({ setToken }) => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (value.docs.length < 1) {
       alert('Token not valid!');
@@ -36,7 +36,7 @@ export const JoinList = ({ setToken }) => {
       <p> -or- </p>
       <p> Join an existing shopping list by entering a three word token</p>
       <div>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="share-token"> Share token </label>
           <input
             type="text"
