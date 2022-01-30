@@ -17,7 +17,7 @@ export const JoinList = ({ setToken }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value.docs.length < 1) {
+    if (!value || value.docs.length < 1) {
       notify();
     } else {
       localStorage.setItem('token', tokenInput.trim());
