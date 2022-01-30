@@ -20,7 +20,7 @@ export const JoinList = ({ setToken }) => {
     if (value.docs.length < 1) {
       notify();
     } else {
-      localStorage.setItem('token', tokenInput);
+      localStorage.setItem('token', tokenInput.trim());
       setToken(tokenInput);
       if (tokenInput) navigate('/list');
     }
@@ -28,8 +28,8 @@ export const JoinList = ({ setToken }) => {
 
   const handleChange = (e) => {
     if (e.target.value !== '') {
-      const value = e.target.value.trim();
-      setTokenInput(value);
+      const value = e.target.value;
+      setTokenInput(value.trim());
     } else {
       setTokenInput(' ');
     }
@@ -44,14 +44,13 @@ export const JoinList = ({ setToken }) => {
           <input
             type="text"
             name="share-token"
-            value={tokenInput}
             placeholder="three word token"
             id="share-token"
             onChange={handleChange}
           />
           <br />
           <br />
-          <button type="submit">Join an existing list</button>
+          <button>Join an existing list</button>
         </form>
         <ToastContainer />
       </div>
