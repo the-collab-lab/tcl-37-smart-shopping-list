@@ -28,12 +28,18 @@ export const AddItemView = ({ token }) => {
       const querySnapshot = await getDocs(collection(db, token));
       const items = querySnapshot.docs.map((doc) => doc.data().item);
       const currentItems = items.map((item) => {
-        return item.toLowerCase().replace(/[^\w\s]/gi, '');
+        return item
+          .toLowerCase()
+          .replace(/[^\w\s]/gi, '')
+          .split(' ')
+          .join('');
       });
 
       const escapedItemName = inputs.item
         .toLowerCase()
-        .replace(/[^\w\s]/gi, '');
+        .replace(/[^\w\s]/gi, '')
+        .split(' ')
+        .join('');
 
       if (currentItems.includes(escapedItemName)) {
         duplicate();
