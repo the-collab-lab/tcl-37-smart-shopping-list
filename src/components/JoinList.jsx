@@ -8,7 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
 
-  const notify = () => toast('Token not valid');
+  const notify = () => toast.error('Token not valid');
   const navigate = useNavigate();
 
   const [value] = useCollection(collection(db, tokenInput), {
