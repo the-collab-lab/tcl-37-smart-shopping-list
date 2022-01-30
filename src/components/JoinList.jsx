@@ -4,6 +4,7 @@ import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { ToastContainer, toast } from 'react-toastify';
+import { sanitize } from '../helpers';
 
 export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
@@ -20,7 +21,7 @@ export const JoinList = ({ setToken }) => {
     if (!value || value.docs.length < 1) {
       notify();
     } else {
-      localStorage.setItem('token', tokenInput.trim());
+      localStorage.setItem('token', sanitize(tokenInput));
       setToken(tokenInput);
       if (tokenInput) navigate('/list');
     }
@@ -29,7 +30,7 @@ export const JoinList = ({ setToken }) => {
   const handleChange = (e) => {
     if (e.target.value !== '') {
       const value = e.target.value;
-      setTokenInput(value.trim());
+      setTokenInput(sanitize(value));
     } else {
       setTokenInput(' ');
     }
