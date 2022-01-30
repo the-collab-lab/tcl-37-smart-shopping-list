@@ -13,7 +13,7 @@ export const AddItemView = ({ token }) => {
     last_purchased_date: null,
   });
 
-  const notify = () => toast('Item added!');
+  const notify = () => toast.success('Item added!');
 
   const handleChange = (e) => {
     const name = e.target.name;
