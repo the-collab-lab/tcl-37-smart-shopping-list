@@ -10,6 +10,7 @@ export const List = ({ token }) => {
 
   return (
     <div>
+      <h4> Shareable List Token : {token} </h4>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
       Collection
