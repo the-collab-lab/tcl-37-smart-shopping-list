@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
@@ -8,6 +8,14 @@ export const List = ({ token }) => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
+  const [checkedItems, setCheckedItems] = useState({});
+
+  const handleChange = (e) => {
+    setCheckedItems({ ...checkedItems, [e.target.name]: e.target.value });
+  };
+
+  console.log(checkedItems);
+
   return (
     <div>
       <h4> Shareable List Token : {token} </h4>
@@ -15,9 +23,18 @@ export const List = ({ token }) => {
       {loading && <span>Collection: Loading...</span>}
       Collection
       {value && (
-        <ul>
+        <ul className="collection-list">
           {value.docs.map((doc) => (
-            <li key={doc.id}>{doc.data().item}</li>
+            <li key={doc.id}>
+              <input
+                type="checkbox"
+                name={doc.id}
+                id={doc.id}
+                value={doc.data().item}
+                onChange={handleChange}
+              />
+              <label>{doc.data().item}</label>
+            </li>
           ))}
         </ul>
       )}
