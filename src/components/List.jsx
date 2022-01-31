@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import moment from 'moment';
 
 export const List = ({ token }) => {
   const [value, loading, error] = useCollection(collection(db, token), {
@@ -12,6 +13,7 @@ export const List = ({ token }) => {
 
   const handleChange = (e) => {
     setCheckedItems({ ...checkedItems, [e.target.name]: e.target.value });
+    console.log(moment().format());
   };
 
   console.log(checkedItems);
