@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-// const last_purchased_date = "last purchase date";
 
 export const AddItemView = ({ token }) => {
   const [inputs, setInputs] = useState({
@@ -13,7 +11,8 @@ export const AddItemView = ({ token }) => {
     last_purchased_date: null,
   });
 
-  const notify = () => toast.success('Item added!');
+  const notify = () => toast('Item added!');
+  const duplicate = () => toast.error('Item already exists!');
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -25,6 +24,28 @@ export const AddItemView = ({ token }) => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+
+      const querySnapshot = await getDocs(collection(db, token));
+      const items = querySnapshot.docs.map((doc) => doc.data().item);
+      const currentItems = items.map((item) => {
+        return item
+          .toLowerCase()
+          .replace(/[^\w\s]/gi, '')
+          .split(' ')
+          .join('');
+      });
+
+      const escapedItemName = inputs.item
+        .toLowerCase()
+        .replace(/[^\w\s]/gi, '')
+        .split(' ')
+        .join('');
+
+      if (currentItems.includes(escapedItemName)) {
+        duplicate();
+        return;
+      }
+
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
         days: parseInt(inputs.days),
