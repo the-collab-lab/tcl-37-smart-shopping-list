@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
@@ -11,11 +11,11 @@ export const List = ({ token }) => {
   });
 
   return (
-    <div>
-      <h4> Shareable List Token : {token} </h4>
+    <div className="welcoming">
+      <h1>Smart Shopping List</h1>
+      <strong> Shareable List Token : {token} </strong>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
-      Collection
       {value && value.docs.length > 0 ? (
         <ul>
           {value.docs.map((doc) => (
@@ -23,12 +23,12 @@ export const List = ({ token }) => {
           ))}
         </ul>
       ) : (
-        <Fragment>
+        <div>
           <p>Your shopping list is currently empty.</p>
           <button type="button" onClick={() => navigate('/add')}>
             ADD YOUR FIRST ITEM
           </button>
-        </Fragment>
+        </div>
       )}
     </div>
   );
