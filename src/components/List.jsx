@@ -23,6 +23,7 @@ export const List = ({ token }) => {
   console.log(docRef);
 
   useEffect(() => {
+    console.log('Hello I am here, and I am listening to youuuuu');
     const updateDocument = async () => {
       await updateDoc(docRef, {
         purchased_date: moment().format(),
@@ -43,6 +44,7 @@ export const List = ({ token }) => {
             <li key={doc.id}>
               <input
                 type="checkbox"
+                // checked={doc.data().purchased_date ? false : true}
                 name={doc.id}
                 id={doc.id}
                 value={doc.data().item}
