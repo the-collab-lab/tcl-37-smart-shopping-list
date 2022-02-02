@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import db from '../lib/firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
-import { useCollection, useDocument } from 'react-firebase-hooks/firestore';
+import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 
 export const List = ({ token }) => {
@@ -11,24 +11,25 @@ export const List = ({ token }) => {
 
   const [itemId, setItemId] = useState(' ');
 
-  const docRef = doc(db, token, itemId);
-  console.log(docRef);
-  updateDoc(docRef, {
-    purchased_date: moment().format(),
-  });
-
   const [checkedItems, setCheckedItems] = useState({});
 
   const handleChange = (data, e) => {
     setCheckedItems({ ...checkedItems, [e.target.name]: e.target.value });
 
-    console.log(data.id);
-    console.log(data.data());
-
     setItemId(data.id);
-
-    console.log(itemId);
   };
+
+  const docRef = doc(db, token, itemId);
+  console.log(docRef);
+
+  useEffect(() => {
+    const updateDocument = async () => {
+      await updateDoc(docRef, {
+        purchased_date: moment().format(),
+      });
+    };
+    return () => updateDocument();
+  }, []);
 
   return (
     <div>
