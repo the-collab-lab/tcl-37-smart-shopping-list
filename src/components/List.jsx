@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
@@ -9,29 +9,20 @@ export const List = ({ token }) => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
-  const [itemId, setItemId] = useState(' ');
-
   const [checkedItems, setCheckedItems] = useState({});
 
-  const handleChange = (data, e) => {
-    setCheckedItems({ ...checkedItems, [e.target.name]: e.target.value });
-
-    setItemId(data.id);
+  const updateDocument = async (id) => {
+    // debugger;
+    const docRef = doc(db, token, id);
+    await updateDoc(docRef, {
+      purchased_date: moment().format(),
+    });
   };
 
-  const docRef = doc(db, token, itemId);
-  console.log(docRef);
-
-  useEffect(() => {
-    console.log('Hello I am here, and I am listening to youuuuu');
-    const updateDocument = async () => {
-      await updateDoc(docRef, {
-        purchased_date: moment().format(),
-      });
-    };
-    return () => updateDocument();
-  }, []);
-
+  const handleClick = (data, e) => {
+    setCheckedItems({ ...checkedItems, [e.target.name]: e.target.value });
+    updateDocument(data.id);
+  };
   return (
     <div>
       <h4> Shareable List Token : {token} </h4>
@@ -48,7 +39,7 @@ export const List = ({ token }) => {
                 name={doc.id}
                 id={doc.id}
                 value={doc.data().item}
-                onChange={(e) => handleChange(doc, e)}
+                onClick={(e) => handleClick(doc, e)}
               />
               <label>{doc.data().item}</label>
             </li>
