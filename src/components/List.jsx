@@ -10,10 +10,10 @@ export const List = ({ token }) => {
   });
 
   const calcTimeDiff = (purchasedTime) => {
-    let timeNow = moment().format();
-    var date1 = moment(timeNow, 'YYYYMMDD HH:mm:ss');
-    var date2 = moment(purchasedTime, 'YYYYMMDD HH:mm:ss');
-    let timeDiff = date1.diff(date2, 'hours');
+    const timeNow = moment().format();
+    const date1 = moment(timeNow, 'YYYYMMDD HH:mm:ss');
+    const date2 = moment(purchasedTime, 'YYYYMMDD HH:mm:ss');
+    const timeDiff = date1.diff(date2, 'hours');
 
     return timeDiff < 24;
   };
