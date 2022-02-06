@@ -12,11 +12,12 @@ export const ListView = ({ token }) => {
 
   return (
     <div>
-      <Link to="/">Home</Link>
       {token ? (
         <List token={token} />
       ) : (
-        <button onClick={handleClick}>Go back to Home</button>
+        <button style={{ marginTop: '2em' }} onClick={handleClick}>
+          Go back to Home
+        </button>
       )}
     </div>
   );
