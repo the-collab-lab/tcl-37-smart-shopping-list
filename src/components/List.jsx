@@ -47,7 +47,7 @@ export const List = ({ token }) => {
                 onClick={(e) => handleClick(doc, e)}
                 onChange={(e) => handleClick(doc, e)}
               />
-              <label>{doc.data().item}</label>
+              <label htmlFor={doc.id}>{doc.data().item}</label>
             </li>
           ))}
         </ul>
