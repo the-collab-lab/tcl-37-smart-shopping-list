@@ -27,10 +27,10 @@ export const List = ({ token }) => {
     });
   };
 
-  const handleClick = (data, e) => {
-    updateDocument(data.id);
+  const handleClick = (doc) => {
+    updateDocument(doc.id);
   };
-  
+
   return (
     <div className="welcoming">
       <h1>Smart Shopping List</h1>
@@ -47,8 +47,8 @@ export const List = ({ token }) => {
                 disabled={calcTimeDiff(doc.data().purchased_date)}
                 name={doc.id}
                 id={doc.id}
-                onClick={(e) => handleClick(doc, e)}
-                onChange={(e) => handleClick(doc, e)}
+                onClick={() => handleClick(doc)}
+                onChange={() => handleClick(doc)}
               />
               <label htmlFor={doc.id}>{doc.data().item}</label>
             </li>
