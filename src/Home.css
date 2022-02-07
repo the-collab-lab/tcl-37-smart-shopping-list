@@ -2,8 +2,8 @@
   text-align: center;
 }
 
-input,
-button {
+.home input,
+.home button {
   width: 200px;
   border-radius: 2px;
   text-align: center;
