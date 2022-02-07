@@ -11,7 +11,7 @@ export const AddItemView = ({ token }) => {
     last_purchased_date: null,
   });
 
-  const notify = () => toast('Item added!');
+  const notify = () => toast.success('Item added!');
   const duplicate = () => toast.error('Item already exists!');
 
   const handleChange = (e) => {
