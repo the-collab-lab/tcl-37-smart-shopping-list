@@ -33,20 +33,27 @@ export const List = ({ token }) => {
   };
 
   const handleFilterChange = (e) => {
-    let text = e.target.value;
-
     setFilterText(e.target.value);
   };
 
+  const clearFilter = () => {
+    setFilterText('');
+  };
   return (
     <div className="welcoming">
       <h1>Smart Shopping List</h1>
       <strong> Shareable List Token : {token} </strong>
-      <input
-        placeholder="Start typing here..."
-        value={filterText}
-        onChange={handleFilterChange}
-      />
+
+      <div style={{ marginTop: '1em' }}>
+        <input
+          placeholder="Start typing here..."
+          value={filterText}
+          onChange={handleFilterChange}
+        />
+        <button style={{ marginLeft: '10px' }} onClick={() => clearFilter()}>
+          X
+        </button>
+      </div>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
       {value && value.docs.length > 0 ? (
