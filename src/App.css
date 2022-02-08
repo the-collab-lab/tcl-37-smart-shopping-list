@@ -26,6 +26,14 @@
   margin-left: 30px;
 }
 
+.header {
+  position: sticky;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .footer {
   position: absolute;
   left: 50%;
