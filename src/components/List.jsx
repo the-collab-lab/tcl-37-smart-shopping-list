@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import db from '../lib/firebase';
-import { collection, doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 
@@ -21,10 +21,26 @@ export const List = ({ token }) => {
     return timeDiff < 24;
   };
 
+  const calcDaysSince = (transactionDate) => {
+    const timeNow = moment().format();
+    const date1 = moment(timeNow, 'YYYYMMDD HH:mm:ss');
+    const date2 = moment(transactionDate, 'YYYYMMDD HH:mm:ss');
+    const timeDiff = date1.diff(date2, 'days');
+
+    return timeDiff;
+  };
+
   const updateDocument = async (id) => {
     const docRef = doc(db, token, id);
+    const document = await getDoc(docRef);
+    let docData;
+    if (document) {
+      docData = document.data();
+      console.log(docData);
+    }
     await updateDoc(docRef, {
       purchased_date: moment().format(),
+      days_since_last_transaction: calcDaysSince(docData.date_added),
     });
   };
 
