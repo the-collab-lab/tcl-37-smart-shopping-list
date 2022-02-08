@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import db from '../lib/firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
@@ -30,7 +31,7 @@ export const List = ({ token }) => {
   const handleClick = (data, e) => {
     updateDocument(data.id);
   };
-  
+
   return (
     <div className="welcoming">
       <h1>Smart Shopping List</h1>
