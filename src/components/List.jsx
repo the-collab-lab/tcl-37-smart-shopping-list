@@ -96,6 +96,16 @@ export const List = ({ token }) => {
                 onChange={(e) => handleClick(doc, e)}
               />
               <label htmlFor={doc.id}>{doc.data().item}</label>
+              <p> Total purchases: {doc.data().total_purchases}</p>
+              <p>
+                Last purchased date:
+                {doc.data().last_purchased_date}
+              </p>
+              {doc.data().previous_estimate ? (
+                <p>
+                  Estimated next purchase: {doc.data().previous_estimate} days
+                </p>
+              ) : null}
             </li>
           ))}
         </ul>
