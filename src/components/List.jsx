@@ -106,13 +106,13 @@ export const List = ({ token }) => {
               ) : null}
               {doc.data().last_purchased_date ? (
                 <p>
-                  Last purchased date:
+                  Last purchased date:{' '}
                   {cleanDate(doc.data().last_purchased_date)}
                 </p>
               ) : null}
               {doc.data().estimated_next_purchase ? (
                 <p>
-                  Estimated next purchase: {doc.data().estimated_next_purchase}
+                  Estimated next purchase: {doc.data().estimated_next_purchase}{' '}
                   days
                 </p>
               ) : null}
