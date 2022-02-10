@@ -52,7 +52,7 @@ export const AddItemView = ({ token }) => {
         days: parseInt(inputs.days),
         last_purchased_date: inputs.last_purchased_date,
         date_added: moment().format(),
-        previous_estimate: null,
+        estimated_next_purchase: null,
         days_since_last_transaction: null,
         total_purchases: 0,
       });

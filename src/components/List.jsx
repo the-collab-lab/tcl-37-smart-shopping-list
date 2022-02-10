@@ -42,13 +42,13 @@ export const List = ({ token }) => {
       // helper function to destructure fields for calculateEstimate
       let prevEstimate;
       const {
-        previous_estimate,
+        estimated_next_purchase,
         days_since_last_transaction,
         total_purchases,
       } = docData;
-      // if no previous_estimate exists, use 'undefined' in calculateEstimate (cannot save undefined fields in db)
-      previous_estimate
-        ? (prevEstimate = previous_estimate)
+      // if no estimated_next_purchase exists, use 'undefined' in calculateEstimate (cannot save undefined fields in db)
+      estimated_next_purchase
+        ? (prevEstimate = estimated_next_purchase)
         : (prevEstimate = undefined);
 
       return calculateEstimate(
@@ -67,8 +67,8 @@ export const List = ({ token }) => {
       last_purchased_date: moment().format(),
       // update total_purchases by 1
       total_purchases: docData.total_purchases + 1,
-      // run updateEstimate helper to update previous_estimate
-      previous_estimate: updateEstimate(),
+      // run updateEstimate helper to update estimated_next_purchase
+      estimated_next_purchase: updateEstimate(),
     });
   };
 
@@ -96,14 +96,19 @@ export const List = ({ token }) => {
                 onChange={(e) => handleClick(doc, e)}
               />
               <label htmlFor={doc.id}>{doc.data().item}</label>
-              <p> Total purchases: {doc.data().total_purchases}</p>
-              <p>
-                Last purchased date:
-                {doc.data().last_purchased_date}
-              </p>
-              {doc.data().previous_estimate ? (
+              {doc.data().total_purchases > 0 ? (
+                <p> Total purchases: {doc.data().total_purchases}</p>
+              ) : null}
+              {doc.data().last_purchased_date ? (
                 <p>
-                  Estimated next purchase: {doc.data().previous_estimate} days
+                  Last purchased date:
+                  {doc.data().last_purchased_date}
+                </p>
+              ) : null}
+              {doc.data().estimated_next_purchase ? (
+                <p>
+                  Estimated next purchase: {doc.data().estimated_next_purchase}
+                  days
                 </p>
               ) : null}
             </li>
