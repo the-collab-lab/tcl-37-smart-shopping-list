@@ -38,9 +38,37 @@ export const List = ({ token }) => {
       docData = document.data();
       console.log(docData);
     }
+    const updateEstimate = () => {
+      // helper function to destructure fields for calculateEstimate
+      let prevEstimate;
+      const {
+        previous_estimate,
+        days_since_last_transaction,
+        total_purchases,
+      } = docData;
+      // if no previous_estimate exists, use 'undefined' in calculateEstimate (cannot save undefined fields in db)
+      previous_estimate
+        ? (prevEstimate = previous_estimate)
+        : (prevEstimate = undefined);
+
+      return calculateEstimate(
+        prevEstimate,
+        days_since_last_transaction,
+        total_purchases,
+      );
+    };
+    // this function runs when user selects item as purchased
     await updateDoc(docRef, {
-      purchased_date: moment().format(),
-      days_since_last_transaction: calcDaysSince(docData.date_added),
+      // if item has been purchased, use last_purchased_date, otherwise date_added
+      days_since_last_transaction: calcDaysSince(
+        docData.last_purchased_date || docData.date_added,
+      ),
+      // update last_purchased_date to current time
+      last_purchased_date: moment().format(),
+      // update total_purchases by 1
+      total_purchases: docData.total_purchases + 1,
+      // run updateEstimate helper to update previous_estimate
+      previous_estimate: updateEstimate(),
     });
   };
 
@@ -60,8 +88,8 @@ export const List = ({ token }) => {
             <li key={doc.id}>
               <input
                 type="checkbox"
-                checked={calcTimeDiff(doc.data().purchased_date)}
-                disabled={calcTimeDiff(doc.data().purchased_date)}
+                checked={calcTimeDiff(doc.data().last_purchased_date)}
+                disabled={calcTimeDiff(doc.data().last_purchased_date)}
                 name={doc.id}
                 id={doc.id}
                 onClick={(e) => handleClick(doc, e)}

@@ -50,7 +50,7 @@ export const AddItemView = ({ token }) => {
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
         days: parseInt(inputs.days),
-        purchased_date: inputs.last_purchased_date,
+        last_purchased_date: inputs.last_purchased_date,
         date_added: moment().format(),
         previous_estimate: null,
         days_since_last_transaction: null,
