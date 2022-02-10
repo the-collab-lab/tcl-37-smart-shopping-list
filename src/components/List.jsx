@@ -30,6 +30,11 @@ export const List = ({ token }) => {
     return timeDiff;
   };
 
+  const cleanDate = (date) => {
+    const lastPurchasedDate = moment(date).format('MMMM Do, YYYY');
+    return lastPurchasedDate;
+  };
+
   const updateDocument = async (id) => {
     const docRef = doc(db, token, id);
     const document = await getDoc(docRef);
@@ -102,7 +107,7 @@ export const List = ({ token }) => {
               {doc.data().last_purchased_date ? (
                 <p>
                   Last purchased date:
-                  {doc.data().last_purchased_date}
+                  {cleanDate(doc.data().last_purchased_date)}
                 </p>
               ) : null}
               {doc.data().estimated_next_purchase ? (
