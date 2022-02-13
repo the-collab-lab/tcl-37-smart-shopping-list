@@ -36,47 +36,51 @@ export const List = ({ token }) => {
     setFilterText(e.target.value);
   };
 
-  const clearFilter = () => {
-    setFilterText('');
-  };
   return (
     <div className="welcoming">
       <h1>Smart Shopping List</h1>
       <strong> Shareable List Token : {token} </strong>
-
-      <div style={{ marginTop: '1em' }}>
-        <input
-          placeholder="Start typing here..."
-          value={filterText}
-          onChange={handleFilterChange}
-        />
-        <button style={{ marginLeft: '10px' }} onClick={() => clearFilter()}>
-          X
-        </button>
-      </div>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
       {value && value.docs.length > 0 ? (
-        <ul className="collection-list">
-          {value.docs
-            .filter((doc) =>
-              doc.data().item.toLowerCase().includes(filterText.toLowerCase()),
-            )
-            .map((doc) => (
-              <li key={doc.id}>
-                <input
-                  type="checkbox"
-                  checked={calcTimeDiff(doc.data().purchased_date)}
-                  disabled={calcTimeDiff(doc.data().purchased_date)}
-                  name={doc.id}
-                  id={doc.id}
-                  onClick={() => handleClick(doc)}
-                  onChange={() => handleClick(doc)}
-                />
-                <label htmlFor={doc.id}>{doc.data().item}</label>
-              </li>
-            ))}
-        </ul>
+        <div>
+          <div style={{ marginTop: '1em' }}>
+            <input
+              placeholder="Start typing here..."
+              value={filterText}
+              onChange={handleFilterChange}
+            />
+            <button
+              style={{ marginLeft: '10px' }}
+              onClick={() => setFilterText('')}
+            >
+              X
+            </button>
+          </div>
+          <ul className="collection-list">
+            {value.docs
+              .filter((doc) =>
+                doc
+                  .data()
+                  .item.toLowerCase()
+                  .includes(filterText.toLowerCase()),
+              )
+              .map((doc) => (
+                <li key={doc.id}>
+                  <input
+                    type="checkbox"
+                    checked={calcTimeDiff(doc.data().purchased_date)}
+                    disabled={calcTimeDiff(doc.data().purchased_date)}
+                    name={doc.id}
+                    id={doc.id}
+                    onClick={() => handleClick(doc)}
+                    onChange={() => handleClick(doc)}
+                  />
+                  <label htmlFor={doc.id}>{doc.data().item}</label>
+                </li>
+              ))}
+          </ul>
+        </div>
       ) : (
         <div>
           <p>Your shopping list is currently empty.</p>
