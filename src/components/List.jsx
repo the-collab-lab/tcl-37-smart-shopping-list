@@ -23,7 +23,7 @@ export const List = ({ token }) => {
 
   const calcDaysSince = (transactionDate) => {
     const timeNow = moment().format();
-    const date1 = moment(timeNow, 'YYYYMMDD HH:mm:ss');
+    const date1 = moment();
     const date2 = moment(transactionDate, 'YYYYMMDD HH:mm:ss');
     const timeDiff = date1.diff(date2, 'days');
 
