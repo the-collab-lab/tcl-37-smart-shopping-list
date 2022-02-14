@@ -53,7 +53,6 @@ export const AddItemView = ({ token }) => {
         last_purchased_date: inputs.last_purchased_date,
         date_added: moment().format(),
         estimated_next_purchase: null,
-        days_since_last_transaction: null,
         total_purchases: 0,
       });
       setInputs((prevState) => ({ ...prevState, item: '' }));

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import db from '../lib/firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
+
+import { getEstimate, calcTimeDiff, formatDate } from '../helpers';
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
@@ -12,61 +13,18 @@ export const List = ({ token }) => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
-  const calcTimeDiff = (purchasedTime) => {
-    const timeNow = moment().format();
-    const date1 = moment(timeNow, 'YYYYMMDD HH:mm:ss');
-    const date2 = moment(purchasedTime, 'YYYYMMDD HH:mm:ss');
-    const timeDiff = date1.diff(date2, 'hours');
-
-    return timeDiff < 24;
-  };
-
-  const calcDaysSince = (transactionDate) => {
-    const date1 = moment();
-    const date2 = moment(transactionDate, 'YYYYMMDD HH:mm:ss');
-    const timeDiff = date1.diff(date2, 'days');
-
-    return timeDiff;
-  };
-
-  const cleanDate = (date) => {
-    const formattedDate = moment(date).format('MMMM Do, YYYY');
-    return formattedDate;
-  };
-
   const updateDocument = async (document) => {
     const docRef = doc(db, token, document.id);
     let docData = document.data();
 
-    const getEstimate = () => {
-      // helper function to destructure fields for calculateEstimate
-      let prevEstimate = undefined;
-      const {
-        estimated_next_purchase,
-        days_since_last_transaction,
-        total_purchases,
-      } = docData;
-      // if estimated_next_purchase exists, use in calculateEstimate, otherwise pass as undefined
-      if (estimated_next_purchase) prevEstimate = estimated_next_purchase;
-
-      return calculateEstimate(
-        prevEstimate,
-        days_since_last_transaction,
-        total_purchases,
-      );
-    };
     // this function runs when user selects item as purchased
     await updateDoc(docRef, {
-      // if item has been purchased, use last_purchased_date, otherwise date_added
-      days_since_last_transaction: calcDaysSince(
-        docData.last_purchased_date || docData.date_added,
-      ),
       // update last_purchased_date to current time
       last_purchased_date: moment().format(),
       // update total_purchases by 1
       total_purchases: docData.total_purchases + 1,
-      // run updateEstimate helper to update estimated_next_purchase
-      estimated_next_purchase: getEstimate(),
+      // run getEstimate helper to update estimated_next_purchase
+      estimated_next_purchase: getEstimate(docData),
     });
   };
 
@@ -100,7 +58,7 @@ export const List = ({ token }) => {
               {doc.data().last_purchased_date && (
                 <p>
                   Last purchased date:{' '}
-                  {cleanDate(doc.data().last_purchased_date)}
+                  {formatDate(doc.data().last_purchased_date)}
                 </p>
               )}
               {doc.data().estimated_next_purchase && (
