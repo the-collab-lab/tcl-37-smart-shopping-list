@@ -31,7 +31,7 @@ export const List = ({ token }) => {
   };
 
   const cleanDate = (date) => {
-    const lastPurchasedDate = moment(date).format('MMMM Do, YYYY');
+    const formattedDate = moment(date).format('MMMM Do, YYYY');
     return lastPurchasedDate;
   };
 
