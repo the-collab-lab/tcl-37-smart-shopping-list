@@ -28,8 +28,8 @@ export const List = ({ token }) => {
       estimated_next_purchase: getEstimate(docData),
     });
   };
-  
-  const handleClick = (doc) => {
+
+  const handleClick = (doc, e) => {
     updateDocument(doc);
   };
 
@@ -70,12 +70,12 @@ export const List = ({ token }) => {
                 <li key={doc.id}>
                   <input
                     type="checkbox"
-                    checked={calcTimeDiff(doc.data().purchased_date)}
-                    disabled={calcTimeDiff(doc.data().purchased_date)}
+                    checked={calcTimeDiff(doc.data().last_purchased_date)}
+                    disabled={calcTimeDiff(doc.data().last_purchased_date)}
                     name={doc.id}
                     id={doc.id}
-                    onClick={() => handleClick(doc)}
-                    onChange={() => handleClick(doc)}
+                    onClick={(e) => handleClick(doc, e)}
+                    onChange={(e) => handleClick(doc, e)}
                   />
                   <label htmlFor={doc.id}>{doc.data().item}</label>
                   {doc.data().total_purchases > 0 && (
@@ -89,8 +89,8 @@ export const List = ({ token }) => {
                   )}
                   {doc.data().estimated_next_purchase && (
                     <p>
-                      Estimated next purchase: {doc.data().estimated_next_purchase}{' '}
-                      days
+                      Estimated next purchase:{' '}
+                      {doc.data().estimated_next_purchase} days
                     </p>
                   )}
                 </li>
