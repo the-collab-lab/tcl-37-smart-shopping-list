@@ -43,7 +43,7 @@ export const List = ({ token }) => {
       docData = document.data();
       console.log(docData);
     }
-    const updateEstimate = () => {
+    const getEstimate = () => {
       // helper function to destructure fields for calculateEstimate
       let prevEstimate;
       const {
