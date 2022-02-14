@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
 import { collection, doc, updateDoc } from 'firebase/firestore';
@@ -12,6 +12,7 @@ export const List = ({ token }) => {
   const [value, loading, error] = useCollection(collection(db, token), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
+  let [filterText, setFilterText] = useState('');
 
   const updateDocument = async (document) => {
     const docRef = doc(db, token, document.id);
@@ -27,9 +28,13 @@ export const List = ({ token }) => {
       estimated_next_purchase: getEstimate(docData),
     });
   };
+  
+  const handleClick = (doc) => {
+    updateDocument(doc);
+  };
 
-  const handleClick = (data, e) => {
-    updateDocument(data);
+  const handleFilterChange = (e) => {
+    setFilterText(e.target.value);
   };
 
   return (
@@ -39,37 +44,59 @@ export const List = ({ token }) => {
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
       {value && value.docs.length > 0 ? (
-        <ul className="collection-list">
-          {value.docs.map((doc) => (
-            <li key={doc.id}>
-              <input
-                type="checkbox"
-                checked={calcTimeDiff(doc.data().last_purchased_date)}
-                disabled={calcTimeDiff(doc.data().last_purchased_date)}
-                name={doc.id}
-                id={doc.id}
-                onClick={(e) => handleClick(doc, e)}
-                onChange={(e) => handleClick(doc, e)}
-              />
-              <label htmlFor={doc.id}>{doc.data().item}</label>
-              {doc.data().total_purchases > 0 && (
-                <p> Total purchases: {doc.data().total_purchases}</p>
-              )}
-              {doc.data().last_purchased_date && (
-                <p>
-                  Last purchased date:{' '}
-                  {formatDate(doc.data().last_purchased_date)}
-                </p>
-              )}
-              {doc.data().estimated_next_purchase && (
-                <p>
-                  Estimated next purchase: {doc.data().estimated_next_purchase}{' '}
-                  days
-                </p>
-              )}
-            </li>
-          ))}
-        </ul>
+        <div>
+          <div style={{ marginTop: '1em' }}>
+            <input
+              placeholder="Start typing here..."
+              value={filterText}
+              onChange={handleFilterChange}
+            />
+            <button
+              style={{ marginLeft: '10px' }}
+              onClick={() => setFilterText('')}
+            >
+              X
+            </button>
+          </div>
+          <ul className="collection-list">
+            {value.docs
+              .filter((doc) =>
+                doc
+                  .data()
+                  .item.toLowerCase()
+                  .includes(filterText.toLowerCase()),
+              )
+              .map((doc) => (
+                <li key={doc.id}>
+                  <input
+                    type="checkbox"
+                    checked={calcTimeDiff(doc.data().purchased_date)}
+                    disabled={calcTimeDiff(doc.data().purchased_date)}
+                    name={doc.id}
+                    id={doc.id}
+                    onClick={() => handleClick(doc)}
+                    onChange={() => handleClick(doc)}
+                  />
+                  <label htmlFor={doc.id}>{doc.data().item}</label>
+                  {doc.data().total_purchases > 0 && (
+                    <p> Total purchases: {doc.data().total_purchases}</p>
+                  )}
+                  {doc.data().last_purchased_date && (
+                    <p>
+                      Last purchased date:{' '}
+                      {formatDate(doc.data().last_purchased_date)}
+                    </p>
+                  )}
+                  {doc.data().estimated_next_purchase && (
+                    <p>
+                      Estimated next purchase: {doc.data().estimated_next_purchase}{' '}
+                      days
+                    </p>
+                  )}
+                </li>
+              ))}
+          </ul>
+        </div>
       ) : (
         <div>
           <p>Your shopping list is currently empty.</p>
