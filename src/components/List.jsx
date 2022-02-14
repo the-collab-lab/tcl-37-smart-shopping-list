@@ -32,7 +32,7 @@ export const List = ({ token }) => {
 
   const cleanDate = (date) => {
     const formattedDate = moment(date).format('MMMM Do, YYYY');
-    return lastPurchasedDate;
+    return formattedDate;
   };
 
   const updateDocument = async (id) => {
