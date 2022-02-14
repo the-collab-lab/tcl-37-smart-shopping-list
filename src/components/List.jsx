@@ -41,6 +41,9 @@ export const List = ({ token }) => {
       {value && value.docs.length > 0 ? (
         <ul className="collection-list">
           {value.docs.map((doc) => (
+            /* 
+              Extract below into ListItem component and use doc as prop?
+            */
             <li key={doc.id}>
               <input
                 type="checkbox"
