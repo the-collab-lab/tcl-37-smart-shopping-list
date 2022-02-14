@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 import db from '../lib/firebase';
-import { collection, doc, updateDoc, getDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 
@@ -34,26 +34,20 @@ export const List = ({ token }) => {
     return formattedDate;
   };
 
-  const updateDocument = async (id) => {
-    const docRef = doc(db, token, id);
-    const document = await getDoc(docRef);
-    let docData;
-    if (document) {
-      docData = document.data();
-      console.log(docData);
-    }
+  const updateDocument = async (document) => {
+    const docRef = doc(db, token, document.id);
+    let docData = document.data();
+
     const getEstimate = () => {
       // helper function to destructure fields for calculateEstimate
-      let prevEstimate;
+      let prevEstimate = undefined;
       const {
         estimated_next_purchase,
         days_since_last_transaction,
         total_purchases,
       } = docData;
-      // if no estimated_next_purchase exists, use 'undefined' in calculateEstimate (cannot save undefined fields in db)
-      estimated_next_purchase
-        ? (prevEstimate = estimated_next_purchase)
-        : (prevEstimate = undefined);
+      // if estimated_next_purchase exists, use in calculateEstimate, otherwise pass as undefined
+      if (estimated_next_purchase) prevEstimate = estimated_next_purchase;
 
       return calculateEstimate(
         prevEstimate,
@@ -77,7 +71,7 @@ export const List = ({ token }) => {
   };
 
   const handleClick = (data, e) => {
-    updateDocument(data.id);
+    updateDocument(data);
   };
 
   return (
