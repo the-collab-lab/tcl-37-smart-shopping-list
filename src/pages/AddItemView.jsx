@@ -4,6 +4,7 @@ import { collection, addDoc, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import moment from 'moment';
 
 export const AddItemView = ({ token }) => {
   const [inputs, setInputs] = useState({
@@ -49,7 +50,10 @@ export const AddItemView = ({ token }) => {
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
         days: parseInt(inputs.days),
-        purchased_date: inputs.last_purchased_date,
+        last_purchased_date: inputs.last_purchased_date,
+        date_added: moment().format(),
+        estimated_next_purchase: null,
+        total_purchases: 0,
       });
       setInputs((prevState) => ({ ...prevState, item: '' }));
       console.log('Document written with ID: ', docRef.id);
