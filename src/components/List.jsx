@@ -29,6 +29,11 @@ export const List = ({ token }) => {
     });
   };
 
+  const deleteDocument = async (document) => {
+    await deleteDoc(doc(db, token, document.id));
+    alert('item deleted');
+  };
+
   const handleClick = (doc, e) => {
     updateDocument(doc);
   };
@@ -78,6 +83,9 @@ export const List = ({ token }) => {
                     onChange={(e) => handleClick(doc, e)}
                   />
                   <label htmlFor={doc.id}>{doc.data().item}</label>
+                  <button onClick={() => deleteDocument(doc)} id={doc.id}>
+                    delete
+                  </button>
                   {doc.data().total_purchases > 0 && (
                     <p> Total purchases: {doc.data().total_purchases}</p>
                   )}
