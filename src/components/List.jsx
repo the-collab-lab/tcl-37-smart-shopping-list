@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
-import { collection, doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc, query, orderBy } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 
@@ -9,7 +9,9 @@ import { getEstimate, calcTimeDiff, formatDate } from '../helpers';
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
-  const [value, loading, error] = useCollection(collection(db, token), {
+  const q = query(collection(db, token), orderBy('estimated_next_purchase'));
+
+  const [value, loading, error] = useCollection(q, {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
