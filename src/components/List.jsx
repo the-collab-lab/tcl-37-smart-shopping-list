@@ -73,7 +73,7 @@ export const List = ({ token }) => {
       // update total_purchases by 1
       total_purchases: docData.total_purchases + 1,
       // run updateEstimate helper to update estimated_next_purchase
-      estimated_next_purchase: updateEstimate(),
+      estimated_next_purchase: getEstimate(),
     });
   };
 
