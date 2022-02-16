@@ -4,6 +4,7 @@ import db from '../lib/firebase';
 import { collection, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
+import '../App.css';
 
 import { getEstimate, calcTimeDiff, formatDate } from '../helpers';
 
@@ -90,8 +91,13 @@ export const List = ({ token }) => {
                     onChange={(e) => handleClick(doc, e)}
                   />
                   <label htmlFor={doc.id}>{doc.data().item}</label>
-                  <button onClick={() => confirmDelete(doc)}>delete</button>
-                  {doc.data().total_purchases > 0 && (
+                  <button
+                    className="delete-button"
+                    onClick={() => confirmDelete(doc)}
+                  >
+                    delete
+                  </button>
+                  {/* {doc.data().total_purchases > 0 && (
                     <p> Total purchases: {doc.data().total_purchases}</p>
                   )}
                   {doc.data().last_purchased_date && (
@@ -105,7 +111,7 @@ export const List = ({ token }) => {
                       Estimated next purchase:{' '}
                       {doc.data().estimated_next_purchase} days
                     </p>
-                  )}
+                  )} */}
                 </li>
               ))}
           </ul>
