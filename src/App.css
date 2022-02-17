@@ -50,27 +50,3 @@ label {
   display: block;
   margin: 15px;
 }
-
-.foo {
-  color: red;
-}
-
-.collection-list {
-  list-style-type: none;
-}
-
-.collection-list label {
-  display: inline;
-  margin: 0;
-}
-
-.collection-list input {
-  width: auto;
-}
-
-.welcoming {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}

@@ -40,9 +40,17 @@ export const getEstimate = (data) => {
   let prevEstimate = undefined;
   if (estimated_next_purchase) prevEstimate = estimated_next_purchase;
 
-  const daysSinceLastTransaction = calcDaysSince(
+  let daysSinceLastTransaction = calcDaysSince(
     last_purchased_date || date_added,
   );
+
+  // If no days have passed, return the user's original guess
+  if (daysSinceLastTransaction === 0)
+    daysSinceLastTransaction = estimated_next_purchase;
+
+  console.log(prevEstimate);
+  console.log(daysSinceLastTransaction);
+  console.log(total_purchases);
 
   return calculateEstimate(
     prevEstimate,
