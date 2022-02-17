@@ -5,7 +5,12 @@ import { collection, doc, updateDoc, query, orderBy } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 
-import { getEstimate, calcTimeDiff, formatDate } from '../helpers';
+import {
+  getEstimate,
+  calcTimeDiff,
+  formatDate,
+  calcDaysSince,
+} from '../helpers';
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
@@ -24,6 +29,20 @@ export const List = ({ token }) => {
       setItems(val);
     }
   }, [value]);
+
+  useEffect(() => {
+    const handleActive = (item) => {
+      if (
+        item.total_purchases < 2 ||
+        calcDaysSince(item.last_purchased_date) >
+          item.estimated_next_purchase * 2
+      ) {
+        return false;
+      }
+      return true;
+    };
+    items.map((item) => (item.isActive = handleActive(item)));
+  }, [items]);
 
   console.log(items);
 
