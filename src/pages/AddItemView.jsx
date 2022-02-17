@@ -49,10 +49,9 @@ export const AddItemView = ({ token }) => {
 
       const docRef = await addDoc(collection(db, token), {
         item: inputs.item,
-        days: parseInt(inputs.days),
         last_purchased_date: inputs.last_purchased_date,
         date_added: moment().format(),
-        estimated_next_purchase: null,
+        estimated_next_purchase: parseInt(inputs.days),
         total_purchases: 0,
       });
       setInputs((prevState) => ({ ...prevState, item: '' }));

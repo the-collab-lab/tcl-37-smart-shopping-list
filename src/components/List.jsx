@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
 import { collection, doc, updateDoc, query, orderBy } from 'firebase/firestore';
@@ -15,6 +15,17 @@ export const List = ({ token }) => {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
   let [filterText, setFilterText] = useState('');
+  let [items, setItems] = useState([]);
+
+  useEffect(() => {
+    if (value) {
+      let val = value.docs;
+      val = val.map((item) => item.data());
+      setItems(val);
+    }
+  }, [value]);
+
+  console.log(items);
 
   const updateDocument = async (document) => {
     const docRef = doc(db, token, document.id);
