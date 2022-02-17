@@ -30,15 +30,11 @@ export const List = ({ token }) => {
     });
   };
 
-  const deleteDocument = async (document) => {
-    await deleteDoc(doc(db, token, document.id));
-  };
-
-  const confirmDelete = (document) => {
+  const deleteItem = async (document) => {
     if (
       window.confirm(`Are you sure you want to delete ${document.data().item}?`)
     ) {
-      deleteDocument(document);
+      await deleteDoc(doc(db, token, document.id));
     }
   };
 
@@ -93,7 +89,7 @@ export const List = ({ token }) => {
                   <label htmlFor={doc.id}>{doc.data().item}</label>
                   <button
                     className="delete-button"
-                    onClick={() => confirmDelete(doc)}
+                    onClick={() => deleteItem(doc)}
                   >
                     delete
                   </button>
