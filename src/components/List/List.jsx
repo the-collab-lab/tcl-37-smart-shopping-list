@@ -14,7 +14,7 @@ import {
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
-  const q = query(collection(db, token), orderBy('estimated_next_purchase'));
+  const q = query(collection(db, token), orderBy('item'));
   const [value, loading, error] = useCollection(q, {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
@@ -29,6 +29,10 @@ export const List = ({ token }) => {
         arr.push({ ...item.data(), id: item.id });
       });
       arr.map((item) => (item.isActive = handleActive(item)));
+      arr.sort(
+        (itemA, itemB) =>
+          itemA.estimated_next_purchase - itemB.estimated_next_purchase,
+      );
       arr.sort(
         (itemA, itemB) => Number(itemB.isActive) - Number(itemA.isActive),
       );
