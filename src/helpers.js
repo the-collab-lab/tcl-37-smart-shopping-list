@@ -48,10 +48,6 @@ export const getEstimate = (data) => {
   if (daysSinceLastTransaction === 0)
     daysSinceLastTransaction = estimated_next_purchase;
 
-  console.log(prevEstimate);
-  console.log(daysSinceLastTransaction);
-  console.log(total_purchases);
-
   return calculateEstimate(
     prevEstimate,
     daysSinceLastTransaction,

@@ -42,8 +42,8 @@ export const List = ({ token }) => {
 
   const handleActive = (item) => {
     if (
-      calcTimeDiff(item.last_purchased_date) ||
-      calcDaysSince(item.last_purchased_date) > item.estimated_next_purchase * 2
+      calcDaysSince(item.last_purchased_date) >
+      item.estimated_next_purchase * 2
     ) {
       return false;
     }
