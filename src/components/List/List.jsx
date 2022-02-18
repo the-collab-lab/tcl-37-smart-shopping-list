@@ -43,35 +43,12 @@ export const List = ({ token }) => {
   const handleActive = (item) => {
     if (
       calcTimeDiff(item.last_purchased_date) ||
-      // check if time elapsed works
       calcDaysSince(item.last_purchased_date) > item.estimated_next_purchase * 2
     ) {
       return false;
     }
     return true;
   };
-
-  console.log(items);
-
-  // useEffect(() => {
-  //   const handleActive = (item) => {
-  //     if (
-  //       item.total_purchases < 2 ||
-  //       // check if time elapsed works
-  //       calcDaysSince(item.last_purchased_date) >
-  //         item.estimated_next_purchase * 2 ||
-  //       calcTimeDiff(item.last_purchased_date)
-  //     ) {
-  //       return false;
-  //     }
-  //     return true;
-  //   };
-
-  //   items.map((item) => (item.isActive = handleActive(item)));
-  //   items.sort(
-  //     (itemA, itemB) => Number(itemB.isActive) - Number(itemA.isActive),
-  //   );
-  // }, [items]);
 
   const updateDocument = async (document) => {
     const docRef = doc(db, token, document.id);
@@ -98,9 +75,6 @@ export const List = ({ token }) => {
   };
 
   const setColor = (item) => {
-    console.log(item.item);
-    console.log(item.isActive);
-
     if (!item.isActive) {
       return 'inactive';
     } else if (item.estimated_next_purchase <= 7) {
