@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../../lib/firebase';
-import { collection, doc, updateDoc, query, orderBy } from 'firebase/firestore';
+import { collection, doc, updateDoc, query } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
@@ -14,7 +14,7 @@ import {
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
-  const q = query(collection(db, token), orderBy('item'));
+  const q = query(collection(db, token));
   const [value, loading, error] = useCollection(q, {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
@@ -24,36 +24,31 @@ export const List = ({ token }) => {
 
   useEffect(() => {
     if (value) {
-      let arr = [];
-      value.docs.forEach((item) => {
-        arr.push({ ...item.data(), id: item.id });
+      let arr = value.docs.map((item) => {
+        const data = item.data();
+        return { ...data, id: item.id, isActive: getActiveStatus(data) };
       });
-      arr.map((item) => (item.isActive = handleActive(item)));
       arr.sort(
         (itemA, itemB) =>
-          itemA.estimated_next_purchase - itemB.estimated_next_purchase,
-      );
-      arr.sort(
-        (itemA, itemB) => Number(itemB.isActive) - Number(itemA.isActive),
+          Number(itemB.isActive) - Number(itemA.isActive) ||
+          itemA.estimated_next_purchase - itemB.estimated_next_purchase ||
+          itemA.item.localeCompare(itemB.item),
       );
       setItems(arr);
     }
   }, [value]);
 
-  const handleActive = (item) => {
-    if (
-      calcDaysSince(item.last_purchased_date) >
+  // Check active status of items purchased & not purchased
+  const getActiveStatus = (item) => {
+    return (
+      calcDaysSince(item.date_added || item.last_purchased_date) <=
       item.estimated_next_purchase * 2
-    ) {
-      return false;
-    }
-    return true;
+    );
   };
 
   const updateDocument = async (document) => {
     const docRef = doc(db, token, document.id);
     let docData = document;
-    console.log(docData);
 
     // this function runs when user selects item as purchased
     await updateDoc(docRef, {
@@ -74,7 +69,7 @@ export const List = ({ token }) => {
     setFilterText(e.target.value);
   };
 
-  const setColor = (item) => {
+  const getCategory = (item) => {
     if (!item.isActive) {
       return 'inactive';
     } else if (item.estimated_next_purchase <= 7) {
@@ -113,7 +108,7 @@ export const List = ({ token }) => {
                 doc.item.toLowerCase().includes(filterText.toLowerCase()),
               )
               .map((doc) => (
-                <li key={doc.id} className={`${setColor(doc)}`}>
+                <li key={doc.id} className={getCategory(doc)}>
                   <input
                     type="checkbox"
                     checked={calcTimeDiff(doc.last_purchased_date)}
@@ -122,7 +117,7 @@ export const List = ({ token }) => {
                     id={doc.id}
                     onClick={(e) => handleClick(doc, e)}
                     onChange={(e) => handleClick(doc, e)}
-                    aria-label={setColor(doc)}
+                    aria-label={getCategory(doc)}
                   />
                   <label htmlFor={doc.id}>{doc.item}</label>
                   {doc.total_purchases > 0 && (
