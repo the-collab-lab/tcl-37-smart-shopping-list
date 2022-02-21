@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
-import { collection, doc, updateDoc } from 'firebase/firestore';
+import { collection, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
+import '../App.css';
 
 import { getEstimate, calcTimeDiff, formatDate } from '../helpers';
 
@@ -27,6 +28,14 @@ export const List = ({ token }) => {
       // run getEstimate helper to update estimated_next_purchase
       estimated_next_purchase: getEstimate(docData),
     });
+  };
+
+  const deleteItem = async (document) => {
+    if (
+      window.confirm(`Are you sure you want to delete ${document.data().item}?`)
+    ) {
+      await deleteDoc(doc(db, token, document.id));
+    }
   };
 
   const handleClick = (doc, e) => {
@@ -78,21 +87,12 @@ export const List = ({ token }) => {
                     onChange={(e) => handleClick(doc, e)}
                   />
                   <label htmlFor={doc.id}>{doc.data().item}</label>
-                  {doc.data().total_purchases > 0 && (
-                    <p> Total purchases: {doc.data().total_purchases}</p>
-                  )}
-                  {doc.data().last_purchased_date && (
-                    <p>
-                      Last purchased date:{' '}
-                      {formatDate(doc.data().last_purchased_date)}
-                    </p>
-                  )}
-                  {doc.data().estimated_next_purchase && (
-                    <p>
-                      Estimated next purchase:{' '}
-                      {doc.data().estimated_next_purchase} days
-                    </p>
-                  )}
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteItem(doc)}
+                  >
+                    delete
+                  </button>
                 </li>
               ))}
           </ul>
