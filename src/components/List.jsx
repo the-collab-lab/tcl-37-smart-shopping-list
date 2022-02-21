@@ -93,21 +93,6 @@ export const List = ({ token }) => {
                   >
                     delete
                   </button>
-                  {/* {doc.data().total_purchases > 0 && (
-                    <p> Total purchases: {doc.data().total_purchases}</p>
-                  )}
-                  {doc.data().last_purchased_date && (
-                    <p>
-                      Last purchased date:{' '}
-                      {formatDate(doc.data().last_purchased_date)}
-                    </p>
-                  )}
-                  {doc.data().estimated_next_purchase && (
-                    <p>
-                      Estimated next purchase:{' '}
-                      {doc.data().estimated_next_purchase} days
-                    </p>
-                  )} */}
                 </li>
               ))}
           </ul>
