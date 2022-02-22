@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import db from '../../lib/firebase';
-import { collection, doc, updateDoc, query } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  updateDoc,
+  query,
+  deleteDoc,
+} from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
@@ -59,6 +65,14 @@ export const List = ({ token }) => {
       // run getEstimate helper to update estimated_next_purchase
       estimated_next_purchase: getEstimate(docData),
     });
+  };
+
+  const deleteItem = async (document) => {
+    if (
+      window.confirm(`Are you sure you want to delete ${document.data().item}?`)
+    ) {
+      await deleteDoc(doc(db, token, document.id));
+    }
   };
 
   const handleClick = (doc, e) => {
@@ -134,6 +148,12 @@ export const List = ({ token }) => {
                       days
                     </p>
                   )}
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteItem(doc)}
+                  >
+                    delete
+                  </button>
                 </li>
               ))}
           </ul>
