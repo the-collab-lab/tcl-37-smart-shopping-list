@@ -32,7 +32,12 @@ export const List = ({ token }) => {
     if (value) {
       let arr = value.docs.map((item) => {
         const data = item.data();
-        return { ...data, id: item.id, isActive: getActiveStatus(data) };
+        return {
+          ...data,
+          id: item.id,
+          isActive: getActiveStatus(data),
+          daysUntilPurchase: getDaysUntilPurchase(data),
+        };
       });
       arr.sort(
         (itemA, itemB) =>
@@ -47,9 +52,19 @@ export const List = ({ token }) => {
   // Check active status of items purchased & not purchased
   const getActiveStatus = (item) => {
     return (
-      calcDaysSince(item.date_added || item.last_purchased_date) <=
+      calcDaysSince(item.last_purchased_date || item.date_added) <=
       item.estimated_next_purchase * 2
     );
+  };
+
+  // Calculate days until next purchase and use for item categories
+  const getDaysUntilPurchase = (item) => {
+    const daysSincePreviousTransaction = calcDaysSince(
+      item.last_purchased_date || item.date_added,
+    );
+    let daysUntilNextPurchase =
+      item.estimated_next_purchase - daysSincePreviousTransaction;
+    return daysUntilNextPurchase;
   };
 
   const updateDocument = async (document) => {
@@ -84,9 +99,9 @@ export const List = ({ token }) => {
   const getCategory = (item) => {
     if (!item.isActive) {
       return 'inactive';
-    } else if (item.estimated_next_purchase <= 7) {
+    } else if (item.daysUntilPurchase <= 7) {
       return 'soon';
-    } else if (item.estimated_next_purchase < 30) {
+    } else if (item.daysUntilPurchase < 30) {
       return 'kinda-soon';
     } else {
       return 'not-soon';
@@ -144,6 +159,13 @@ export const List = ({ token }) => {
                     <p>
                       Estimated next purchase: {doc.estimated_next_purchase}{' '}
                       days
+                      <br />
+                      Purchase:{' '}
+                      {doc.daysUntilPurchase === 1
+                        ? 'today'
+                        : doc.daysUntilPurchase < 1
+                        ? `overdue by ${(doc.daysUntilPurchase *= -1)} days`
+                        : `in ${doc.daysUntilPurchase} days`}
                     </p>
                   )}
                   <button
