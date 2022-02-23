@@ -42,7 +42,7 @@ export const List = ({ token }) => {
       arr.sort(
         (itemA, itemB) =>
           Number(itemB.isActive) - Number(itemA.isActive) ||
-          itemA.estimated_next_purchase - itemB.estimated_next_purchase ||
+          itemA.daysUntilPurchase - itemB.daysUntilPurchase ||
           itemA.item.localeCompare(itemB.item),
       );
       setItems(arr);
@@ -161,11 +161,11 @@ export const List = ({ token }) => {
                       days
                       <br />
                       Purchase:{' '}
-                      {doc.daysUntilPurchase === 1
+                      {doc.daysUntilPurchase === 0
                         ? 'today'
-                        : doc.daysUntilPurchase < 1
-                        ? `overdue by ${(doc.daysUntilPurchase *= -1)} days`
-                        : `in ${doc.daysUntilPurchase} days`}
+                        : doc.daysUntilPurchase < 0
+                        ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
+                        : `in ${doc.daysUntilPurchase} day(s)`}
                     </p>
                   )}
                   <button
