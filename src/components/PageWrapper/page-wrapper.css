@@ -4,7 +4,7 @@
     #76dd78 -18.28%,
     rgba(118, 221, 120, 0.15) 63.69%
   );
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .wrapper {
@@ -15,7 +15,7 @@
   border-radius: 50px;
   max-width: 600px;
   width: 50%;
-  height: 80vh;
+  min-height: 80vh;
   margin: 0 auto;
   padding: 20px;
 }
