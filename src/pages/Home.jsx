@@ -2,6 +2,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 import '../Home.css';
 import { JoinList } from '../components/JoinList';
+import OrangeButton from '../components/Buttons/OrangeButton';
 
 export const Home = (props) => {
   let navigate = useNavigate();
@@ -22,9 +23,12 @@ export const Home = (props) => {
           <Link to="/list">View your shopping list</Link>
         </button>
       ) : (
-        <button onClick={() => generateToken()}>Create a new list</button>
+        <>
+          <button onClick={() => generateToken()}>Create a new list</button>
+        </>
       )}
       <JoinList setToken={setToken} />
+      <OrangeButton />
     </div>
   );
 };

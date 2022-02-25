@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "@the-collab-lab/shopping-list-utils": "^1.0.3",
     "firebase": "^9.6.2",
     "moment": "^2.29.1",

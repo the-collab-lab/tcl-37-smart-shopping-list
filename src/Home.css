@@ -2,8 +2,7 @@
   text-align: center;
 }
 
-.home input,
-.home button {
+.home input {
   width: 200px;
   border-radius: 2px;
   text-align: center;
