@@ -18,30 +18,23 @@ export const Navigation = ({ setToken, token }) => {
   };
 
   const copyToClipboard = () => {
-    const notify = toast('Token copied to clipboard!', {
-      position: 'top-center',
-      autoClose: 3000,
-      hideProgressBar: true,
-      pauseOnHover: false,
-      draggable: false,
-    });
-
-    navigator.clipboard.writeText(token).then(() => notify());
+    navigator.clipboard.writeText(token).then(() =>
+      toast('Token copied to clipboard!', {
+        autoClose: 3000,
+        hideProgressBar: true,
+        pauseOnHover: false,
+        draggable: false,
+      }),
+    );
   };
 
   return (
     <nav className="nav-container">
-      <IconButton
-        aria-label="add item"
-        size="small"
-        onClick={() => navigate('/add')}
-        className="nav-icon"
-      >
+      <IconButton aria-label="add item" onClick={() => navigate('/add')}>
         <AddIcon />
       </IconButton>
       <IconButton
         aria-label="list"
-        size="small"
         onClick={() => navigate('/list')}
         className="nav-icon"
       >
@@ -49,7 +42,6 @@ export const Navigation = ({ setToken, token }) => {
       </IconButton>
       <IconButton
         aria-label="sign out"
-        size="small"
         onClick={() => handleSignOut()}
         className="nav-icon"
       >
@@ -57,7 +49,6 @@ export const Navigation = ({ setToken, token }) => {
       </IconButton>
       <IconButton
         aria-label="share token"
-        size="small"
         onClick={() => copyToClipboard()}
         className="nav-icon"
       >

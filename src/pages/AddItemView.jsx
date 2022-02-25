@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
 
@@ -70,7 +70,6 @@ export const AddItemView = ({ token }) => {
         handleSubmit={handleSubmit}
         inputs={inputs}
       />
-      <ToastContainer />
     </div>
   );
 };

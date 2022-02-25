@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
 
 export const JoinList = ({ setToken }) => {
@@ -53,7 +53,6 @@ export const JoinList = ({ setToken }) => {
           <br />
           <button>Join an existing list</button>
         </form>
-        <ToastContainer />
       </div>
     </>
   );
