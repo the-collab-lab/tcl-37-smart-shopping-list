@@ -40,9 +40,3 @@ label {
 .collection-list input {
   width: auto;
 }
-
-.delete-button {
-  color: red;
-  padding: 2px;
-  margin: 10px;
-}

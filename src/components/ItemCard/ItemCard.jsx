@@ -5,6 +5,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
   return (
@@ -13,6 +14,7 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
+        className="summary"
       >
         <input
           type="checkbox"
@@ -24,30 +26,38 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
           onChange={(e) => handleClick(doc)}
           aria-label={getCategory(doc)}
         />
-        <label htmlFor={doc.id}>{doc.item}</label>
+        <label htmlFor={doc.id} className="item-title">
+          {doc.item}
+        </label>
+        {doc.daysUntilPurchase === 0
+          ? 'today'
+          : doc.daysUntilPurchase < 0
+          ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
+          : `${doc.daysUntilPurchase} day(s)`}
+        <button className="delete-button" onClick={() => deleteItem(doc)}>
+          <DeleteOutlineIcon />
+        </button>
       </AccordionSummary>
-
-      {doc.total_purchases > 0 && (
-        <p> Total purchases: {doc.total_purchases}</p>
-      )}
-      {doc.last_purchased_date && (
-        <p>Last purchased date: {formatDate(doc.last_purchased_date)}</p>
-      )}
-      {doc.estimated_next_purchase && (
-        <p>
-          Estimated next purchase: {doc.estimated_next_purchase} days
-          <br />
-          Purchase:{' '}
-          {doc.daysUntilPurchase === 0
-            ? 'today'
-            : doc.daysUntilPurchase < 0
-            ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
-            : `in ${doc.daysUntilPurchase} day(s)`}
-        </p>
-      )}
-      <button className="delete-button" onClick={() => deleteItem(doc)}>
-        delete
-      </button>
+      <AccordionDetails>
+        {doc.total_purchases > 0 && (
+          <p> Total purchases: {doc.total_purchases}</p>
+        )}
+        {doc.last_purchased_date && (
+          <p>Last purchased date: {formatDate(doc.last_purchased_date)}</p>
+        )}
+        {doc.estimated_next_purchase && (
+          <p>
+            Estimated next purchase: {doc.estimated_next_purchase} days
+            <br />
+            Purchase:{' '}
+            {doc.daysUntilPurchase === 0
+              ? 'today'
+              : doc.daysUntilPurchase < 0
+              ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
+              : `in ${doc.daysUntilPurchase} day(s)`}
+          </p>
+        )}
+      </AccordionDetails>
     </Accordion>
   );
 };

@@ -6,10 +6,26 @@
   margin-bottom: 25px;
 }
 
+.css-o4b71y-MuiAccordionSummary-content {
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 .item-card input {
 }
 
 .item-card input:after {
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .inactive {
