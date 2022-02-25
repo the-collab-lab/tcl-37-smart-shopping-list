@@ -1,5 +1,5 @@
 import React from 'react';
-import { List } from '../components/List';
+import { List } from '../components/List/List';
 import { useNavigate } from 'react-router-dom';
 
 export const ListView = ({ token }) => {

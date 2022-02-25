@@ -1,0 +1,51 @@
+.search-field {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.search-field input {
+  height: 20px;
+}
+
+.collection-list {
+  list-style-type: none;
+}
+
+.collection-list label {
+  display: inline;
+  margin: 0;
+}
+
+.collection-list li {
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.collection-list input {
+  width: auto;
+}
+
+.welcoming {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inactive {
+  background: #f3f5f7;
+}
+
+.soon {
+  background: #dfffe0;
+}
+
+.kinda-soon {
+  background: #ffffcc;
+}
+
+.not-soon {
+  background: #ffe2e2;
+}
