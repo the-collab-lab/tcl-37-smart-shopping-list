@@ -1,20 +1,32 @@
 import React from 'react';
 import { calcTimeDiff, formatDate } from '../../helpers';
+import './item-card.css';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
   return (
-    <li className={getCategory(doc)}>
-      <input
-        type="checkbox"
-        checked={calcTimeDiff(doc.last_purchased_date)}
-        disabled={calcTimeDiff(doc.last_purchased_date)}
-        name={doc.id}
-        id={doc.id}
-        onClick={(e) => handleClick(doc)}
-        onChange={(e) => handleClick(doc)}
-        aria-label={getCategory(doc)}
-      />
-      <label htmlFor={doc.id}>{doc.item}</label>
+    <Accordion className={`item-card ${getCategory(doc)}`}>
+      <AccordionSummary
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+      >
+        <input
+          type="checkbox"
+          checked={calcTimeDiff(doc.last_purchased_date)}
+          disabled={calcTimeDiff(doc.last_purchased_date)}
+          name={doc.id}
+          id={doc.id}
+          onClick={(e) => handleClick(doc)}
+          onChange={(e) => handleClick(doc)}
+          aria-label={getCategory(doc)}
+        />
+        <label htmlFor={doc.id}>{doc.item}</label>
+      </AccordionSummary>
+
       {doc.total_purchases > 0 && (
         <p> Total purchases: {doc.total_purchases}</p>
       )}
@@ -36,6 +48,6 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
       <button className="delete-button" onClick={() => deleteItem(doc)}>
         delete
       </button>
-    </li>
+    </Accordion>
   );
 };

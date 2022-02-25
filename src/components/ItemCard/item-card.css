@@ -1,0 +1,29 @@
+.item-card {
+  border: 1px solid #e6e7e7;
+  border-radius: 0px 14px 14px 0px;
+  border-left: 5px solid;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.item-card input {
+}
+
+.item-card input:after {
+}
+
+.inactive {
+  border-left-color: #9e9ea7;
+}
+
+.soon {
+  border-left-color: #1fa060;
+}
+
+.kinda-soon {
+  border-left-color: #ffcc00;
+}
+
+.not-soon {
+  border-left-color: #fe5419;
+}
