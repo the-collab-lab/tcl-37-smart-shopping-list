@@ -5,6 +5,7 @@ import AddItemForm from '../components/AddItemForm';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
+import { PageWrapper } from '../components/PageWrapper/PageWrapper';
 
 export const AddItemView = ({ token }) => {
   const [inputs, setInputs] = useState({
@@ -63,7 +64,7 @@ export const AddItemView = ({ token }) => {
   };
 
   return (
-    <div>
+    <PageWrapper>
       <h1>Smart Shopping List</h1>
       <AddItemForm
         handleChange={handleChange}
@@ -71,6 +72,6 @@ export const AddItemView = ({ token }) => {
         inputs={inputs}
       />
       <ToastContainer />
-    </div>
+    </PageWrapper>
   );
 };

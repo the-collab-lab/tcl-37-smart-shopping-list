@@ -1,6 +1,7 @@
 import React from 'react';
 import { List } from '../components/List/List';
 import { useNavigate } from 'react-router-dom';
+import { PageWrapper } from '../components/PageWrapper/PageWrapper';
 
 export const ListView = ({ token }) => {
   let navigate = useNavigate();
@@ -10,7 +11,7 @@ export const ListView = ({ token }) => {
   }
 
   return (
-    <div>
+    <PageWrapper>
       {token ? (
         <List token={token} />
       ) : (
@@ -18,6 +19,6 @@ export const ListView = ({ token }) => {
           Go back to Home
         </button>
       )}
-    </div>
+    </PageWrapper>
   );
 };

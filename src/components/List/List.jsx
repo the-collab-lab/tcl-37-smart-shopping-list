@@ -17,7 +17,6 @@ import {
   formatDate,
   calcDaysSince,
 } from '../../helpers';
-import { PageWrapper } from '../PageWrapper/PageWrapper';
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
@@ -110,86 +109,83 @@ export const List = ({ token }) => {
   };
 
   return (
-    <PageWrapper>
-      <div className="welcoming">
-        <h1>Smart Shopping List</h1>
-        <strong> Shareable List Token : {token} </strong>
-        {error && <strong>Error: {JSON.stringify(error)}</strong>}
-        {loading && <span>Collection: Loading...</span>}
-        {items && items.length > 0 ? (
-          <div>
-            <div className="search-field">
-              <input
-                placeholder="Start typing here..."
-                value={filterText}
-                onChange={handleFilterChange}
-              />
-              <button
-                style={{ marginLeft: '10px' }}
-                onClick={() => setFilterText('')}
-              >
-                X
-              </button>
-            </div>
-            <ul className="collection-list">
-              {items
-                .filter((doc) =>
-                  doc.item.toLowerCase().includes(filterText.toLowerCase()),
-                )
-                .map((doc) => (
-                  <li key={doc.id} className={getCategory(doc)}>
-                    <input
-                      type="checkbox"
-                      checked={calcTimeDiff(doc.last_purchased_date)}
-                      disabled={calcTimeDiff(doc.last_purchased_date)}
-                      name={doc.id}
-                      id={doc.id}
-                      onClick={(e) => handleClick(doc, e)}
-                      onChange={(e) => handleClick(doc, e)}
-                      aria-label={getCategory(doc)}
-                    />
-                    <label htmlFor={doc.id}>{doc.item}</label>
-                    {doc.total_purchases > 0 && (
-                      <p> Total purchases: {doc.total_purchases}</p>
-                    )}
-                    {doc.last_purchased_date && (
-                      <p>
-                        Last purchased date:{' '}
-                        {formatDate(doc.last_purchased_date)}
-                      </p>
-                    )}
-                    {doc.estimated_next_purchase && (
-                      <p>
-                        Estimated next purchase: {doc.estimated_next_purchase}{' '}
-                        days
-                        <br />
-                        Purchase:{' '}
-                        {doc.daysUntilPurchase === 0
-                          ? 'today'
-                          : doc.daysUntilPurchase < 0
-                          ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
-                          : `in ${doc.daysUntilPurchase} day(s)`}
-                      </p>
-                    )}
-                    <button
-                      className="delete-button"
-                      onClick={() => deleteItem(doc)}
-                    >
-                      delete
-                    </button>
-                  </li>
-                ))}
-            </ul>
-          </div>
-        ) : (
-          <div>
-            <p>Your shopping list is currently empty.</p>
-            <button type="button" onClick={() => navigate('/add')}>
-              ADD YOUR FIRST ITEM
+    <div className="welcoming">
+      <h1>Smart Shopping List</h1>
+      <strong> Shareable List Token : {token} </strong>
+      {error && <strong>Error: {JSON.stringify(error)}</strong>}
+      {loading && <span>Collection: Loading...</span>}
+      {items && items.length > 0 ? (
+        <div>
+          <div className="search-field">
+            <input
+              placeholder="Start typing here..."
+              value={filterText}
+              onChange={handleFilterChange}
+            />
+            <button
+              style={{ marginLeft: '10px' }}
+              onClick={() => setFilterText('')}
+            >
+              X
             </button>
           </div>
-        )}
-      </div>
-    </PageWrapper>
+          <ul className="collection-list">
+            {items
+              .filter((doc) =>
+                doc.item.toLowerCase().includes(filterText.toLowerCase()),
+              )
+              .map((doc) => (
+                <li key={doc.id} className={getCategory(doc)}>
+                  <input
+                    type="checkbox"
+                    checked={calcTimeDiff(doc.last_purchased_date)}
+                    disabled={calcTimeDiff(doc.last_purchased_date)}
+                    name={doc.id}
+                    id={doc.id}
+                    onClick={(e) => handleClick(doc, e)}
+                    onChange={(e) => handleClick(doc, e)}
+                    aria-label={getCategory(doc)}
+                  />
+                  <label htmlFor={doc.id}>{doc.item}</label>
+                  {doc.total_purchases > 0 && (
+                    <p> Total purchases: {doc.total_purchases}</p>
+                  )}
+                  {doc.last_purchased_date && (
+                    <p>
+                      Last purchased date: {formatDate(doc.last_purchased_date)}
+                    </p>
+                  )}
+                  {doc.estimated_next_purchase && (
+                    <p>
+                      Estimated next purchase: {doc.estimated_next_purchase}{' '}
+                      days
+                      <br />
+                      Purchase:{' '}
+                      {doc.daysUntilPurchase === 0
+                        ? 'today'
+                        : doc.daysUntilPurchase < 0
+                        ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
+                        : `in ${doc.daysUntilPurchase} day(s)`}
+                    </p>
+                  )}
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteItem(doc)}
+                  >
+                    delete
+                  </button>
+                </li>
+              ))}
+          </ul>
+        </div>
+      ) : (
+        <div>
+          <p>Your shopping list is currently empty.</p>
+          <button type="button" onClick={() => navigate('/add')}>
+            ADD YOUR FIRST ITEM
+          </button>
+        </div>
+      )}
+    </div>
   );
 };

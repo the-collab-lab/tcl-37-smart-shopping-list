@@ -1,5 +1,32 @@
+.green-bg {
+  background: linear-gradient(
+    128.9deg,
+    #76dd78 -18.28%,
+    rgba(118, 221, 120, 0.15) 63.69%
+  );
+  height: 100vh;
+}
+
 .wrapper {
-  border: 1px solid;
-  max-width: 30%;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 26px rgba(0, 0, 0, 0.17);
+  border-radius: 50px;
+  max-width: 600px;
+  width: 50%;
+  height: 80vh;
   margin: 0 auto;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .green-bg {
+    background: #fff;
+  }
+  .wrapper {
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
