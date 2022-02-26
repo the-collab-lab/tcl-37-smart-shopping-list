@@ -1,5 +1,9 @@
 const OrangeButton = (props) => {
-  return <button className="orange-button">{props.text}</button>;
+  return (
+    <button onClick={props.onClick} className="orange-button">
+      {props.text}
+    </button>
+  );
 };
 
 export default OrangeButton;
