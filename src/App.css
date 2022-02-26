@@ -91,3 +91,12 @@ label {
   color: #ffffff;
   border: 0px;
 }
+
+.orange-button:active {
+  transform: translateY(0.5px);
+  filter: saturate(200%);
+}
+
+.orange-button:hover {
+  background-color: #ee9804;
+}
