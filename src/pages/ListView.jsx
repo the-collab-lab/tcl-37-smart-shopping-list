@@ -12,8 +12,7 @@ export const ListView = ({ token, setToken }) => {
   }
 
   return (
-    <PageWrapper>
-      <Navigation setToken={setToken} token={token} />
+    <PageWrapper navbar={<Navigation setToken={setToken} token={token} />}>
       {token ? (
         <List token={token} />
       ) : (

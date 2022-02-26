@@ -65,8 +65,7 @@ export const AddItemView = ({ token, setToken }) => {
   };
 
   return (
-    <PageWrapper>
-      <Navigation setToken={setToken} token={token} />
+    <PageWrapper navbar={<Navigation setToken={setToken} token={token} />}>
       <AddItemForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
