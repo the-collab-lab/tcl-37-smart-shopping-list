@@ -5,7 +5,6 @@ import { AddItemView } from './pages/AddItemView';
 import { ListView } from './pages/ListView';
 import { Home } from './pages/Home';
 import { RouteLink } from './components/RouteLink';
-import Navigation from './components/Navigation/Navigation';
 import './App.css';
 
 function App() {
@@ -19,16 +18,21 @@ function App() {
     <div className="App">
       <Router>
         <ToastContainer />
-        {token && <Navigation setToken={setToken} token={token} />}
-
         <Routes>
           <Route
             exact
             path="/"
             element={<Home token={token} setToken={setToken} />}
           />
-          <Route exact path="/list" element={<ListView token={token} />} />
-          <Route path="/add" element={<AddItemView token={token} />} />
+          <Route
+            exact
+            path="/list"
+            element={<ListView token={token} setToken={setToken} />}
+          />
+          <Route
+            path="/add"
+            element={<AddItemView token={token} setToken={setToken} />}
+          />
         </Routes>
         <nav className="footer">
           <RouteLink to="/list">List</RouteLink>
