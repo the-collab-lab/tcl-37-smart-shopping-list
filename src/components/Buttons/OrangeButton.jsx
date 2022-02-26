@@ -1,5 +1,5 @@
-const OrangeButton = () => {
-  return <button className="orange-button">Join Existing List</button>;
+const OrangeButton = (props) => {
+  return <button className="orange-button">{props.text}</button>;
 };
 
 export default OrangeButton;

@@ -28,7 +28,6 @@ export const Home = (props) => {
         </>
       )}
       <JoinList setToken={setToken} />
-      <OrangeButton />
     </div>
   );
 };
