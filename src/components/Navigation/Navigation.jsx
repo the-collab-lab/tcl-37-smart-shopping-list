@@ -31,13 +31,15 @@ export const Navigation = ({ setToken, token }) => {
   };
 
   // properties in this object will affect all icons
+  // turn this into a prop
   const navIconStyle = {
-    fontSize: '3rem',
+    fontSize: '2.5rem',
+    display: 'inline-block',
   };
 
   return (
     <nav className="nav-container">
-      <Link to="/">
+      <Link to="/" className="logo">
         <img src={Title} alt="Smart Shopper" />
       </Link>
       <IconButton aria-label="add item" onClick={() => navigate('/add')}>
