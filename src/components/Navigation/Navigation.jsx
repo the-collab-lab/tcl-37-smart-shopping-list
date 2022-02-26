@@ -30,8 +30,6 @@ export const Navigation = ({ setToken, token }) => {
     );
   };
 
-  // properties in this object will affect all icons
-  // turn this into a prop
   const navIconStyle = {
     fontSize: '2.5rem',
     display: 'inline-block',
