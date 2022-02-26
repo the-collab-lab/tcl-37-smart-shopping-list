@@ -5,7 +5,7 @@ import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { ToastContainer, toast } from 'react-toastify';
 import { sanitize } from '../helpers';
-import OrangeButton from './buttons/OrangeButton';
+import OrangeButton from './Buttons/OrangeButton';
 
 export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
