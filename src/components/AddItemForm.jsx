@@ -16,8 +16,8 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
           />
         </div>
         <h3>How soon will you buy this again?</h3>
-        <div>
-          <label htmlFor="soon">
+        <div className="how-soon-div">
+          <label className="soon-box" htmlFor="soon">
             <input
               className="soon"
               defaultChecked
@@ -29,7 +29,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             />
             Soon
           </label>
-          <label htmlFor="kind-soon">
+          <label className="kind-of-soon-box" htmlFor="kind-soon">
             <input
               className="kind-soon"
               type="radio"
@@ -41,7 +41,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             Kind of Soon
           </label>
 
-          <label htmlFor="not-soon">
+          <label className="not-soon-box" htmlFor="not-soon">
             <input
               className="not-soon"
               type="radio"
