@@ -19,6 +19,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
         <div>
           <label htmlFor="soon">
             <input
+              className="soon"
               defaultChecked
               type="radio"
               value={7}
@@ -30,6 +31,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
           </label>
           <label htmlFor="kind-soon">
             <input
+              className="kind-soon"
               type="radio"
               value={14}
               id="kind-soon"
@@ -41,6 +43,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
 
           <label htmlFor="not-soon">
             <input
+              className="not-soon"
               type="radio"
               value={30}
               id="not-soon"
