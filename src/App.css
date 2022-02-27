@@ -75,6 +75,9 @@ input[type='radio'] {
   text-align: center;
 }
 
-.how-soon-div {
+.soon-buttons {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
