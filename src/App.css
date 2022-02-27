@@ -63,6 +63,19 @@ input[type='radio'] {
   color: #fe5419;
 }
 
+.not-soon-box:active,
+.kind-of-soon-box:active,
+.soon-box:active {
+  transform: translateY(0.5px);
+  filter: saturate(200%);
+}
+
+.not-soon-box:hover,
+.kind-of-soon-box:hover,
+.soon-box:hover {
+  filter: saturate(300%);
+}
+
 .soon-box {
   display: flex;
   width: 100px;
