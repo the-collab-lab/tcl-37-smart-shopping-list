@@ -52,27 +52,36 @@ input[type='radio'] {
 }
 
 .not-soon-box {
+  display: flex;
   width: 100px;
   height: 81px;
   background: rgba(248, 231, 221, 0.5);
   border-radius: 14px;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .soon-box {
+  display: flex;
   width: 100px;
   height: 81px;
   background: rgba(222, 244, 221, 0.5);
   border-radius: 14px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .kind-of-soon-box {
+  display: flex;
   width: 100px;
   height: 81px;
   background: #fafadf;
   border-radius: 14px;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .soon-buttons {
@@ -80,4 +89,15 @@ input[type='radio'] {
   align-items: center;
   justify-content: center;
   flex-direction: row;
+}
+
+input .not-soon {
+  align-items: center;
+  justify-content: center;
+}
+
+.text-soon {
+  display: inline-block;
+  /* align-items: center;
+  justify-content: center; */
 }
