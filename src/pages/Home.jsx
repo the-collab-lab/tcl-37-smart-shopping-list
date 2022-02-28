@@ -1,7 +1,7 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
-import '../Home.css';
-
+import './Home.css';
+import HeroImage from '../../src/assets/smartshopperr_logo.png';
 import { JoinList } from '../components/JoinList';
 import OrangeButton from '../components/Buttons/OrangeButton';
 
@@ -18,19 +18,22 @@ export const Home = (props) => {
 
   return (
     <div className="home">
-      <h1>Welcome to your Smart Shopping List!</h1>
-      {token ? (
-        <button>
-          <Link to="/list">View your shopping list</Link>
-        </button>
-      ) : (
-        <>
-          <OrangeButton onClick={() => generateToken()}>
-            Create new List
+      <header className="hero">
+        <img src={HeroImage} alt="Logo" />
+      </header>
+      <main>
+        <h1>Welcome to your Smart Shopping List!</h1>
+        {token ? (
+          <OrangeButton>
+            <Link to="/list">View your shopping list</Link>
           </OrangeButton>
-        </>
-      )}
-      <JoinList setToken={setToken} />
+        ) : (
+          <OrangeButton onClick={() => generateToken()}>
+            Create a new list
+          </OrangeButton>
+        )}
+        <JoinList setToken={setToken} />
+      </main>
     </div>
   );
 };
