@@ -1,13 +1,10 @@
 .orange-button {
-  width: 13.625em;
-  height: 4em;
+  width: 9.625em;
+  height: 3.18em;
   background: #ffa001;
   border-radius: 2.438em;
   font-family: Poppins;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1.5em;
-  line-height: 2.25 em;
+  font-size: 1em;
   color: #ffffff;
   border: 0px;
 }
