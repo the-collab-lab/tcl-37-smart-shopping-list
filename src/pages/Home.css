@@ -1,5 +1,13 @@
 .home {
   text-align: center;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 98vw;
+}
+
+.home > main {
+  margin-left: 5rem;
 }
 
 .home input,
@@ -7,4 +15,28 @@
   width: 200px;
   border-radius: 2px;
   text-align: center;
+}
+
+.hero {
+  min-width: 40vw;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    205.21deg,
+    #76dd78 0.82%,
+    rgba(118, 221, 120, 0) 112.11%
+  );
+  mask-image: url(/src/assets/hero.svg);
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    background-image: linear-gradient(
+      205.21deg,
+      #76dd78 0.82%,
+      rgba(118, 221, 120, 0) 112.11%
+    );
+  }
+  .hero {
+    display: none;
+  }
 }

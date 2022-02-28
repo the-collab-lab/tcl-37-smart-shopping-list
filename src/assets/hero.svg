@@ -1,0 +1,24 @@
+<svg
+          viewBox="0 0 430 570"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M0 0H430C430 0 377 57.5 377 112C377 166.5 430 215.5 430 286.5C430 366.614 377 390.5 377 474C377 557.5 430 570 430 570H0V0Z"
+            fill="url(#paint0_linear_216_2440)"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_216_2440"
+              x1="419"
+              y1="-3.51209e-05"
+              x2="6.45975e-06"
+              y2="671.5"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop stopColor="#76DD78" />
+              <stop offset="1" stopColor="#76DD78" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>

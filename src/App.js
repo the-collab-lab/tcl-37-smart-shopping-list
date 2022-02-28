@@ -4,7 +4,6 @@ import { AddItemView } from './pages/AddItemView';
 import { ListView } from './pages/ListView';
 import { Home } from './pages/Home';
 import { RouteLink } from './components/RouteLink';
-import HeaderNav from './components/HeaderNav';
 import './App.css';
 
 function App() {
@@ -17,7 +16,6 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <HeaderNav token={token} setToken={setToken} />
         <Routes>
           <Route
             exact
