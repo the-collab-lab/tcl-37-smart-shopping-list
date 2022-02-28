@@ -1,7 +1,7 @@
-const OrangeButton = (props) => {
+const OrangeButton = ({ children, ...props }) => {
   return (
     <button onClick={props.onClick} className="orange-button">
-      {props.children}
+      {children}
     </button>
   );
 };
