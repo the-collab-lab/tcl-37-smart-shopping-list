@@ -2,7 +2,7 @@ import AddIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import ListIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import LogoutIcon from '@mui/icons-material/LogoutOutlined';
 import ShareIcon from '@mui/icons-material/ShareOutlined';
-import { IconButton } from '@mui/material';
+import { IconButton, Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import Title from '../../assets/smartshopperr_title_transparent.png';
 import './Navigation.css';
@@ -40,18 +40,26 @@ export const Navigation = ({ setToken, token }) => {
       <Link to="/" className="logo">
         <img src={Title} alt="Smart Shopper" />
       </Link>
-      <IconButton aria-label="add item" onClick={() => navigate('/add')}>
-        <AddIcon sx={navIconStyle} />
-      </IconButton>
-      <IconButton aria-label="list" onClick={() => navigate('/list')}>
-        <ListIcon sx={navIconStyle} />
-      </IconButton>
-      <IconButton aria-label="sign out" onClick={() => handleSignOut()}>
-        <LogoutIcon sx={navIconStyle} />
-      </IconButton>
-      <IconButton aria-label="share token" onClick={() => copyToClipboard()}>
-        <ShareIcon sx={navIconStyle} />
-      </IconButton>
+      <Tooltip title="Add item">
+        <IconButton aria-label="add item" onClick={() => navigate('/add')}>
+          <AddIcon sx={navIconStyle} />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="View list">
+        <IconButton aria-label="list" onClick={() => navigate('/list')}>
+          <ListIcon sx={navIconStyle} />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Sign out">
+        <IconButton aria-label="sign out" onClick={() => handleSignOut()}>
+          <LogoutIcon sx={navIconStyle} />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Share token">
+        <IconButton aria-label="share token" onClick={() => copyToClipboard()}>
+          <ShareIcon sx={navIconStyle} />
+        </IconButton>
+      </Tooltip>
     </nav>
   );
 };
