@@ -19,4 +19,5 @@
 
 .orange-button:hover {
   background-color: #ee9804;
+  cursor: pointer;
 }
