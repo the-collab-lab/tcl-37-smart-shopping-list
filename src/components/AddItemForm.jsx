@@ -1,4 +1,5 @@
 import React from 'react';
+import OrangeButton from './Buttons/OrangeButton';
 
 const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
   return (
@@ -50,7 +51,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             Not Soon
           </label>
         </div>
-        <button type="submit">Add Item</button>
+        <OrangeButton>Add Item</OrangeButton>
       </form>
     </div>
   );

@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import db from '../lib/firebase';
 import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
+import OrangeButton from './Buttons/OrangeButton';
 
 export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
@@ -51,9 +52,8 @@ export const JoinList = ({ setToken }) => {
           />
           <br />
           <br />
-          <button>Join an existing list</button>
+          <OrangeButton>Join existing List</OrangeButton>
         </form>
-        <ToastContainer />
       </div>
     </>
   );
