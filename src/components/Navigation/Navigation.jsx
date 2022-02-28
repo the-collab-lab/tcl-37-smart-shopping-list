@@ -21,12 +21,20 @@ export const Navigation = ({ setToken, token }) => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(token).then(() =>
-      toast('Token copied to clipboard!', {
-        autoClose: 3000,
-        hideProgressBar: true,
-        pauseOnHover: false,
-        draggable: false,
-      }),
+      toast(
+        ({ closeButton }) => (
+          <div>
+            Token copied to clipboard! <br /> <strong>{token}</strong>
+          </div>
+        ),
+        {
+          autoClose: 5000,
+          hideProgressBar: true,
+          pauseOnHover: true,
+          draggable: false,
+          closeOnClick: false,
+        },
+      ),
     );
   };
 
