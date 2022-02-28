@@ -29,7 +29,7 @@ function App() {
             exact
             path="/list"
             element={
-              <RequireToken token={token}>
+              <RequireToken>
                 <ListView token={token} setToken={setToken} />
               </RequireToken>
             }
@@ -37,7 +37,7 @@ function App() {
           <Route
             path="/add"
             element={
-              <RequireToken token={token}>
+              <RequireToken>
                 <AddItemView token={token} setToken={setToken} />
               </RequireToken>
             }
