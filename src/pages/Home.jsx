@@ -24,10 +24,9 @@ export const Home = (props) => {
         </button>
       ) : (
         <>
-          <OrangeButton
-            text="Create new List"
-            onClick={() => generateToken()}
-          />
+          <OrangeButton onClick={() => generateToken()}>
+            Create new List
+          </OrangeButton>
         </>
       )}
       <JoinList setToken={setToken} />

@@ -51,7 +51,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             Not Soon
           </label>
         </div>
-        <OrangeButton text="Add Item" />
+        <OrangeButton>Add Item</OrangeButton>
       </form>
     </div>
   );

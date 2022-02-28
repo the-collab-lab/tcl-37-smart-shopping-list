@@ -52,7 +52,7 @@ export const JoinList = ({ setToken }) => {
           />
           <br />
           <br />
-          <OrangeButton text="Join existing list" />
+          <OrangeButton>Join existing List</OrangeButton>
         </form>
         <ToastContainer />
       </div>
