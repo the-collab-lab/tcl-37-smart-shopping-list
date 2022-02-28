@@ -1,0 +1,20 @@
+.orange-button {
+  width: 9.625em;
+  height: 3.18em;
+  background: #ffa001;
+  border-radius: 2.438em;
+  font-family: Poppins;
+  font-size: 1em;
+  color: #ffffff;
+  border: 0px;
+}
+
+.orange-button:active {
+  transform: translateY(0.5px);
+  filter: saturate(200%);
+}
+
+.orange-button:hover {
+  background-color: #ee9804;
+  cursor: pointer;
+}
