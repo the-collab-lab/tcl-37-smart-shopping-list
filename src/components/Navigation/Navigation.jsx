@@ -41,6 +41,7 @@ export const Navigation = ({ setToken, token }) => {
   const navIconStyle = {
     fontSize: '2.5rem',
     display: 'inline-block',
+    color: 'black',
   };
 
   return (
