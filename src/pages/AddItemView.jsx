@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 import AddItemForm from '../components/AddItemForm';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
 import { PageWrapper } from '../components/PageWrapper/PageWrapper';
+import Navigation from '../components/Navigation/Navigation';
 
-export const AddItemView = ({ token }) => {
+export const AddItemView = ({ token, setToken }) => {
   const [inputs, setInputs] = useState({
     days: 7,
     last_purchased_date: null,
@@ -64,14 +65,12 @@ export const AddItemView = ({ token }) => {
   };
 
   return (
-    <PageWrapper>
-      <h1>Smart Shopping List</h1>
+    <PageWrapper navbar={<Navigation setToken={setToken} token={token} />}>
       <AddItemForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         inputs={inputs}
       />
-      <ToastContainer />
     </PageWrapper>
   );
 };

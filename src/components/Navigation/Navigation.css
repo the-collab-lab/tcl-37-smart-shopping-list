@@ -1,0 +1,23 @@
+.nav-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-container {
+    padding: 1rem;
+  }
+  .logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.logo > img {
+  max-width: 80%;
+  height: auto;
+  padding: 1rem;
+}
