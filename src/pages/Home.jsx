@@ -1,8 +1,8 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 import './Home.css';
+import HeroImage from '../../src/assets/smartshopperr_logo.png';
 import { JoinList } from '../components/JoinList';
-// import Hero from '../../src/assets/hero.svg';
 
 export const Home = (props) => {
   let navigate = useNavigate();
@@ -18,7 +18,7 @@ export const Home = (props) => {
   return (
     <div className="home">
       <header className="hero">
-        <h1>SmartShopperr</h1>
+        <img src={HeroImage} alt="Logo" />
       </header>
       <main>
         <h1>Welcome to your Smart Shopping List!</h1>

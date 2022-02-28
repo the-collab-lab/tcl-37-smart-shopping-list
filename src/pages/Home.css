@@ -26,6 +26,15 @@
     rgba(118, 221, 120, 0) 112.11%
   );
   mask-image: url(/src/assets/hero.svg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero > img {
+  width: 75%;
+  height: auto;
 }
 
 @media screen and (max-width: 768px) {
