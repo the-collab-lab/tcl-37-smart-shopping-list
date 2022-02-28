@@ -6,13 +6,16 @@
   margin-bottom: 25px;
 }
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root,
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
   box-shadow: none !important;
+  cursor: default !important;
 }
 
 .css-o4b71y-MuiAccordionSummary-content {
   justify-content: space-between;
   align-items: center;
+  cursor: default;
 }
 
 .item-title {
@@ -36,7 +39,9 @@
   margin-right: 5px;
 }
 
-.delete-button:hover {
+.delete-button:hover,
+.MuiAccordionSummary-expandIconWrapper:hover,
+.container input:hover {
   cursor: pointer;
 }
 
@@ -56,13 +61,27 @@
   border-left-color: #fe5419;
 }
 
+.inactive .checkmark {
+  background: #f3f4f4;
+}
+
+.soon .checkmark {
+  background: #def4dd;
+}
+
+.kinda-soon .checkmark {
+  background: #fafadf;
+}
+
+.not-soon .checkmark {
+  background: #f8e7dd;
+}
+
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
+  width: 25px;
+  height: 25px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -73,9 +92,11 @@
 .container input {
   position: absolute;
   opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+  height: 25px;
+  width: 25px;
+  top: -2px;
+  left: -4px;
+  z-index: 1;
 }
 
 /* Create a custom checkbox */
@@ -86,15 +107,7 @@
   height: 25px;
   width: 25px;
   background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the checkbox is checked, add a blue background */
-.soon input:checked ~ .checkmark:after {
+  border-radius: 5px;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -105,24 +118,8 @@
 }
 
 /* Show the checkmark when checked */
-.soon input:checked ~ .checkmark:after {
+.container input:checked ~ .checkmark:after {
   display: block;
-  border-color: #1fa060;
-}
-
-.kinda-soon input:checked ~ .checkmark:after {
-  display: block;
-  border-color: #ffcc00;
-}
-
-.not-soon input:checked ~ .checkmark:after {
-  display: block;
-  border-color: #fe5419;
-}
-
-.inactive input:checked ~ .checkmark:after {
-  display: block;
-  border-color: #9e9ea7;
 }
 
 /* Style the checkmark/indicator */
@@ -138,18 +135,23 @@
   transform: rotate(45deg);
 }
 
-.inactive .checkmark {
-  background: #f3f4f4;
+.inactive .checkmark:after {
+  border-color: #9e9ea7;
 }
 
-.soon .checkmark {
-  background: #def4dd;
+.soon .checkmark:after {
+  border-color: #1fa060;
 }
 
-.kinda-soon .checkmark {
-  background: #fafadf;
+.kinda-soon .checkmark:after {
+  border-color: #ffcc00;
+}
+.not-soon .checkmark:after {
+  border-color: #fe5419;
 }
 
-.not-soon .checkmark {
-  background: #f8e7dd;
+@media only screen and (max-width: 768px) {
+  .estimate {
+    /* display: none; */
+  }
 }

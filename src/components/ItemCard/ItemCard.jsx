@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { calcTimeDiff, formatDate } from '../../helpers';
 import './item-card.css';
 import Accordion from '@mui/material/Accordion';
@@ -7,13 +7,17 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-// to do: prevent expansion for other click events
-
 export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
-  const [expand, setExpand] = React.useState(false);
+  const [expand, setExpand] = useState(false);
   const toggleAcordion = () => {
     setExpand((prev) => !prev);
   };
+
+  console.log(doc.daysUntilPurchase);
+
+  // to do: pointer cursor only for icons and checkmark
+  // item font smaller on mobile
+  // consistent borders
 
   return (
     <Accordion expanded={expand} className={`item-card ${getCategory(doc)}`}>
@@ -26,7 +30,6 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
         }
         aria-controls="panel1a-content"
         id="panel1a-header"
-        className="summary"
       >
         <div className="container">
           <input
@@ -61,16 +64,17 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
           <p>Last purchased date: {formatDate(doc.last_purchased_date)}</p>
         )}
         {doc.estimated_next_purchase && (
-          <p>
-            Estimated next purchase: {doc.estimated_next_purchase} days
-            <br />
-            Purchase:{' '}
-            {doc.daysUntilPurchase === 0
-              ? 'today'
-              : doc.daysUntilPurchase < 0
-              ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
-              : `in ${doc.daysUntilPurchase} day(s)`}
-          </p>
+          <div>
+            <p>Purchase interval: {doc.estimated_next_purchase} days</p>
+            <p>
+              Purchase:{' '}
+              {doc.daysUntilPurchase === 0
+                ? 'today'
+                : doc.daysUntilPurchase < 0
+                ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
+                : `in ${doc.daysUntilPurchase} day(s)`}
+            </p>
+          </div>
         )}
       </AccordionDetails>
     </Accordion>

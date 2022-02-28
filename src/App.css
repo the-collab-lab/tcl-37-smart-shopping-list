@@ -27,16 +27,3 @@ label {
   display: block;
   margin: 15px;
 }
-
-.collection-list {
-  list-style-type: none;
-}
-
-.collection-list label {
-  display: inline;
-  margin: 0;
-}
-
-.collection-list input {
-  width: auto;
-}

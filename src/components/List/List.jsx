@@ -45,6 +45,8 @@ export const List = ({ token }) => {
     }
   }, [value]);
 
+  console.log(items);
+
   // Check active status of items purchased & not purchased
   const getActiveStatus = (item) => {
     return (
@@ -55,9 +57,11 @@ export const List = ({ token }) => {
 
   // Calculate days until next purchase and use for item categories
   const getDaysUntilPurchase = (item) => {
+    console.log('get days');
     const daysSincePreviousTransaction = calcDaysSince(
       item.last_purchased_date || item.date_added,
     );
+
     let daysUntilNextPurchase =
       item.estimated_next_purchase - daysSincePreviousTransaction;
     return daysUntilNextPurchase;
@@ -108,7 +112,6 @@ export const List = ({ token }) => {
     <div className="welcoming">
       <h1>Smart Shopping List</h1>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
-      {loading && <span>Collection: Loading...</span>}
       {items && items.length > 0 ? (
         <div>
           <div className="search-field">
@@ -140,6 +143,8 @@ export const List = ({ token }) => {
               ))}
           </ul>
         </div>
+      ) : loading ? (
+        <span>Collection: Loading...</span>
       ) : (
         <div>
           <p>Your shopping list is currently empty.</p>
