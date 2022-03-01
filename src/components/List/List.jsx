@@ -11,12 +11,8 @@ import {
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
-import {
-  getEstimate,
-  calcTimeDiff,
-  formatDate,
-  calcDaysSince,
-} from '../../helpers';
+import { getEstimate, calcDaysSince } from '../../helpers';
+import { ItemCard } from '../../components';
 
 const List = ({ token }) => {
   let navigate = useNavigate();
@@ -49,6 +45,8 @@ const List = ({ token }) => {
     }
   }, [value]);
 
+  console.log(items);
+
   // Check active status of items purchased & not purchased
   const getActiveStatus = (item) => {
     return (
@@ -59,9 +57,11 @@ const List = ({ token }) => {
 
   // Calculate days until next purchase and use for item categories
   const getDaysUntilPurchase = (item) => {
+    console.log('get days');
     const daysSincePreviousTransaction = calcDaysSince(
       item.last_purchased_date || item.date_added,
     );
+
     let daysUntilNextPurchase =
       item.estimated_next_purchase - daysSincePreviousTransaction;
     return daysUntilNextPurchase;
@@ -110,8 +110,8 @@ const List = ({ token }) => {
 
   return (
     <div className="welcoming">
+      <h1>Smart Shopping List</h1>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
-      {loading && <span>Collection: Loading...</span>}
       {items && items.length > 0 ? (
         <div>
           <div className="search-field">
@@ -133,49 +133,18 @@ const List = ({ token }) => {
                 doc.item.toLowerCase().includes(filterText.toLowerCase()),
               )
               .map((doc) => (
-                <li key={doc.id} className={getCategory(doc)}>
-                  <input
-                    type="checkbox"
-                    checked={calcTimeDiff(doc.last_purchased_date)}
-                    disabled={calcTimeDiff(doc.last_purchased_date)}
-                    name={doc.id}
-                    id={doc.id}
-                    onClick={(e) => handleClick(doc, e)}
-                    onChange={(e) => handleClick(doc, e)}
-                    aria-label={getCategory(doc)}
-                  />
-                  <label htmlFor={doc.id}>{doc.item}</label>
-                  {doc.total_purchases > 0 && (
-                    <p> Total purchases: {doc.total_purchases}</p>
-                  )}
-                  {doc.last_purchased_date && (
-                    <p>
-                      Last purchased date: {formatDate(doc.last_purchased_date)}
-                    </p>
-                  )}
-                  {doc.estimated_next_purchase && (
-                    <p>
-                      Estimated next purchase: {doc.estimated_next_purchase}{' '}
-                      days
-                      <br />
-                      Purchase:{' '}
-                      {doc.daysUntilPurchase === 0
-                        ? 'today'
-                        : doc.daysUntilPurchase < 0
-                        ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
-                        : `in ${doc.daysUntilPurchase} day(s)`}
-                    </p>
-                  )}
-                  <button
-                    className="delete-button"
-                    onClick={() => deleteItem(doc)}
-                  >
-                    delete
-                  </button>
-                </li>
+                <ItemCard
+                  key={doc.id}
+                  doc={doc}
+                  handleClick={handleClick}
+                  getCategory={getCategory}
+                  deleteItem={deleteItem}
+                />
               ))}
           </ul>
         </div>
+      ) : loading ? (
+        <span>Collection: Loading...</span>
       ) : (
         <div>
           <p>Your shopping list is currently empty.</p>

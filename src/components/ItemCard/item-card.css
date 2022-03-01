@@ -1,0 +1,150 @@
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+  border: 1px solid #e6e7e7;
+  border-radius: 0px 14px 14px 0px !important;
+  border-left: 5px solid;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root,
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+  box-shadow: none !important;
+  cursor: default !important;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+  display: none;
+}
+
+.css-o4b71y-MuiAccordionSummary-content {
+  justify-content: space-between;
+  align-items: center;
+  cursor: default;
+}
+
+.MuiAccordion-region .css-15v22id-MuiAccordionDetails-root {
+  padding-top: 0;
+}
+
+.item-title {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.estimate {
+  text-align: center;
+}
+
+.estimate span {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-right: 5px;
+}
+
+.delete-button:hover,
+.MuiAccordionSummary-expandIconWrapper:hover,
+.container input:hover {
+  cursor: pointer;
+}
+
+.item-card p {
+  margin-top: 0;
+}
+
+.inactive {
+  border-left-color: #9e9ea7;
+}
+
+.soon {
+  border-left-color: #1fa060;
+}
+
+.kinda-soon {
+  border-left-color: #ffcc00;
+}
+
+.not-soon {
+  border-left-color: #fe5419;
+}
+
+.inactive .checkmark {
+  background: #f3f4f4;
+}
+
+.soon .checkmark {
+  background: #def4dd;
+}
+
+.kinda-soon .checkmark {
+  background: #fafadf;
+}
+
+.not-soon .checkmark {
+  background: #f8e7dd;
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  height: 25px;
+  width: 25px;
+  top: -2px;
+  left: -4px;
+  z-index: 1;
+}
+
+.checkmark {
+  position: absolute;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.inactive .checkmark:after {
+  border-color: #9e9ea7;
+}
+
+.soon .checkmark:after {
+  border-color: #1fa060;
+}
+
+.kinda-soon .checkmark:after {
+  border-color: #ffcc00;
+}
+.not-soon .checkmark:after {
+  border-color: #fe5419;
+}
