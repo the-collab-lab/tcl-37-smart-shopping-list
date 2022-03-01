@@ -142,10 +142,13 @@ const List = ({ token }) => {
       ) : loading ? (
         <span>Collection: Loading...</span>
       ) : (
-        <section>
-          <p>Your shopping list is currently empty.</p>
+        <section className="welcome">
+          <p>
+            Your shopping list is currently empty. <br /> Click the button below
+            to get started!
+          </p>
           <OrangeButton onClick={() => navigate('/add')}>
-            ADD YOUR FIRST ITEM
+            ADD AN ITEM
           </OrangeButton>
         </section>
       )}

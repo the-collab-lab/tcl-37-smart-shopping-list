@@ -22,6 +22,10 @@
   width: auto;
 }
 
-.welcoming h1 {
-  text-align: center;
+.welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
