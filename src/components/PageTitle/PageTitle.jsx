@@ -4,7 +4,7 @@ import './page-title.css';
 
 export const PageTitle = ({ children }) => {
   return (
-    <div>
+    <div className="page-title">
       <div className="mobile-bg"></div>
       <h1>{children}</h1>
       <div className="img-container">

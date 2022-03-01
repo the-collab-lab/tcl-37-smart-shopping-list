@@ -31,3 +31,19 @@
     padding-top: 0;
   }
 }
+
+/* iPad */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  .green-bg {
+    background: linear-gradient(
+      128.9deg,
+      #76dd78 -18.28%,
+      rgba(118, 221, 120, 0.15) 63.69%
+    );
+  }
+  .wrapper {
+    width: 50%;
+    box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.17);
+    border-radius: 50px;
+  }
+}
