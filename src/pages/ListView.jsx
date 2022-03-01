@@ -1,9 +1,10 @@
 import React from 'react';
-import { List } from '../components/List/List';
+// import { List } from '../components/List/List';
 import { useNavigate } from 'react-router-dom';
-import { PageWrapper } from '../components/PageWrapper/PageWrapper';
+import { List, PageWrapper, Navigation, PageTitle } from '../components';
+/* import { PageWrapper } from '../components/PageWrapper/PageWrapper';
 import Navigation from '../components/Navigation/Navigation';
-import { PageTitle } from '../components/PageTitle/PageTitle';
+import { PageTitle } from '../components/PageTitle/PageTitle'; */
 
 export const ListView = ({ token, setToken }) => {
   let navigate = useNavigate();

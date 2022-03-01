@@ -18,7 +18,7 @@ import {
   calcDaysSince,
 } from '../../helpers';
 
-export const List = ({ token }) => {
+const List = ({ token }) => {
   let navigate = useNavigate();
   const q = query(collection(db, token));
   const [value, loading, error] = useCollection(q, {
@@ -187,3 +187,5 @@ export const List = ({ token }) => {
     </div>
   );
 };
+
+export default List;

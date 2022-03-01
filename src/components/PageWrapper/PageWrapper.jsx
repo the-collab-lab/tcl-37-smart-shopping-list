@@ -1,7 +1,7 @@
 import React from 'react';
 import './page-wrapper.css';
 
-export const PageWrapper = ({ children, navbar }) => {
+const PageWrapper = ({ children, navbar }) => {
   return (
     <div className="green-bg">
       {navbar}
@@ -9,3 +9,5 @@ export const PageWrapper = ({ children, navbar }) => {
     </div>
   );
 };
+
+export default PageWrapper;

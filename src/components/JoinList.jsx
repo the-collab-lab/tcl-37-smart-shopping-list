@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
 import OrangeButton from './Buttons/OrangeButton';
 
-export const JoinList = ({ setToken }) => {
+const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
 
   const notify = () => toast.error('Token not valid');
@@ -58,3 +58,5 @@ export const JoinList = ({ setToken }) => {
     </>
   );
 };
+
+export default JoinList;

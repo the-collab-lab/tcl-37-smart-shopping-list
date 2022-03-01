@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { calcTimeDiff, formatDate } from '../../helpers';
-import './item-card.css';
+// import './item-card.css';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
+const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
   const [expand, setExpand] = useState(false);
   const toggleAcordion = () => {
     setExpand((prev) => !prev);
@@ -74,3 +74,5 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
     </Accordion>
   );
 };
+
+export default ItemCard;

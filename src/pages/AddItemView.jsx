@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-import AddItemForm from '../components/AddItemForm';
+import { AddItemForm, PageWrapper, Navigation, PageTitle } from '../components';
+// import AddItemForm from '../components/AddItemForm';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
-import { PageWrapper } from '../components/PageWrapper/PageWrapper';
-import Navigation from '../components/Navigation/Navigation';
-import { PageTitle } from '../components/PageTitle/PageTitle';
+// import { PageWrapper } from '../components/PageWrapper/PageWrapper';
+// import Navigation from '../components/Navigation/Navigation';
+// import { PageTitle } from '../components/PageTitle/PageTitle';
 
 export const AddItemView = ({ token, setToken }) => {
   const [inputs, setInputs] = useState({
