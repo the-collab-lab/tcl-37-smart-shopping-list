@@ -15,8 +15,6 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
 
   console.log(doc.daysUntilPurchase);
 
-  // to do: pointer cursor only for icons and checkmark
-  // item font smaller on mobile
   // consistent borders
 
   return (
@@ -71,7 +69,7 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
               {doc.daysUntilPurchase === 0
                 ? 'today'
                 : doc.daysUntilPurchase < 0
-                ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
+                ? `overdue by ${Math.abs(doc.daysUntilPurchase)} day(s)`
                 : `in ${doc.daysUntilPurchase} day(s)`}
             </p>
           </div>
