@@ -80,7 +80,7 @@ const List = ({ token }) => {
   };
 
   const deleteItem = async (document) => {
-    if (window.confirm(`Are you sure you want to delete ${document.item}?`)) {
+    if (window.confirm(`Are you sure you want to delete "${document.item}"?`)) {
       await deleteDoc(doc(db, token, document.id));
     }
   };
