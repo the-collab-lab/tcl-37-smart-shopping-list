@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView, ListView, Home } from './pages';
 import { RequireToken, RouteLink } from './components';
@@ -9,7 +10,7 @@ function App() {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-    if (localStorage.token) setToken(localStorage.token);
+    if (localStorage.getItem('token')) setToken(localStorage.getItem('token'));
   }, []);
 
   return (

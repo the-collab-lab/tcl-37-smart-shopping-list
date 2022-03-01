@@ -10,7 +10,7 @@ const Home = (props) => {
 
   const generateToken = () => {
     const token = getToken();
-    localStorage.token = token;
+    localStorage.setItem('token', token);
     setToken(token);
     if (token) navigate('/list');
   };
