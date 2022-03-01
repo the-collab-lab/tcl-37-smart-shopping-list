@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 import './Home.css';
 import HeroImage from '../../../src/assets/smartshopperr_logo.png';
@@ -6,9 +6,8 @@ import Divider from '../../../src/assets/divider.png';
 import Logo from '../../../src/assets/smartshopperr_title_whitefill.png';
 import { JoinList, OrangeButton } from '../../components';
 
-const Home = (props) => {
+const Home = ({ token, setToken }) => {
   let navigate = useNavigate();
-  const { token, setToken } = props;
 
   const generateToken = () => {
     const token = getToken();
@@ -26,8 +25,8 @@ const Home = (props) => {
         <img src={Logo} alt="Smart Shopper logo" />
         <h1>Welcome to your Smart Shopping List!</h1>
         {token ? (
-          <OrangeButton>
-            <Link to="/list">View your shopping list</Link>
+          <OrangeButton onClick={() => navigate('/list')}>
+            View your shopping list
           </OrangeButton>
         ) : (
           <OrangeButton onClick={() => generateToken()}>
