@@ -1,4 +1,4 @@
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+.MuiPaper-root-MuiAccordion-root {
   border: 1px solid #e6e7e7;
   border-radius: 0px 14px 14px 0px !important;
   border-left: 5px solid;
@@ -6,23 +6,23 @@
   margin-bottom: 25px;
 }
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root,
-.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+.MuiPaper-root-MuiAccordion-root,
+.MuiButtonBase-root-MuiAccordionSummary-root {
   box-shadow: none !important;
   cursor: default !important;
 }
 
-.css-1elwnq4-MuiPaper-root-MuiAccordion-root:before {
+.MuiPaper-root-MuiAccordion-root:before {
   display: none;
 }
 
-.css-o4b71y-MuiAccordionSummary-content {
+.MuiAccordionSummary-content {
   justify-content: space-between;
   align-items: center;
   cursor: default;
 }
 
-.MuiAccordion-region .css-15v22id-MuiAccordionDetails-root {
+.MuiAccordion-region .MuiAccordionDetails-root {
   padding-top: 0;
 }
 
