@@ -46,7 +46,7 @@ const AddItemView = ({ token, setToken }) => {
         return;
       }
 
-      const docRef = await addDoc(collection(db, token), {
+      await addDoc(collection(db, token), {
         item: inputs.item,
         last_purchased_date: inputs.last_purchased_date,
         date_added: moment().format(),
@@ -54,7 +54,6 @@ const AddItemView = ({ token, setToken }) => {
         total_purchases: 0,
       });
       setInputs((prevState) => ({ ...prevState, item: '' }));
-      console.log('Document written with ID: ', docRef.id);
       notify();
     } catch (e) {
       console.error('Error adding document: ', e);

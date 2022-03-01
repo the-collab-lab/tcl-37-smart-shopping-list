@@ -45,8 +45,6 @@ const List = ({ token }) => {
     }
   }, [value]);
 
-  console.log(items);
-
   // Check active status of items purchased & not purchased
   const getActiveStatus = (item) => {
     return (
@@ -57,7 +55,6 @@ const List = ({ token }) => {
 
   // Calculate days until next purchase and use for item categories
   const getDaysUntilPurchase = (item) => {
-    console.log('get days');
     const daysSincePreviousTransaction = calcDaysSince(
       item.last_purchased_date || item.date_added,
     );

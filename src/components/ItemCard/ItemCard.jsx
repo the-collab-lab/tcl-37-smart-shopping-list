@@ -13,8 +13,6 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
     setExpand((prev) => !prev);
   };
 
-  console.log(doc.daysUntilPurchase);
-
   // consistent borders
 
   return (
