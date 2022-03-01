@@ -38,7 +38,6 @@ const JoinList = ({ setToken }) => {
   };
   return (
     <>
-      <p> -or- </p>
       <p> Join an existing shopping list by entering a three word token</p>
       <div>
         <form onSubmit={handleSubmit}>

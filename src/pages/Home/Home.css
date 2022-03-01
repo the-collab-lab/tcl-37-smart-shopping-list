@@ -4,10 +4,22 @@ a:visited {
   color: white;
 }
 
+.divider {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: 75%;
+  align-self: center;
+  justify-self: center;
+}
+
 .home {
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
   min-width: 98vw;
 }
@@ -53,5 +65,11 @@ a:visited {
   }
   .hero {
     display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .divider {
+    display: inline-block;
   }
 }
