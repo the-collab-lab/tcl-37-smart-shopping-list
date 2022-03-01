@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView } from './pages/AddItemView';
 import { ListView } from './pages/ListView';
 import { Home } from './pages/Home';
+import RequireToken from '../src/components/RequireToken';
 import { RouteLink } from './components/RouteLink';
 import './App.css';
 
@@ -27,11 +28,19 @@ function App() {
           <Route
             exact
             path="/list"
-            element={<ListView token={token} setToken={setToken} />}
+            element={
+              <RequireToken>
+                <ListView token={token} setToken={setToken} />
+              </RequireToken>
+            }
           />
           <Route
             path="/add"
-            element={<AddItemView token={token} setToken={setToken} />}
+            element={
+              <RequireToken>
+                <AddItemView token={token} setToken={setToken} />
+              </RequireToken>
+            }
           />
         </Routes>
         <nav className="footer">
