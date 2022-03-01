@@ -107,7 +107,6 @@ const List = ({ token }) => {
 
   return (
     <div className="welcoming">
-      <h1>Smart Shopping List</h1>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {items && items.length > 0 ? (
         <div>
