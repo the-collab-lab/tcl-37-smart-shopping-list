@@ -28,5 +28,6 @@
     width: 100%;
     border-radius: 0;
     box-shadow: none;
+    padding-top: 0;
   }
 }

@@ -110,8 +110,6 @@ export const List = ({ token }) => {
 
   return (
     <div className="welcoming">
-      <h1>Smart Shopping List</h1>
-      <strong> Shareable List Token : {token} </strong>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {loading && <span>Collection: Loading...</span>}
       {items && items.length > 0 ? (
