@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { calcTimeDiff, formatDate } from '../../helpers';
-import './item-card.css';
+import './itemcard.css';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -12,10 +12,6 @@ export const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
   const toggleAcordion = () => {
     setExpand((prev) => !prev);
   };
-
-  console.log(doc.daysUntilPurchase);
-
-  // consistent borders
 
   return (
     <Accordion expanded={expand} className={`item-card ${getCategory(doc)}`}>

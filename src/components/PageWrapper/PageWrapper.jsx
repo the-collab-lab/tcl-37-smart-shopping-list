@@ -1,5 +1,5 @@
 import React from 'react';
-import './page-wrapper.css';
+import './pagewrapper.css';
 
 export const PageWrapper = ({ children }) => {
   return (
