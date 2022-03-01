@@ -1,4 +1,5 @@
 import React from 'react';
+import './Buttons/Buttons.css';
 
 const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
   return (

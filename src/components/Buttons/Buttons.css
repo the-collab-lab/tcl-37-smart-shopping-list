@@ -1,0 +1,71 @@
+input[type='radio'] {
+  display: none;
+}
+
+.not-soon-box {
+  display: flex;
+  width: 100px;
+  height: 81px;
+  background: rgba(248, 231, 221, 0.5);
+  border-radius: 14px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: #fe5419;
+}
+
+.not-soon-box:active,
+.kind-of-soon-box:active,
+.soon-box:active {
+  transform: translateY(0.5px);
+  filter: saturate(200%);
+}
+
+.not-soon-box:hover,
+.kind-of-soon-box:hover,
+.soon-box:hover {
+  filter: saturate(300%);
+}
+
+.select-box {
+  border: 1px solid black;
+}
+
+.deselect-box {
+  background-color: lightgrey;
+  color: darkgrey;
+}
+
+.soon-box {
+  display: flex;
+  width: 100px;
+  height: 81px;
+  background: rgba(222, 244, 221, 0.5);
+  border-radius: 14px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #1fa060;
+}
+
+.kind-of-soon-box {
+  display: flex;
+  width: 100px;
+  height: 81px;
+  background: #fafadf;
+  border-radius: 14px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #d1a806;
+}
+
+.soon-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-family: Poppins;
+  font-weight: 600;
+  font-size: 16px;
+}
