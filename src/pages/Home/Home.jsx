@@ -1,12 +1,10 @@
 import { useNavigate, Link } from 'react-router-dom';
 import { getToken } from '@the-collab-lab/shopping-list-utils';
 import './Home.css';
-import HeroImage from '../../src/assets/smartshopperr_logo.png';
-/* import { JoinList } from '../components/JoinList';
-import OrangeButton from '../components/Buttons/OrangeButton'; */
-import { JoinList, OrangeButton } from '../components';
+import HeroImage from '../../../src/assets/smartshopperr_logo.png';
+import { JoinList, OrangeButton } from '../../components';
 
-export const Home = (props) => {
+const Home = (props) => {
   let navigate = useNavigate();
   const { token, setToken } = props;
 
@@ -38,3 +36,5 @@ export const Home = (props) => {
     </div>
   );
 };
+
+export default Home;

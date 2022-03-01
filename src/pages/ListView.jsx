@@ -1,12 +1,8 @@
 import React from 'react';
-// import { List } from '../components/List/List';
 import { useNavigate } from 'react-router-dom';
 import { List, PageWrapper, Navigation, PageTitle } from '../components';
-/* import { PageWrapper } from '../components/PageWrapper/PageWrapper';
-import Navigation from '../components/Navigation/Navigation';
-import { PageTitle } from '../components/PageTitle/PageTitle'; */
 
-export const ListView = ({ token, setToken }) => {
+const ListView = ({ token, setToken }) => {
   let navigate = useNavigate();
 
   function handleClick() {
@@ -26,3 +22,5 @@ export const ListView = ({ token, setToken }) => {
     </PageWrapper>
   );
 };
+
+export default ListView;

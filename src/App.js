@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AddItemView } from './pages/AddItemView';
-import { ListView } from './pages/ListView';
-import { Home } from './pages/Home';
+import { AddItemView, ListView, Home } from './pages';
 import { RequireToken, RouteLink } from './components';
-// import RequireToken from '../src/components/RequireToken';
-// import { RouteLink } from './components/RouteLink';
 import './App.css';
 
 function App() {
