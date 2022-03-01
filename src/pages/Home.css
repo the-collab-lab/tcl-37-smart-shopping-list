@@ -1,3 +1,9 @@
+a,
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
 .home {
   text-align: center;
   display: flex;
