@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView } from './pages/AddItemView';
 import { ListView } from './pages/ListView';
 import { Home } from './pages/Home';
-import { RouteLink } from './components/RouteLink';
 import './App.css';
 
 function App() {
@@ -34,10 +33,10 @@ function App() {
             element={<AddItemView token={token} setToken={setToken} />}
           />
         </Routes>
-        <nav className="footer">
+        {/* <nav className="footer">
           <RouteLink to="/list">List</RouteLink>
           <RouteLink to="/add">Add Item</RouteLink>
-        </nav>
+        </nav> */}
       </Router>
     </div>
   );
