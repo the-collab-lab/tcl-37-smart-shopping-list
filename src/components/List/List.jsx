@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CircularProgress } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import db from '../../lib/firebase';
 import {
@@ -140,7 +141,7 @@ const List = ({ token }) => {
           </ul>
         </section>
       ) : loading ? (
-        <span>Collection: Loading...</span>
+        <CircularProgress />
       ) : (
         <section className="welcome">
           <p>
