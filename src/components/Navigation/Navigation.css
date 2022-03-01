@@ -8,6 +8,8 @@
 @media screen and (max-width: 768px) {
   .nav-container {
     padding: 1rem;
+    position: relative;
+    z-index: 1;
   }
   .logo {
     width: 100%;

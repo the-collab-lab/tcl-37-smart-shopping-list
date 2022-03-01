@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
 import { PageWrapper } from '../components/PageWrapper/PageWrapper';
 import Navigation from '../components/Navigation/Navigation';
+import { PageTitle } from '../components/PageTitle/PageTitle';
 
 export const AddItemView = ({ token, setToken }) => {
   const [inputs, setInputs] = useState({
@@ -66,6 +67,7 @@ export const AddItemView = ({ token, setToken }) => {
 
   return (
     <PageWrapper navbar={<Navigation setToken={setToken} token={token} />}>
+      <PageTitle>Add Item</PageTitle>
       <AddItemForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
