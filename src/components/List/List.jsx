@@ -12,7 +12,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
 import { getEstimate, calcDaysSince } from '../../helpers';
-import { ItemCard } from '../../components';
+import { ItemCard, OrangeButton } from '../../components';
 
 const List = ({ token }) => {
   let navigate = useNavigate();
@@ -106,10 +106,10 @@ const List = ({ token }) => {
   };
 
   return (
-    <div className="welcoming">
+    <main>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
       {items && items.length > 0 ? (
-        <div>
+        <section>
           <div className="search-field">
             <input
               placeholder="Start typing here..."
@@ -138,18 +138,18 @@ const List = ({ token }) => {
                 />
               ))}
           </ul>
-        </div>
+        </section>
       ) : loading ? (
         <span>Collection: Loading...</span>
       ) : (
-        <div>
+        <section>
           <p>Your shopping list is currently empty.</p>
-          <button type="button" onClick={() => navigate('/add')}>
+          <OrangeButton onClick={() => navigate('/add')}>
             ADD YOUR FIRST ITEM
-          </button>
-        </div>
+          </OrangeButton>
+        </section>
       )}
-    </div>
+    </main>
   );
 };
 
