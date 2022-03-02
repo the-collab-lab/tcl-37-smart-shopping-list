@@ -42,9 +42,8 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
           {doc.item}
         </label>
         <div className="estimate">
-          <span>{doc.daysUntilPurchase}</span>
-          <br />
-          day(s)
+          <p className="number-days">{doc.daysUntilPurchase}</p>
+          <p className="days">day(s)</p>
         </div>
         <button className="delete-button" onClick={() => deleteItem(doc)}>
           <DeleteOutlineIcon style={{ color: '#9E9EA7' }} />
@@ -59,7 +58,7 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
         )}
         {doc.estimated_next_purchase && (
           <div>
-            <p>Purchase interval: {doc.estimated_next_purchase} days</p>
+            <p>Purchase interval: {doc.estimated_next_purchase} day(s)</p>
             <p>
               Purchase:{' '}
               {doc.daysUntilPurchase === 0

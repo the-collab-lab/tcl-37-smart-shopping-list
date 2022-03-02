@@ -34,16 +34,23 @@
 
 .item-title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.35em;
+  max-width: 185px;
+  line-height: 1.2em;
 }
 
 .estimate {
   text-align: center;
 }
 
-.estimate span {
+.estimate .number-days {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 1.35em;
+  margin: 0;
+}
+
+.estimate .days {
+  font-size: 0.8em;
 }
 
 .delete-button {
@@ -153,4 +160,23 @@
 }
 .not-soon .checkmark:after {
   border-color: #fe5419;
+}
+
+@media only screen and (max-width: 992px) {
+  .css-1elwnq4-MuiPaper-root-MuiAccordion-root {
+    padding: 15px 0;
+  }
+  .item-title {
+    font-size: 1.2em;
+    max-width: 92px;
+  }
+  .estimate .number-days {
+    font-size: 1.2em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .item-title {
+    max-width: 75px;
+  }
 }

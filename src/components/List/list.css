@@ -5,15 +5,7 @@
 .collection-list {
   list-style-type: none;
   padding: 0;
-}
-
-.collection-list label {
-  display: inline;
-  margin: 0;
-}
-
-.collection-list input {
-  width: auto;
+  margin-top: 35px;
 }
 
 .welcome {
