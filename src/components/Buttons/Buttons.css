@@ -64,6 +64,7 @@ input[type='radio']#soon:checked + label {
 
 input[type='radio']#not-soon:checked + label {
   /* box-shadow: 2px 1px 1px #fe5419; */
+  /* gray option to decide if we like colored box-shadow or neutral */
   box-shadow: 2px 1px 1px gray;
   filter: saturate(300%);
 }
