@@ -9,12 +9,12 @@ import OrangeButton from './Buttons/OrangeButton';
 import { Input } from '../components/Input/Input';
 
 export const JoinList = ({ setToken }) => {
-  const [tokenInput, setTokenInput] = useState(' ');
+  const [tokenInput, setTokenInput] = useState('');
 
   const notify = () => toast.error('Token not valid');
   const navigate = useNavigate();
 
-  const [value] = useCollection(collection(db, tokenInput), {
+  const [value] = useCollection(collection(db, tokenInput || ' '), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
@@ -48,8 +48,9 @@ export const JoinList = ({ setToken }) => {
           name="share-token"
           placeholder="three word token"
           id="share-token"
+          value={tokenInput}
           onChange={handleChange}
-          onClick={() => console.log('clicked')}
+          onClick={() => setTokenInput(() => '')}
         />
         <br />
         <br />

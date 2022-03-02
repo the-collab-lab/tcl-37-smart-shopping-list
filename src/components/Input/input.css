@@ -1,10 +1,11 @@
-input {
+input[type='text'] {
   background: #f3f4f4;
   border-radius: 9px;
   border: none;
   width: 200px;
   padding: 10px;
   text-align: center;
+  color: #9e9ea7;
 }
 
 input::placeholder {
@@ -12,8 +13,15 @@ input::placeholder {
   opacity: 1;
 }
 
-button {
+button.clear {
   background: none;
   border: none;
   padding: 0;
+  position: absolute;
+  margin-top: 12px;
+  margin-left: -23px;
+}
+
+button:hover {
+  cursor: pointer;
 }

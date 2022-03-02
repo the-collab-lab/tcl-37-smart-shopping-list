@@ -120,13 +120,8 @@ export const List = ({ token }) => {
               placeholder="search for item"
               value={filterText}
               onChange={handleFilterChange}
+              onClick={() => setFilterText(() => '')}
             />
-            <button
-              style={{ marginLeft: '10px' }}
-              onClick={() => setFilterText('')}
-            >
-              X
-            </button>
           </div>
           <ul className="collection-list">
             {items

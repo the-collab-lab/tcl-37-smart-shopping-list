@@ -2,7 +2,7 @@ import React from 'react';
 import OrangeButton from './Buttons/OrangeButton';
 import { Input } from './Input/Input';
 
-const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
+const AddItemForm = ({ handleChange, handleSubmit, inputs, clearInput }) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -15,6 +15,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             placeholder="item"
             value={inputs.item || ''}
             onChange={handleChange}
+            onClick={clearInput}
           />
         </div>
         <h3>How soon will you buy this again?</h3>
