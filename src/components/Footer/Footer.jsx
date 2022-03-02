@@ -1,8 +1,8 @@
 import React from 'react';
 import './footer.css';
-import { RouteLink } from '../RouteLink';
+import { RouteLink } from '../../components';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer>
       <RouteLink to="/list">List</RouteLink>
@@ -10,3 +10,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export default Footer;

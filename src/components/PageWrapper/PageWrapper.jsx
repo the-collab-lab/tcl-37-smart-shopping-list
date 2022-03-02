@@ -1,6 +1,6 @@
 import React from 'react';
-import { Footer } from '../Footer/Footer';
-import './page-wrapper.css';
+import { Footer } from '../../components';
+import './pagewrapper.css';
 
 const PageWrapper = ({ children, navbar }) => {
   return (
