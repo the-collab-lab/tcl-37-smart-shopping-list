@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import './input.css';
 
-export const Input = ({
+const Input = ({
   required,
   name,
   placeholder,
@@ -38,3 +38,5 @@ export const Input = ({
     </div>
   );
 };
+
+export default Input;

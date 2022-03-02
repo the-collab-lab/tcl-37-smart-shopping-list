@@ -13,8 +13,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
 import { getEstimate, calcDaysSince } from '../../helpers';
-import { ItemCard, OrangeButton } from '../../components';
-import { Input } from '../Input/Input';
+import { ItemCard, OrangeButton, Input } from '../../components';
 
 const List = ({ token }) => {
   let navigate = useNavigate();

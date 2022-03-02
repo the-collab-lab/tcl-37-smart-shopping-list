@@ -1,7 +1,6 @@
 import React from 'react';
-import { OrangeButton } from './index';
+import { OrangeButton, Input } from './index';
 import './Buttons/Buttons.css';
-import { Input } from './Input/Input';
 
 const AddItemForm = ({ handleChange, handleSubmit, inputs, clearInput }) => {
   return (
