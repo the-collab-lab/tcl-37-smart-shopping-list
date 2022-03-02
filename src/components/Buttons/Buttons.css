@@ -53,16 +53,16 @@
 }
 
 input[type='radio']#kind-soon:checked + label {
-  box-shadow: 4px 2px 2px #d1a806;
+  box-shadow: 2px 1px 1px #d1a806;
   filter: saturate(300%);
 }
 
 input[type='radio']#soon:checked + label {
-  box-shadow: 4px 2px 2px #1fa060;
+  box-shadow: 2px 1px 1px #1fa060;
   filter: saturate(300%);
 }
 
 input[type='radio']#not-soon:checked + label {
-  box-shadow: 4px 2px 2px #fe5419;
+  box-shadow: 2px 1px 1px #fe5419;
   filter: saturate(300%);
 }
