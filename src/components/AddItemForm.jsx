@@ -1,4 +1,3 @@
-import React from 'react';
 import './Buttons/Buttons.css';
 
 const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
@@ -19,39 +18,37 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
         <div className="how-soon-div">
           <h3>How soon will you buy this again?</h3>
           <div className="soon-buttons">
-            <label className="soon-box" htmlFor="soon">
-              <input
-                className="soon"
-                defaultChecked
-                type="radio"
-                value={7}
-                id="soon"
-                name="days"
-                onChange={handleChange}
-              />
+            <input
+              type="radio"
+              value={7}
+              id="soon"
+              name="days"
+              onChange={handleChange}
+              unchecked
+            />
+            <label id="soon" htmlFor="soon">
               Soon
             </label>
-            <label className="kind-of-soon-box" htmlFor="kind-soon">
-              <input
-                className="kind-soon"
-                type="radio"
-                value={14}
-                id="kind-soon"
-                name="days"
-                onChange={handleChange}
-              />
+
+            <input
+              type="radio"
+              value={14}
+              id="kind-soon"
+              name="days"
+              onChange={handleChange}
+            />
+            <label id="kind-soon" htmlFor="kind-soon">
               Kind of Soon
             </label>
 
-            <label className="not-soon-box" htmlFor="not-soon">
-              <input
-                className="not-soon"
-                type="radio"
-                value={30}
-                id="not-soon"
-                name="days"
-                onChange={handleChange}
-              />
+            <input
+              type="radio"
+              value={30}
+              id="not-soon"
+              name="days"
+              onChange={handleChange}
+            />
+            <label id="not-soon" htmlFor="not-soon">
               Not Soon
             </label>
           </div>
