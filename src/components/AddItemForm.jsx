@@ -1,9 +1,10 @@
 import React from 'react';
-import OrangeButton from './Buttons/OrangeButton';
+import { OrangeButton } from './index';
+import './Buttons/Buttons.css';
 
 const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
   return (
-    <div>
+    <div className="input-item">
       <form onSubmit={handleSubmit}>
         <div>
           <h3>Item Name:</h3>
@@ -16,20 +17,21 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
             onChange={handleChange}
           />
         </div>
-        <h3>How soon will you buy this again?</h3>
-        <div>
-          <label htmlFor="soon">
+        <div className="how-soon-div">
+          <h3>How soon will you buy this again?</h3>
+          <div className="soon-buttons">
             <input
-              defaultChecked
               type="radio"
               value={7}
               id="soon"
               name="days"
               onChange={handleChange}
+              defaultChecked
             />
-            Soon
-          </label>
-          <label htmlFor="kind-soon">
+            <label id="soon" htmlFor="soon">
+              Soon
+            </label>
+
             <input
               type="radio"
               value={14}
@@ -37,10 +39,10 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
               name="days"
               onChange={handleChange}
             />
-            Kind of Soon
-          </label>
+            <label id="kind-soon" htmlFor="kind-soon">
+              Kind of Soon
+            </label>
 
-          <label htmlFor="not-soon">
             <input
               type="radio"
               value={30}
@@ -48,8 +50,10 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
               name="days"
               onChange={handleChange}
             />
-            Not Soon
-          </label>
+            <label id="not-soon" htmlFor="not-soon">
+              Not Soon
+            </label>
+          </div>
         </div>
         <OrangeButton>Add Item</OrangeButton>
       </form>
