@@ -15,6 +15,7 @@
 }
 
 .soon-buttons label {
+  cursor: pointer;
   display: flex;
   width: 100px;
   height: 81px;
