@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView, ListView, Home } from './pages';
-import { RequireToken, RouteLink } from './components';
+import { RequireToken } from './components';
 import './App.css';
 
 function App() {
@@ -41,10 +41,6 @@ function App() {
             }
           />
         </Routes>
-        <nav className="footer">
-          <RouteLink to="/list">List</RouteLink>
-          <RouteLink to="/add">Add Item</RouteLink>
-        </nav>
       </Router>
     </div>
   );
