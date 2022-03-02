@@ -14,6 +14,7 @@ import moment from 'moment';
 import './list.css';
 import { getEstimate, calcDaysSince } from '../../helpers';
 import { ItemCard, OrangeButton } from '../../components';
+import { Input } from '../Input/Input';
 
 const List = ({ token }) => {
   let navigate = useNavigate();
@@ -112,17 +113,12 @@ const List = ({ token }) => {
       {items && items.length > 0 ? (
         <section>
           <div className="search-field">
-            <input
-              placeholder="Start typing here..."
+            <Input
+              placeholder="search for item"
               value={filterText}
               onChange={handleFilterChange}
+              onClick={() => setFilterText(() => '')}
             />
-            <button
-              style={{ marginLeft: '10px' }}
-              onClick={() => setFilterText('')}
-            >
-              X
-            </button>
           </div>
           <ul className="collection-list">
             {items

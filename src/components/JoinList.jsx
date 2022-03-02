@@ -6,14 +6,15 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
 import OrangeButton from './Buttons/OrangeButton';
+import { Input } from '../components/Input/Input';
 
 const JoinList = ({ setToken }) => {
-  const [tokenInput, setTokenInput] = useState(' ');
+  const [tokenInput, setTokenInput] = useState('');
 
   const notify = () => toast.error('Token not valid');
   const navigate = useNavigate();
 
-  const [value] = useCollection(collection(db, tokenInput), {
+  const [value] = useCollection(collection(db, sanitize(tokenInput) || ' '), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
@@ -23,36 +24,32 @@ const JoinList = ({ setToken }) => {
       notify();
     } else {
       localStorage.setItem('token', sanitize(tokenInput));
-      setToken(tokenInput);
+      setToken(sanitize(tokenInput));
       if (tokenInput) navigate('/list');
     }
   };
 
   const handleChange = (e) => {
-    if (e.target.value !== '') {
-      const value = e.target.value;
-      setTokenInput(sanitize(value));
-    } else {
-      setTokenInput(' ');
-    }
+    const value = e.target.value;
+    setTokenInput(value);
   };
+
   return (
     <>
       <p> Join an existing shopping list by entering a three word token</p>
       <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="share-token"> Share token </label>
-          <input
-            type="text"
-            name="share-token"
-            placeholder="three word token"
-            id="share-token"
-            onChange={handleChange}
-          />
-          <br />
-          <br />
-          <OrangeButton>Join existing List</OrangeButton>
-        </form>
+        <Input
+          required={false}
+          name="share-token"
+          placeholder="three word token"
+          id="share-token"
+          value={tokenInput}
+          onChange={handleChange}
+          onClick={() => setTokenInput(() => '')}
+        />
+        <br />
+        <br />
+        <OrangeButton onClick={handleSubmit}>Join existing List</OrangeButton>
       </div>
     </>
   );

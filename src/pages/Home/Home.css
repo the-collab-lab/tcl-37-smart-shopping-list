@@ -22,12 +22,6 @@
   padding: 4rem 0 4rem 0;
 }
 
-.home input {
-  width: 200px;
-  border-radius: 2px;
-  text-align: center;
-}
-
 .hero {
   min-width: 40vw;
   min-height: 100vh;
@@ -58,6 +52,10 @@
   }
   .hero {
     display: none;
+  }
+
+  .home input.text-field {
+    background: #fff;
   }
 }
 

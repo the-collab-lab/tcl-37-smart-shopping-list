@@ -1,20 +1,22 @@
 import React from 'react';
 import { OrangeButton } from './index';
 import './Buttons/Buttons.css';
+import { Input } from './Input/Input';
 
-const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
+const AddItemForm = ({ handleChange, handleSubmit, inputs, clearInput }) => {
   return (
     <div className="input-item">
       <form onSubmit={handleSubmit}>
         <div>
           <h3>Item Name:</h3>
-          <input
-            type="text"
-            required
-            id="name"
+          <Input
+            required={true}
             name="item"
+            id="name"
+            placeholder="item"
             value={inputs.item || ''}
             onChange={handleChange}
+            onClick={clearInput}
           />
         </div>
         <div className="how-soon-div">
