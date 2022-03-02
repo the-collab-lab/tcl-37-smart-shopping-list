@@ -15,11 +15,11 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  min-width: 98vw;
+  width: 100vw;
 }
 
 .home > main {
-  padding: 4rem;
+  padding: 4rem 0 4rem 0;
 }
 
 .home input {
@@ -55,7 +55,6 @@
       #76dd78 0.82%,
       rgba(118, 221, 120, 0) 112.11%
     );
-    justify-content: center;
   }
   .hero {
     display: none;
