@@ -72,6 +72,9 @@ export const AddItemView = ({ token, setToken }) => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         inputs={inputs}
+        clearInput={() =>
+          setInputs((prevState) => ({ ...prevState, item: '' }))
+        }
       />
     </PageWrapper>
   );
