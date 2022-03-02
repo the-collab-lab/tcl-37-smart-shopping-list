@@ -8,6 +8,10 @@ input.text-field {
   color: #9e9ea7;
 }
 
+form input.text-field {
+  text-align: left;
+}
+
 input::placeholder {
   color: #9e9ea7;
   opacity: 1;
@@ -32,7 +36,7 @@ button.clear {
   border: none;
   padding: 0;
   position: absolute;
-  margin-top: 10px;
+  margin-top: 9px;
   margin-left: -23px;
   height: 30px;
 }
