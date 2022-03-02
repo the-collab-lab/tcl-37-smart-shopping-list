@@ -23,7 +23,9 @@ const Home = ({ token, setToken }) => {
       </header>
       <main>
         <img src={Logo} alt="Smart Shopper logo" />
-        <h1>Welcome to your Smart Shopping List!</h1>
+        <h1>
+          Welcome to your <br /> Smart Shopping List!
+        </h1>
         {token ? (
           <OrangeButton onClick={() => navigate('/list')}>
             View your shopping list
