@@ -28,7 +28,6 @@ export const Input = ({
         value={value}
         onChange={onChange}
         onFocus={handleFocus}
-        onClick={onClick}
       />
       {value && showClear && (
         <button className="clear" onClick={onClick}>
