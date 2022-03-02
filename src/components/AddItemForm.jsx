@@ -24,7 +24,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
               id="soon"
               name="days"
               onChange={handleChange}
-              unchecked
+              defaultChecked
             />
             <label id="soon" htmlFor="soon">
               Soon
