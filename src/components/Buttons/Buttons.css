@@ -11,14 +11,14 @@
   flex-direction: row;
   font-family: Poppins;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 100%;
 }
 
 .soon-buttons label {
   cursor: pointer;
   display: flex;
-  width: 100px;
-  height: 81px;
+  width: 6.25em;
+  height: 5.0625em;
   border-radius: 14px;
   text-align: center;
   align-items: center;
