@@ -20,6 +20,7 @@ export const Input = ({
   return (
     <div>
       <input
+        className="text-field"
         required={required}
         type="text"
         name={name}

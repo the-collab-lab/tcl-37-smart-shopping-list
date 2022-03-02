@@ -14,7 +14,7 @@ export const JoinList = ({ setToken }) => {
   const notify = () => toast.error('Token not valid');
   const navigate = useNavigate();
 
-  const [value] = useCollection(collection(db, tokenInput || ' '), {
+  const [value] = useCollection(collection(db, sanitize(tokenInput) || ' '), {
     snapshotListenOptions: { includeMetadataChanges: true },
   });
 
@@ -24,18 +24,14 @@ export const JoinList = ({ setToken }) => {
       notify();
     } else {
       localStorage.setItem('token', sanitize(tokenInput));
-      setToken(tokenInput);
+      setToken(sanitize(tokenInput));
       if (tokenInput) navigate('/list');
     }
   };
 
   const handleChange = (e) => {
-    if (e.target.value !== '') {
-      const value = e.target.value;
-      setTokenInput(sanitize(value));
-    } else {
-      setTokenInput(' ');
-    }
+    const value = e.target.value;
+    setTokenInput(value);
   };
 
   return (

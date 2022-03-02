@@ -1,7 +1,7 @@
-input[type='text'] {
+input.text-field {
   background: #f3f4f4;
   border-radius: 9px;
-  border: none;
+  border: 1px solid transparent;
   width: 200px;
   padding: 10px;
   text-align: center;
@@ -13,13 +13,34 @@ input::placeholder {
   opacity: 1;
 }
 
+input.text-field:focus,
+input.text-field:active {
+  outline: none;
+  border-color: rgba(118, 221, 120, 0.7);
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 0 4px rgb(118 221 120 / 10%);
+  box-shadow: 0 0 0 4px rgb(118 221 120 / 10%);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 button.clear {
-  background: none;
+  background: #f3f4f4;
   border: none;
   padding: 0;
   position: absolute;
-  margin-top: 12px;
+  margin-top: 13px;
   margin-left: -23px;
+}
+
+input.text-field:focus ~ button.clear,
+input:-webkit-autofill ~ button.clear {
+  background: #fff;
 }
 
 button:hover {
