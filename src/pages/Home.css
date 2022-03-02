@@ -42,4 +42,8 @@
   .hero {
     display: none;
   }
+
+  .home input.text-field {
+    background: #fff;
+  }
 }
