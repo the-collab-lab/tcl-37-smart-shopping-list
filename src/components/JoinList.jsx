@@ -6,6 +6,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
 import OrangeButton from './Buttons/OrangeButton';
+import { Input } from '../components/Input/Input';
 
 export const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState(' ');
@@ -36,24 +37,23 @@ export const JoinList = ({ setToken }) => {
       setTokenInput(' ');
     }
   };
+
   return (
     <>
       <p> -or- </p>
       <p> Join an existing shopping list by entering a three word token</p>
       <div>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="share-token"> Share token </label>
-          <input
-            type="text"
-            name="share-token"
-            placeholder="three word token"
-            id="share-token"
-            onChange={handleChange}
-          />
-          <br />
-          <br />
-          <OrangeButton>Join existing List</OrangeButton>
-        </form>
+        <Input
+          required={false}
+          name="share-token"
+          placeholder="three word token"
+          id="share-token"
+          onChange={handleChange}
+          onClick={() => console.log('clicked')}
+        />
+        <br />
+        <br />
+        <OrangeButton onClick={handleSubmit}>Join existing List</OrangeButton>
       </div>
     </>
   );

@@ -1,0 +1,19 @@
+input {
+  background: #f3f4f4;
+  border-radius: 9px;
+  border: none;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+}
+
+input::placeholder {
+  color: #9e9ea7;
+  opacity: 1;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}

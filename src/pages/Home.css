@@ -10,12 +10,6 @@
   padding: 4rem;
 }
 
-.home input {
-  width: 200px;
-  border-radius: 2px;
-  text-align: center;
-}
-
 .hero {
   min-width: 40vw;
   min-height: 100vh;

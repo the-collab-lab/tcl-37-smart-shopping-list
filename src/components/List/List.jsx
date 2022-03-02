@@ -17,6 +17,7 @@ import {
   formatDate,
   calcDaysSince,
 } from '../../helpers';
+import { Input } from '../Input/Input';
 
 export const List = ({ token }) => {
   let navigate = useNavigate();
@@ -115,8 +116,8 @@ export const List = ({ token }) => {
       {items && items.length > 0 ? (
         <div>
           <div className="search-field">
-            <input
-              placeholder="Start typing here..."
+            <Input
+              placeholder="search for item"
               value={filterText}
               onChange={handleFilterChange}
             />

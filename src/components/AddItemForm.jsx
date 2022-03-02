@@ -1,5 +1,6 @@
 import React from 'react';
 import OrangeButton from './Buttons/OrangeButton';
+import { Input } from './Input/Input';
 
 const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
   return (
@@ -7,11 +8,11 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs }) => {
       <form onSubmit={handleSubmit}>
         <div>
           <h3>Item Name:</h3>
-          <input
-            type="text"
-            required
-            id="name"
+          <Input
+            required={true}
             name="item"
+            id="name"
+            placeholder="item"
             value={inputs.item || ''}
             onChange={handleChange}
           />
