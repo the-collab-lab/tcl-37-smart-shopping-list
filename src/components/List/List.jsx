@@ -144,7 +144,7 @@ const List = ({ token }) => {
             to get started!
           </p>
           <OrangeButton onClick={() => navigate('/add')}>
-            ADD AN ITEM
+            Add an Item
           </OrangeButton>
         </section>
       )}

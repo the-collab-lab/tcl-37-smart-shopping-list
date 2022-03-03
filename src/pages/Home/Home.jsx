@@ -28,11 +28,11 @@ const Home = ({ token, setToken }) => {
         </h1>
         {token ? (
           <OrangeButton onClick={() => navigate('/list')}>
-            View your shopping list
+            View Your Shopping List
           </OrangeButton>
         ) : (
           <OrangeButton onClick={() => generateToken()}>
-            Create a new list
+            Create a New List
           </OrangeButton>
         )}
         <img src={Divider} alt="" className="divider" />

@@ -48,7 +48,7 @@ const JoinList = ({ setToken }) => {
         />
         <br />
         <br />
-        <OrangeButton onClick={handleSubmit}>Join existing List</OrangeButton>
+        <OrangeButton onClick={handleSubmit}>Join Existing List</OrangeButton>
       </div>
     </>
   );
