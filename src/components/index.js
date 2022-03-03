@@ -10,3 +10,4 @@ export { default as RequireToken } from './RequireToken';
 export { default as RouteLink } from './RouteLink';
 export { default as Footer } from './Footer/Footer';
 export { default as Input } from './Input/Input';
+export { default as RadioButtons } from './AddItemForm/RadioButtons';
