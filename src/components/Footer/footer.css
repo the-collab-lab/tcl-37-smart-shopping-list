@@ -15,7 +15,7 @@ footer > a:hover {
 }
 
 @media only screen and (max-width: 768px) {
-  footer {
+  /* footer {
     padding-top: 0;
-  }
+  } */
 }
