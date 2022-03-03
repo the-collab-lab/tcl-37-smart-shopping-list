@@ -5,7 +5,8 @@ input.text-field {
   width: 200px;
   padding: 13px 10px;
   text-align: center;
-  color: #9e9ea7;
+  font-size: 1em;
+  color: #424246;
 }
 
 form input.text-field {
