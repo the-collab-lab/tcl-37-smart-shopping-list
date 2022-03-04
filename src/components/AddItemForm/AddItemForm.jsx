@@ -1,5 +1,5 @@
 import React from 'react';
-import { OrangeButton, Input, RadioButtons } from '../index';
+import { Button, Input, RadioButtons } from '../index';
 import '../Buttons/Buttons.css';
 import './additemform.css';
 
@@ -25,7 +25,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs, clearInput }) => {
           <RadioButtons handleChange={handleChange} />
         </div>
       </div>
-      <OrangeButton>Add Item</OrangeButton>
+      <Button>Add Item</Button>
     </form>
   );
 };

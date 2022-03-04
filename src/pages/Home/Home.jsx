@@ -4,7 +4,7 @@ import './Home.css';
 import HeroImage from '../../../src/assets/smartshopperr_logo.png';
 import Divider from '../../../src/assets/divider.png';
 import Logo from '../../../src/assets/smartshopperr_title_whitefill.png';
-import { JoinList, OrangeButton } from '../../components';
+import { JoinList, Button } from '../../components';
 
 const Home = ({ token, setToken }) => {
   let navigate = useNavigate();
@@ -27,13 +27,11 @@ const Home = ({ token, setToken }) => {
           Welcome to your <br /> Smart Shopping List!
         </h1>
         {token ? (
-          <OrangeButton onClick={() => navigate('/list')}>
+          <Button onClick={() => navigate('/list')}>
             View Your Shopping List
-          </OrangeButton>
+          </Button>
         ) : (
-          <OrangeButton onClick={() => generateToken()}>
-            Create a New List
-          </OrangeButton>
+          <Button onClick={() => generateToken()}>Create a New List</Button>
         )}
         <img src={Divider} alt="" className="divider" />
         <JoinList setToken={setToken} />

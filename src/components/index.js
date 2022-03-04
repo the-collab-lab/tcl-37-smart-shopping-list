@@ -1,4 +1,4 @@
-export { default as OrangeButton } from './Buttons/OrangeButton';
+export { default as Button } from './Buttons/Button';
 export { default as ItemCard } from './ItemCard/ItemCard';
 export { default as List } from './List/List';
 export { default as Navigation } from './Navigation/Navigation';

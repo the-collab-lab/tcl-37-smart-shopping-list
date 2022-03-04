@@ -5,7 +5,7 @@ import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
-import { OrangeButton, Input } from './index';
+import { Button, Input } from './index';
 
 const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState('');
@@ -47,7 +47,7 @@ const JoinList = ({ setToken }) => {
           onChange={handleChange}
           onClick={() => setTokenInput(() => '')}
         />
-        <OrangeButton onClick={handleSubmit}>Join Existing List</OrangeButton>
+        <Button onClick={handleSubmit}>Join Existing List</Button>
       </div>
     </>
   );

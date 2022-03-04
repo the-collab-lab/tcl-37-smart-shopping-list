@@ -1,8 +1,8 @@
 /* Layout buttons */
-.orange-button {
+.button {
   width: 9.625em;
   height: 3.18em;
-  background: #ffa001;
+  background: #283f9d;
   border-radius: 2.438em;
   font-family: 'Poppins', sans-serif;
   font-size: 1.2em;
@@ -10,13 +10,13 @@
   border: 0px;
 }
 
-.orange-button:active {
+.button:active {
   transform: translateY(0.5px);
   filter: saturate(200%);
 }
 
-.orange-button:hover {
-  background-color: #ee9804;
+.button:hover {
+  background-color: #445fcf;
   cursor: pointer;
 }
 
@@ -50,39 +50,31 @@
   font-size: 1.2em;
 }
 
-#soon {
-  color: #1fa060;
-  background: rgba(222, 244, 221, 0.5);
-
+#label-soon {
   color: #395c21;
   background: #deffde;
 }
 
-#not-soon {
-  background: rgba(248, 231, 221, 0.5);
-  color: #fe5419;
-
+#label-not-soon {
   background: #fbf3ee;
   color: #923111;
 }
 
-#kind-soon {
+#label-kind-soon {
   background: #fafadf;
-  color: #d1a806;
-
   color: #544405;
 }
 
-/* #soon:active,
-#kind-soon:active,
-#not-soon:active {
+#label-soon:active,
+#label-kind-soon:active,
+#label-not-soon:active {
   transform: translateY(0.5px);
   filter: saturate(200%);
-} */
+}
 
-#not-soon:hover,
-#kind-soon:hover,
-#soon:hover {
+#label-not-soon:hover,
+#label-kind-soon:hover,
+#label-soon:hover {
   filter: saturate(200%);
 }
 

@@ -9,7 +9,7 @@ const RadioButtons = ({ handleChange }) => {
         onChange={handleChange}
         defaultChecked
       />
-      <label id="soon" htmlFor="soon">
+      <label id="label-soon" htmlFor="soon">
         Soon
       </label>
 
@@ -20,7 +20,7 @@ const RadioButtons = ({ handleChange }) => {
         name="days"
         onChange={handleChange}
       />
-      <label id="kind-soon" htmlFor="kind-soon">
+      <label id="label-kind-soon" htmlFor="kind-soon">
         Kind of Soon
       </label>
 
@@ -31,7 +31,7 @@ const RadioButtons = ({ handleChange }) => {
         name="days"
         onChange={handleChange}
       />
-      <label id="not-soon" htmlFor="not-soon">
+      <label id="label-not-soon" htmlFor="not-soon">
         Not Soon
       </label>
     </>

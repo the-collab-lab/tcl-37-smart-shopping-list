@@ -13,7 +13,7 @@ import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
 import { getEstimate, calcDaysSince } from '../../helpers';
-import { ItemCard, OrangeButton, Input } from '../../components';
+import { ItemCard, Button, Input } from '../../components';
 
 const List = ({ token }) => {
   let navigate = useNavigate();
@@ -146,9 +146,7 @@ const List = ({ token }) => {
             Your shopping list is currently empty. <br /> Click the button below
             to get started!
           </p>
-          <OrangeButton onClick={() => navigate('/add')}>
-            Add an Item
-          </OrangeButton>
+          <Button onClick={() => navigate('/add')}>Add an Item</Button>
         </section>
       )}
     </main>
