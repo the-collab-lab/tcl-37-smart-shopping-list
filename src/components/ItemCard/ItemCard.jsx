@@ -62,7 +62,12 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
         )}
         {doc.estimated_next_purchase && (
           <div>
-            <p>Purchase interval: {doc.estimated_next_purchase} day(s)</p>
+            {doc.estimated_next_purchase === 1 ? (
+              <p>Purchase interval: {doc.estimated_next_purchase} day</p>
+            ) : (
+              <p>Purchase interval: {doc.estimated_next_purchase} days</p>
+            )}
+
             <p>
               Purchase:{' '}
               {doc.daysUntilPurchase === 0
