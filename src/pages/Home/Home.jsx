@@ -22,7 +22,7 @@ const Home = ({ token, setToken }) => {
         <img src={HeroImage} alt="Logo" />
       </header>
       <main>
-        <img src={Logo} alt="Smart Shopper logo" />
+        <img className="home-logo" src={Logo} alt="Smart Shopper logo" />
         <h1>
           Welcome to your <br /> Smart Shopping List!
         </h1>

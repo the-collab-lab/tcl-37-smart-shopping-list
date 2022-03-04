@@ -9,10 +9,6 @@ input.text-field {
   color: #313135;
 }
 
-form input.text-field {
-  text-align: left;
-}
-
 input::placeholder {
   color: #9e9ea7;
   opacity: 1;

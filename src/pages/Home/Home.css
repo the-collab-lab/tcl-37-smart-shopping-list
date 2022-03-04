@@ -21,6 +21,23 @@
   padding: 4rem 0 4rem 0;
 }
 
+.home-logo {
+  margin-bottom: 2rem;
+}
+
+.home h1 {
+  margin-bottom: 2rem;
+}
+
+.home input {
+  margin-bottom: 2rem;
+}
+
+.home p {
+  width: 80%;
+  margin: 1rem auto;
+}
+
 .hero {
   width: 50%;
   min-width: 40vw;
