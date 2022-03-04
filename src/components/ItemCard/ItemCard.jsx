@@ -49,7 +49,11 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
             <p className="days">days</p>
           )}
         </div>
-        <button className="delete-button" onClick={() => deleteItem(doc)}>
+        <button
+          aria-label="delete"
+          className="delete-button"
+          onClick={() => deleteItem(doc)}
+        >
           <DeleteOutlineIcon style={{ color: '#9E9EA7' }} />
         </button>
       </AccordionSummary>
