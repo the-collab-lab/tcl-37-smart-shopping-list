@@ -22,8 +22,8 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
             style={{ color: '#9E9EA7' }}
           />
         }
-        aria-controls="panel1a-content"
-        id="panel1a-header"
+        aria-controls={`panel1a-content ${doc.id}`}
+        id={`panel1a-header ${doc.id}`}
       >
         <div className="container">
           <input
