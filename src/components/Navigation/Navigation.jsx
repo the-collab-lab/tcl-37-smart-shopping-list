@@ -59,14 +59,14 @@ export const Navigation = ({ setToken, token }) => {
           <ListIcon sx={navIconStyle} />
         </IconButton>
       </Tooltip>
-      <Tooltip title="Sign out">
-        <IconButton aria-label="sign out" onClick={() => handleSignOut()}>
-          <LogoutIcon sx={navIconStyle} />
-        </IconButton>
-      </Tooltip>
       <Tooltip title="Share token">
         <IconButton aria-label="share token" onClick={() => copyToClipboard()}>
           <ShareIcon sx={navIconStyle} />
+        </IconButton>
+      </Tooltip>
+      <Tooltip title="Sign out">
+        <IconButton aria-label="sign out" onClick={() => handleSignOut()}>
+          <LogoutIcon sx={navIconStyle} />
         </IconButton>
       </Tooltip>
     </nav>
