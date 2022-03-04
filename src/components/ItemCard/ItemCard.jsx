@@ -43,7 +43,11 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
         </label>
         <div className="estimate">
           <p className="number-days">{doc.daysUntilPurchase}</p>
-          <p className="days">day(s)</p>
+          {doc.daysUntilPurchase === 1 ? (
+            <p className="days">day</p>
+          ) : (
+            <p className="days">days</p>
+          )}
         </div>
         <button className="delete-button" onClick={() => deleteItem(doc)}>
           <DeleteOutlineIcon style={{ color: '#9E9EA7' }} />
