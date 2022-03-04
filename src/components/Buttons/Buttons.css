@@ -41,8 +41,8 @@
 .soon-buttons label {
   cursor: pointer;
   display: flex;
-  width: 7em;
-  height: 6em;
+  width: 6.25em;
+  height: 5.0635em;
   border-radius: 14px;
   text-align: center;
   align-items: center;
@@ -92,3 +92,10 @@ input[type='radio']#not-soon:checked + label {
   box-shadow: 3px 3px 1px #fe5419;
   filter: saturate(200%);
 }
+
+/* @media only screen and (max-width: 992px) {
+  .soon-buttons label {
+    width: 6em;
+    height: 5em;
+  }
+} */
