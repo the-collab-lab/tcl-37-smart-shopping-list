@@ -11,38 +11,7 @@
   align-items: center;
 }
 
-.footer {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  bottom: 0;
-  padding: 2rem;
-}
-
-.footer > a {
-  padding: 1rem;
-}
-
 label {
   display: block;
   /* margin: 15px; */
-}
-
-.collection-list {
-  list-style-type: none;
-}
-
-.collection-list label {
-  display: inline;
-  margin: 0;
-}
-
-.collection-list input {
-  width: auto;
-}
-
-.delete-button {
-  color: red;
-  padding: 2px;
-  margin: 10px;
 }

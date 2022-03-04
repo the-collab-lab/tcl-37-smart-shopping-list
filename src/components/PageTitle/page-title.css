@@ -3,6 +3,7 @@
 }
 
 h1 {
+  margin-top: 0;
   text-align: center;
   position: relative;
 }
@@ -34,6 +35,10 @@ h1 {
     top: 0;
     left: 0;
     z-index: 0;
+  }
+
+  .page-title {
+    margin-bottom: 60px;
   }
 }
 

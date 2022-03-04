@@ -1,11 +1,15 @@
 import React from 'react';
-import './page-wrapper.css';
+import { Footer } from '../../components';
+import './pagewrapper.css';
 
-export const PageWrapper = ({ children, navbar }) => {
+const PageWrapper = ({ children, navbar }) => {
   return (
     <div className="green-bg">
       {navbar}
       <div className="wrapper">{children}</div>
+      <Footer />
     </div>
   );
 };
+
+export default PageWrapper;

@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import db from '../lib/firebase';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-import AddItemForm from '../components/AddItemForm';
+import { AddItemForm, PageWrapper, Navigation, PageTitle } from '../components';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import moment from 'moment';
-import { PageWrapper } from '../components/PageWrapper/PageWrapper';
-import Navigation from '../components/Navigation/Navigation';
-import { PageTitle } from '../components/PageTitle/PageTitle';
 
-export const AddItemView = ({ token, setToken }) => {
+const AddItemView = ({ token, setToken }) => {
   const [inputs, setInputs] = useState({
     days: 7,
     last_purchased_date: null,
@@ -50,7 +46,7 @@ export const AddItemView = ({ token, setToken }) => {
         return;
       }
 
-      const docRef = await addDoc(collection(db, token), {
+      await addDoc(collection(db, token), {
         item: inputs.item,
         last_purchased_date: inputs.last_purchased_date,
         date_added: moment().format(),
@@ -58,7 +54,6 @@ export const AddItemView = ({ token, setToken }) => {
         total_purchases: 0,
       });
       setInputs((prevState) => ({ ...prevState, item: '' }));
-      console.log('Document written with ID: ', docRef.id);
       notify();
     } catch (e) {
       console.error('Error adding document: ', e);
@@ -79,3 +74,5 @@ export const AddItemView = ({ token, setToken }) => {
     </PageWrapper>
   );
 };
+
+export default AddItemView;

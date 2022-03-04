@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { CircularProgress, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import db from '../../lib/firebase';
 import {
@@ -11,15 +12,10 @@ import {
 import { useCollection } from 'react-firebase-hooks/firestore';
 import moment from 'moment';
 import './list.css';
-import {
-  getEstimate,
-  calcTimeDiff,
-  formatDate,
-  calcDaysSince,
-} from '../../helpers';
-import { Input } from '../Input/Input';
+import { getEstimate, calcDaysSince } from '../../helpers';
+import { ItemCard, Button, Input } from '../../components';
 
-export const List = ({ token }) => {
+const List = ({ token }) => {
   let navigate = useNavigate();
   const q = query(collection(db, token));
   const [value, loading, error] = useCollection(q, {
@@ -63,6 +59,7 @@ export const List = ({ token }) => {
     const daysSincePreviousTransaction = calcDaysSince(
       item.last_purchased_date || item.date_added,
     );
+
     let daysUntilNextPurchase =
       item.estimated_next_purchase - daysSincePreviousTransaction;
     return daysUntilNextPurchase;
@@ -84,7 +81,7 @@ export const List = ({ token }) => {
   };
 
   const deleteItem = async (document) => {
-    if (window.confirm(`Are you sure you want to delete ${document.item}?`)) {
+    if (window.confirm(`Are you sure you want to delete "${document.item}"?`)) {
       await deleteDoc(doc(db, token, document.id));
     }
   };
@@ -110,13 +107,13 @@ export const List = ({ token }) => {
   };
 
   return (
-    <div className="welcoming">
+    <main>
       {error && <strong>Error: {JSON.stringify(error)}</strong>}
-      {loading && <span>Collection: Loading...</span>}
       {items && items.length > 0 ? (
-        <div>
+        <section>
           <div className="search-field">
             <Input
+              ariaLabel="search for item"
               placeholder="search for item"
               value={filterText}
               onChange={handleFilterChange}
@@ -129,57 +126,31 @@ export const List = ({ token }) => {
                 doc.item.toLowerCase().includes(filterText.toLowerCase()),
               )
               .map((doc) => (
-                <li key={doc.id} className={getCategory(doc)}>
-                  <input
-                    type="checkbox"
-                    checked={calcTimeDiff(doc.last_purchased_date)}
-                    disabled={calcTimeDiff(doc.last_purchased_date)}
-                    name={doc.id}
-                    id={doc.id}
-                    onClick={(e) => handleClick(doc, e)}
-                    onChange={(e) => handleClick(doc, e)}
-                    aria-label={getCategory(doc)}
-                  />
-                  <label htmlFor={doc.id}>{doc.item}</label>
-                  {doc.total_purchases > 0 && (
-                    <p> Total purchases: {doc.total_purchases}</p>
-                  )}
-                  {doc.last_purchased_date && (
-                    <p>
-                      Last purchased date: {formatDate(doc.last_purchased_date)}
-                    </p>
-                  )}
-                  {doc.estimated_next_purchase && (
-                    <p>
-                      Estimated next purchase: {doc.estimated_next_purchase}{' '}
-                      days
-                      <br />
-                      Purchase:{' '}
-                      {doc.daysUntilPurchase === 0
-                        ? 'today'
-                        : doc.daysUntilPurchase < 0
-                        ? `overdue by ${(doc.daysUntilPurchase *= -1)} day(s)`
-                        : `in ${doc.daysUntilPurchase} day(s)`}
-                    </p>
-                  )}
-                  <button
-                    className="delete-button"
-                    onClick={() => deleteItem(doc)}
-                  >
-                    delete
-                  </button>
-                </li>
+                <ItemCard
+                  key={doc.id}
+                  doc={doc}
+                  handleClick={handleClick}
+                  getCategory={getCategory}
+                  deleteItem={deleteItem}
+                />
               ))}
           </ul>
-        </div>
+        </section>
+      ) : loading ? (
+        <Stack alignItems="center">
+          <CircularProgress />
+        </Stack>
       ) : (
-        <div>
-          <p>Your shopping list is currently empty.</p>
-          <button type="button" onClick={() => navigate('/add')}>
-            ADD YOUR FIRST ITEM
-          </button>
-        </div>
+        <section className="welcome">
+          <p>
+            Your shopping list is currently empty. <br /> Click the button below
+            to get started!
+          </p>
+          <Button onClick={() => navigate('/add')}>Add an Item</Button>
+        </section>
       )}
-    </div>
+    </main>
   );
 };
+
+export default List;

@@ -1,0 +1,17 @@
+.add-item {
+  text-align: center;
+}
+
+.add-item label {
+  margin-bottom: 15px;
+}
+
+.input-container {
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.add-item .orange-button {
+  display: block;
+  margin: 0 auto;
+}

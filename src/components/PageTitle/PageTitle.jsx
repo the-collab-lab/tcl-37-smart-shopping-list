@@ -2,7 +2,7 @@ import React from 'react';
 import Graphic from '../../assets/smartshopperr_logo.png';
 import './page-title.css';
 
-export const PageTitle = ({ children }) => {
+const PageTitle = ({ children }) => {
   return (
     <div className="page-title">
       <div className="mobile-bg"></div>
@@ -13,3 +13,5 @@ export const PageTitle = ({ children }) => {
     </div>
   );
 };
+
+export default PageTitle;

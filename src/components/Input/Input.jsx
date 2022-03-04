@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import ClearOutlinedIcon from '@mui/icons-material/ClearOutlined';
 import './input.css';
 
-export const Input = ({
+const Input = ({
   required,
   name,
   placeholder,
+  ariaLabel,
   id,
   value,
   onChange,
@@ -25,6 +26,7 @@ export const Input = ({
         type="text"
         name={name}
         placeholder={placeholder}
+        aria-label={ariaLabel}
         id={id}
         value={value}
         onChange={onChange}
@@ -38,3 +40,5 @@ export const Input = ({
     </div>
   );
 };
+
+export default Input;

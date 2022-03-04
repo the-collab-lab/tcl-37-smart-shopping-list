@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AddItemView } from './pages/AddItemView';
-import { ListView } from './pages/ListView';
-import { Home } from './pages/Home';
-import RequireToken from '../src/components/RequireToken';
-import { RouteLink } from './components/RouteLink';
+import { AddItemView, ListView, Home } from './pages';
+import { RequireToken } from './components';
 import './App.css';
 
 function App() {
   const [token, setToken] = useState('');
 
   useEffect(() => {
-    if (localStorage.token) setToken(localStorage.token);
+    if (localStorage.getItem('token')) setToken(localStorage.getItem('token'));
   }, []);
 
   return (
@@ -43,10 +41,6 @@ function App() {
             }
           />
         </Routes>
-        <nav className="footer">
-          <RouteLink to="/list">List</RouteLink>
-          <RouteLink to="/add">Add Item</RouteLink>
-        </nav>
       </Router>
     </div>
   );

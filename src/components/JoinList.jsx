@@ -5,10 +5,9 @@ import { collection } from 'firebase/firestore';
 import { useCollection } from 'react-firebase-hooks/firestore';
 import { toast } from 'react-toastify';
 import { sanitize } from '../helpers';
-import OrangeButton from './Buttons/OrangeButton';
-import { Input } from '../components/Input/Input';
+import { Button, Input } from './index';
 
-export const JoinList = ({ setToken }) => {
+const JoinList = ({ setToken }) => {
   const [tokenInput, setTokenInput] = useState('');
 
   const notify = () => toast.error('Token not valid');
@@ -36,22 +35,22 @@ export const JoinList = ({ setToken }) => {
 
   return (
     <>
-      <p> -or- </p>
       <p> Join an existing shopping list by entering a three word token</p>
       <div>
         <Input
           required={false}
           name="share-token"
           placeholder="three word token"
+          ariaLabel="Join an existing list by entering a three word token"
           id="share-token"
           value={tokenInput}
           onChange={handleChange}
           onClick={() => setTokenInput(() => '')}
         />
-        <br />
-        <br />
-        <OrangeButton onClick={handleSubmit}>Join existing List</OrangeButton>
+        <Button onClick={handleSubmit}>Join Existing List</Button>
       </div>
     </>
   );
 };
+
+export default JoinList;

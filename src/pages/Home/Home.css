@@ -1,16 +1,45 @@
+.divider {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  height: auto;
+  width: 75%;
+  align-self: center;
+  justify-self: center;
+}
+
 .home {
   text-align: center;
   display: flex;
   align-items: center;
   min-height: 100vh;
-  min-width: 98vw;
+  width: 100vw;
 }
 
 .home > main {
-  padding: 4rem;
+  padding: 4rem 0 4rem 0;
+}
+
+.home-logo {
+  margin-bottom: 2rem;
+}
+
+.home h1 {
+  margin-bottom: 2rem;
+}
+
+.home input {
+  margin-bottom: 2rem;
+}
+
+.home p {
+  width: 80%;
+  margin: 1rem auto;
 }
 
 .hero {
+  width: 50%;
   min-width: 40vw;
   min-height: 100vh;
   background-image: linear-gradient(
@@ -28,6 +57,7 @@
 .hero > img {
   width: 75%;
   height: auto;
+  max-width: 545px;
 }
 
 @media screen and (max-width: 768px) {
@@ -45,5 +75,11 @@
 
   .home input.text-field {
     background: #fff;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .divider {
+    display: inline-block;
   }
 }
