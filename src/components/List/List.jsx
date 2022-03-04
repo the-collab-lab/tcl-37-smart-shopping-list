@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import db from '../../lib/firebase';
 import {
@@ -113,6 +113,7 @@ const List = ({ token }) => {
         <section>
           <div className="search-field">
             <Input
+              ariaLabel="search for item"
               placeholder="search for item"
               value={filterText}
               onChange={handleFilterChange}
@@ -136,7 +137,9 @@ const List = ({ token }) => {
           </ul>
         </section>
       ) : loading ? (
-        <CircularProgress />
+        <Stack alignItems="center">
+          <CircularProgress />
+        </Stack>
       ) : (
         <section className="welcome">
           <p>

@@ -11,6 +11,7 @@ const AddItemForm = ({ handleChange, handleSubmit, inputs, clearInput }) => {
         <Input
           required={true}
           name="item"
+          ariaLabel="Item Name"
           id="name"
           placeholder="item"
           value={inputs.item || ''}

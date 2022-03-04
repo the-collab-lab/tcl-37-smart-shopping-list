@@ -6,6 +6,7 @@ const Input = ({
   required,
   name,
   placeholder,
+  ariaLabel,
   id,
   value,
   onChange,
@@ -25,6 +26,7 @@ const Input = ({
         type="text"
         name={name}
         placeholder={placeholder}
+        aria-label={ariaLabel}
         id={id}
         value={value}
         onChange={onChange}

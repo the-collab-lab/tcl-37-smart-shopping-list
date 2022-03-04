@@ -41,6 +41,7 @@ const JoinList = ({ setToken }) => {
           required={false}
           name="share-token"
           placeholder="three word token"
+          ariaLabel="Join an existing list by entering a three word token"
           id="share-token"
           value={tokenInput}
           onChange={handleChange}
