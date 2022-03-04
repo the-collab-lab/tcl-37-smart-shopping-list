@@ -113,6 +113,7 @@ const List = ({ token }) => {
         <section>
           <div className="search-field">
             <Input
+              ariaLabel="search for item"
               placeholder="search for item"
               value={filterText}
               onChange={handleFilterChange}
