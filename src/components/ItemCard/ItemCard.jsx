@@ -61,22 +61,18 @@ const ItemCard = ({ doc, handleClick, getCategory, deleteItem }) => {
           <p>Last purchased date: {formatDate(doc.last_purchased_date)}</p>
         )}
         {doc.estimated_next_purchase && (
-          <div>
-            {doc.estimated_next_purchase === 1 ? (
-              <p>Purchase interval: {doc.estimated_next_purchase} day</p>
-            ) : (
-              <p>Purchase interval: {doc.estimated_next_purchase} days</p>
-            )}
-
-            <p>
-              Purchase:{' '}
-              {doc.daysUntilPurchase === 0
-                ? 'today'
-                : doc.daysUntilPurchase < 0
-                ? `overdue by ${Math.abs(doc.daysUntilPurchase)} day(s)`
-                : `in ${doc.daysUntilPurchase} day(s)`}
-            </p>
-          </div>
+          <p>
+            Purchase:{' '}
+            {doc.daysUntilPurchase === 0
+              ? 'today'
+              : doc.daysUntilPurchase < 0
+              ? `overdue by ${Math.abs(doc.daysUntilPurchase)} ${
+                  doc.daysUntilPurchase === -1 ? 'day' : 'days'
+                }`
+              : `in ${doc.daysUntilPurchase} ${
+                  doc.daysUntilPurchase === 1 ? 'day' : 'days'
+                }`}
+          </p>
         )}
       </AccordionDetails>
     </Accordion>
