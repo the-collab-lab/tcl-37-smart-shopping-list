@@ -5,7 +5,7 @@
   background: #ffa001;
   border-radius: 2.438em;
   font-family: 'Poppins', sans-serif;
-  font-size: 1em;
+  font-size: 1.2em;
   color: #ffffff;
   border: 0px;
 }
@@ -41,53 +41,62 @@
 .soon-buttons label {
   cursor: pointer;
   display: flex;
-  width: 6.25em;
-  height: 5.0625em;
+  width: 7em;
+  height: 6em;
   border-radius: 14px;
   text-align: center;
   align-items: center;
   justify-content: center;
+  font-size: 1.2em;
 }
 
 #soon {
   color: #1fa060;
   background: rgba(222, 244, 221, 0.5);
+
+  color: #395c21;
+  background: #deffde;
 }
 
 #not-soon {
   background: rgba(248, 231, 221, 0.5);
   color: #fe5419;
-}
 
-#soon:active,
-#kind-soon:active,
-#not-soon:active {
-  transform: translateY(0.5px);
-  filter: saturate(200%);
-}
-
-#not-soon:hover,
-#kind-soon:hover,
-#soon:hover {
-  filter: saturate(300%);
+  background: #fbf3ee;
+  color: #923111;
 }
 
 #kind-soon {
   background: #fafadf;
   color: #d1a806;
+
+  color: #544405;
+}
+
+/* #soon:active,
+#kind-soon:active,
+#not-soon:active {
+  transform: translateY(0.5px);
+  filter: saturate(200%);
+} */
+
+#not-soon:hover,
+#kind-soon:hover,
+#soon:hover {
+  filter: saturate(200%);
 }
 
 input[type='radio']#kind-soon:checked + label {
-  box-shadow: 2px 1px 1px #d1a806;
-  filter: saturate(300%);
+  box-shadow: 3px 3px 1px #d1a806;
+  filter: saturate(200%);
 }
 
 input[type='radio']#soon:checked + label {
-  box-shadow: 2px 1px 1px #1fa060;
-  filter: saturate(300%);
+  box-shadow: 3px 3px 1px #1fa060;
+  filter: saturate(200%);
 }
 
 input[type='radio']#not-soon:checked + label {
-  box-shadow: 2px 1px 1px #fe5419;
-  filter: saturate(300%);
+  box-shadow: 3px 3px 1px #fe5419;
+  filter: saturate(200%);
 }
