@@ -6,6 +6,10 @@ With SmartShopper, you can create a “smart” shopping list that learns your b
 
 As a user, you will enter items (e.g., “Coconut Chips” or “Oat Milk”) into your list. Each time you buy the item, you mark it as purchased in your list. Over time, the app comes to understand the intervals at which you buy different items. If an item is due to be bought soon, it rises to the top of your list.
 
+ [![Demo video](https://img.youtube.com/vi/mKIarSL-d3A/0.jpg)](https://youtu.be/mKIarSL-d3A)
+ 
+
+
 
 ## Technologies
  - React
