@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { getToken } from '@the-collab-lab/shopping-list-utils';
+import { generateToken } from '@the-collab-lab/shopping-list-utils';
 import './Home.css';
 import HeroImage from '../../../src/assets/smartshopperr_logo.png';
 import Divider from '../../../src/assets/divider.png';
@@ -10,7 +10,7 @@ const Home = ({ token, setToken }) => {
   let navigate = useNavigate();
 
   const generateToken = () => {
-    const token = getToken();
+    const token = generateToken();
     localStorage.setItem('token', token);
     setToken(token);
     if (token) navigate('/list');

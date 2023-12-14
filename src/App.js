@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AddItemView, ListView, Home } from './pages';
 import { RequireToken } from './components';
 import './App.css';
+import { ArchivalNoticeModal } from '@the-collab-lab/shopping-list-utils';
 
 function App() {
   const [token, setToken] = useState('');
@@ -21,7 +22,12 @@ function App() {
           <Route
             exact
             path="/"
-            element={<Home token={token} setToken={setToken} />}
+            element={
+              <>
+                <ArchivalNoticeModal />
+                <Home token={token} setToken={setToken} />
+              </>
+            }
           />
           <Route
             exact
